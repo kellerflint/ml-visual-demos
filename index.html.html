@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reinforcement Learning Game</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            padding: 20px;
+        }
+        .game-box-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 200px;
+        }
+        .game-box {
+            margin: 20px auto;
+            width: 150px;
+            height: 150px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 24px;
+        }
+        .circle {
+            border-radius: 50%;
+        }
+        .square {
+            border-radius: 0;
+        }
+        .rectangle {
+            width: 200px;
+            height: 100px;
+        }
+        .controls button {
+            margin: 10px;
+            padding: 10px 20px;
+            font-size: 16px;
+        }
+        #score, #max-score, #round-counter {
+            font-size: 20px;
+            margin: 10px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Reinforcement Learning Game</h1>
+    <div id="score">Score: 0</div>
+    <div id="max-score">Highest Score: 0</div>
+    <div id="round-counter">Rounds Left: 6</div>
+    <div class="game-box-container">
+      <div class="game-box square" id="game-box"></div>
+    </div>
+    <div class="controls">
+        <button onclick="makeMove('A')">A</button>
+        <button onclick="makeMove('B')">B</button>
+        <button onclick="makeMove('C')">C</button>
+    </div>
+
+    <script>
+        let score = 0;
+        let maxScore = 0;
+        let roundsLeft = 6;
+
+        // Random state generator
+        const states = [
+            { shape: 'Circle', color: 'Red' },
+            { shape: 'Circle', color: 'Green' },
+            { shape: 'Circle', color: 'Blue' },
+            { shape: 'Square', color: 'Red' },
+            { shape: 'Square', color: 'Green' },
+            { shape: 'Square', color: 'Blue' },
+            { shape: 'Rectangle', color: 'Red' },
+            { shape: 'Rectangle', color: 'Green' },
+            { shape: 'Rectangle', color: 'Blue' }
+        ];
+
+        // Hidden reward rules
+        function calculateReward(action, state) {
+            if (action === 'A' && state.color === 'Red') return 10;
+            if (action === 'B' && state.shape === 'Circle') return 5;
+            if (action === 'C' && state.color === 'Green') return 15; // Larger positive reward
+            return 0;
+        }
+
+        // Display random state and update box
+        function getRandomState() {
+            return states[Math.floor(Math.random() * states.length)];
+        }
+
+        function updateGame() {
+            const state = getRandomState();
+            const gameBox = document.getElementById('game-box');
+            
+            // Update shape and color dynamically
+            gameBox.className = 'game-box'; // Reset class
+            gameBox.textContent = '';
+            if (state.shape === 'Circle') gameBox.classList.add('circle');
+            if (state.shape === 'Square') gameBox.classList.add('square');
+            if (state.shape === 'Rectangle') gameBox.classList.add('rectangle');
+            gameBox.style.backgroundColor = state.color.toLowerCase();
+            
+            return state;
+        }
+
+        // Handle button click
+        let currentState = updateGame();
+
+        function makeMove(action) {
+            if (roundsLeft > 0) {
+                const reward = calculateReward(action, currentState);
+                score += reward;
+                roundsLeft--;
+                document.getElementById('score').textContent = `Score: ${score}`;
+                document.getElementById('round-counter').textContent = `Rounds Left: ${roundsLeft}`;
+                currentState = updateGame(); // Update to new state
+            }
+
+            // End of rounds
+            if (roundsLeft === 0) {
+                alert(`Game Over! Your score is ${score}. Click OK to play again.`);
+                // Update max score
+                if (score > maxScore) {
+                    maxScore = score;
+                    document.getElementById('max-score').textContent = `Highest Score: ${maxScore}`;
+                }
+                // Reset score and rounds
+                score = 0;
+                roundsLeft = 6;
+                document.getElementById('score').textContent = `Score: ${score}`;
+                document.getElementById('round-counter').textContent = `Rounds Left: ${roundsLeft}`;
+            }
+        }
+    </script>
+</body>
+</html>
