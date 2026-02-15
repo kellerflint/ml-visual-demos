@@ -5,59 +5,171 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Reinforcement Learning Game</title>
     <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
         body {
             font-family: Arial, sans-serif;
-            text-align: center;
+            height: 100vh;
+            display: flex;
+            overflow: hidden;
+            background: #f4f4f4;
+        }
+        .game-area {
+            flex: 2;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
             padding: 20px;
+            position: relative;
+        }
+        .history-panel {
+            flex: 1;
+            background: #fff;
+            border-left: 2px solid #ddd;
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+        }
+        .history-header {
+            padding: 16px 20px;
+            font-size: 18px;
+            font-weight: bold;
+            border-bottom: 2px solid #ddd;
+            background: #fafafa;
+            text-align: center;
+        }
+        .history-list {
+            flex: 1;
+            overflow-y: auto;
+            padding: 8px 12px;
+        }
+        .history-row {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 10px 12px;
+            border-bottom: 1px solid #eee;
+            animation: fadeIn 0.25s ease;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-8px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .history-shape {
+            width: 36px;
+            height: 36px;
+            flex-shrink: 0;
+            display: inline-block;
+        }
+        .history-shape.circle { border-radius: 50%; }
+        .history-shape.square { border-radius: 3px; }
+        .history-shape.rectangle { width: 52px; height: 28px; border-radius: 3px; }
+        .history-action {
+            font-weight: bold;
+            font-size: 18px;
+            width: 24px;
+            text-align: center;
+            flex-shrink: 0;
+        }
+        .history-points {
+            font-size: 16px;
+            font-weight: bold;
+            margin-left: auto;
+            flex-shrink: 0;
+        }
+        .history-points.zero { color: #999; }
+        .history-points.positive { color: #2a9d2a; }
+
+        h1 { font-size: 26px; margin-bottom: 8px; }
+        #score, #max-score, #round-counter {
+            font-size: 20px;
+            margin: 4px 0;
         }
         .game-box-container {
             display: flex;
             justify-content: center;
             align-items: center;
             height: 200px;
+            margin: 16px 0;
         }
         .game-box {
-            margin: 20px auto;
             width: 150px;
             height: 150px;
             display: flex;
             justify-content: center;
             align-items: center;
             font-size: 24px;
+            transition: background-color 0.2s;
         }
-        .circle {
-            border-radius: 50%;
-        }
-        .square {
-            border-radius: 0;
-        }
-        .rectangle {
-            width: 200px;
-            height: 100px;
-        }
+        .game-box.circle { border-radius: 50%; }
+        .game-box.square { border-radius: 0; }
+        .game-box.rectangle { width: 200px; height: 100px; }
+
         .controls button {
-            margin: 10px;
-            padding: 10px 20px;
-            font-size: 16px;
+            margin: 8px;
+            padding: 12px 28px;
+            font-size: 18px;
+            cursor: pointer;
+            border: 2px solid #333;
+            background: #fff;
+            border-radius: 6px;
+            transition: background 0.15s;
         }
-        #score, #max-score, #round-counter {
-            font-size: 20px;
-            margin: 10px;
+        .controls button:hover { background: #e8e8e8; }
+
+        .game-over-screen {
+            display: none;
+            flex-direction: column;
+            align-items: center;
+            gap: 12px;
         }
+        .game-over-screen h2 { font-size: 32px; }
+        .game-over-screen .final-score { font-size: 24px; }
+        .game-over-screen .restart-btn {
+            margin-top: 12px;
+            padding: 14px 36px;
+            font-size: 18px;
+            cursor: pointer;
+            border: 2px solid #333;
+            background: #333;
+            color: #fff;
+            border-radius: 6px;
+            transition: background 0.15s;
+        }
+        .game-over-screen .restart-btn:hover { background: #555; }
+
+        .playing-area { text-align: center; }
     </style>
 </head>
 <body>
-    <h1>Reinforcement Learning Game</h1>
-    <div id="score">Score: 0</div>
-    <div id="max-score">Highest Score: 0</div>
-    <div id="round-counter">Rounds Left: 6</div>
-    <div class="game-box-container">
-      <div class="game-box square" id="game-box"></div>
+    <div class="game-area">
+        <h1>Reinforcement Learning Game</h1>
+        <div id="score">Score: 0</div>
+        <div id="max-score">Highest Score: 0</div>
+        <div id="round-counter">Rounds Left: 6</div>
+
+        <div class="playing-area" id="playing-area">
+            <div class="game-box-container">
+                <div class="game-box square" id="game-box"></div>
+            </div>
+            <div class="controls">
+                <button onclick="makeMove('A')">A</button>
+                <button onclick="makeMove('B')">B</button>
+                <button onclick="makeMove('C')">C</button>
+            </div>
+        </div>
+
+        <div class="game-over-screen" id="game-over-screen">
+            <h2>Game Over!</h2>
+            <div class="final-score" id="final-score"></div>
+            <div class="final-high" id="final-high"></div>
+            <button class="restart-btn" onclick="restartGame()">Play Again</button>
+        </div>
     </div>
-    <div class="controls">
-        <button onclick="makeMove('A')">A</button>
-        <button onclick="makeMove('B')">B</button>
-        <button onclick="makeMove('C')">C</button>
+
+    <div class="history-panel">
+        <div class="history-header">Move History</div>
+        <div class="history-list" id="history-list"></div>
     </div>
 
     <script>
@@ -65,7 +177,6 @@
         let maxScore = 0;
         let roundsLeft = 6;
 
-        // Random state generator
         const states = [
             { shape: 'Circle', color: 'Red' },
             { shape: 'Circle', color: 'Green' },
@@ -78,15 +189,13 @@
             { shape: 'Rectangle', color: 'Blue' }
         ];
 
-        // Hidden reward rules
         function calculateReward(action, state) {
             if (action === 'A' && state.color === 'Red') return 10;
             if (action === 'B' && state.shape === 'Circle') return 5;
-            if (action === 'C' && state.color === 'Green') return 15; // Larger positive reward
+            if (action === 'C' && state.color === 'Green') return 15;
             return 0;
         }
 
-        // Display random state and update box
         function getRandomState() {
             return states[Math.floor(Math.random() * states.length)];
         }
@@ -94,19 +203,41 @@
         function updateGame() {
             const state = getRandomState();
             const gameBox = document.getElementById('game-box');
-            
-            // Update shape and color dynamically
-            gameBox.className = 'game-box'; // Reset class
+            gameBox.className = 'game-box';
             gameBox.textContent = '';
             if (state.shape === 'Circle') gameBox.classList.add('circle');
             if (state.shape === 'Square') gameBox.classList.add('square');
             if (state.shape === 'Rectangle') gameBox.classList.add('rectangle');
             gameBox.style.backgroundColor = state.color.toLowerCase();
-            
             return state;
         }
 
-        // Handle button click
+        function addHistoryRow(state, action, reward) {
+            const list = document.getElementById('history-list');
+            const row = document.createElement('div');
+            row.className = 'history-row';
+
+            const shapeEl = document.createElement('div');
+            shapeEl.className = 'history-shape';
+            if (state.shape === 'Circle') shapeEl.classList.add('circle');
+            else if (state.shape === 'Square') shapeEl.classList.add('square');
+            else if (state.shape === 'Rectangle') shapeEl.classList.add('rectangle');
+            shapeEl.style.backgroundColor = state.color.toLowerCase();
+
+            const actionEl = document.createElement('div');
+            actionEl.className = 'history-action';
+            actionEl.textContent = action;
+
+            const pointsEl = document.createElement('div');
+            pointsEl.className = 'history-points ' + (reward > 0 ? 'positive' : 'zero');
+            pointsEl.textContent = reward > 0 ? `+${reward}` : '0';
+
+            row.appendChild(shapeEl);
+            row.appendChild(actionEl);
+            row.appendChild(pointsEl);
+            list.prepend(row);
+        }
+
         let currentState = updateGame();
 
         function makeMove(action) {
@@ -114,25 +245,41 @@
                 const reward = calculateReward(action, currentState);
                 score += reward;
                 roundsLeft--;
-                document.getElementById('score').textContent = `Score: ${score}`;
-                document.getElementById('round-counter').textContent = `Rounds Left: ${roundsLeft}`;
-                currentState = updateGame(); // Update to new state
-            }
 
-            // End of rounds
-            if (roundsLeft === 0) {
-                alert(`Game Over! Your score is ${score}. Click OK to play again.`);
-                // Update max score
-                if (score > maxScore) {
-                    maxScore = score;
-                    document.getElementById('max-score').textContent = `Highest Score: ${maxScore}`;
-                }
-                // Reset score and rounds
-                score = 0;
-                roundsLeft = 6;
+                addHistoryRow(currentState, action, reward);
+
                 document.getElementById('score').textContent = `Score: ${score}`;
                 document.getElementById('round-counter').textContent = `Rounds Left: ${roundsLeft}`;
+
+                if (roundsLeft === 0) {
+                    if (score > maxScore) {
+                        maxScore = score;
+                        document.getElementById('max-score').textContent = `Highest Score: ${maxScore}`;
+                    }
+                    showGameOver();
+                } else {
+                    currentState = updateGame();
+                }
             }
+        }
+
+        function showGameOver() {
+            document.getElementById('playing-area').style.display = 'none';
+            const screen = document.getElementById('game-over-screen');
+            screen.style.display = 'flex';
+            document.getElementById('final-score').textContent = `Your Score: ${score}`;
+            document.getElementById('final-high').textContent = `Highest Score: ${maxScore}`;
+        }
+
+        function restartGame() {
+            score = 0;
+            roundsLeft = 6;
+            document.getElementById('score').textContent = `Score: ${score}`;
+            document.getElementById('round-counter').textContent = `Rounds Left: ${roundsLeft}`;
+            document.getElementById('game-over-screen').style.display = 'none';
+            document.getElementById('playing-area').style.display = '';
+            document.getElementById('history-list').innerHTML = '';
+            currentState = updateGame();
         }
     </script>
 </body>
