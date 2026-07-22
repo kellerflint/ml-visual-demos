@@ -77,14 +77,13 @@
   /* Placeholder where an activity has been retired and not yet replaced */
   .activity-todo{
     border:1px dashed var(--line); border-radius:10px; background:var(--chrome);
-    padding:1.6rem 1.4rem; margin:2rem auto; max-width:56rem; color:var(--slate);
+    margin:2rem auto; max-width:56rem; min-height:11rem;
+    display:flex; align-items:center; justify-content:center;
   }
   .activity-todo .todo-label{
     font-family:var(--mono); font-size:.72rem; letter-spacing:.14em; text-transform:uppercase;
-    color:var(--warn); margin:0 0 .6rem;
+    color:var(--warn); margin:0;
   }
-  .activity-todo p{margin:0 0 .5rem; font-size:.95rem}
-  .activity-todo .todo-note{font-size:.85rem; margin:0}
 
   footer.endcap{padding:3rem 0 4rem; color:var(--slate); font-size:.9rem}
 </style>
@@ -143,14 +142,11 @@
     <p class="eyebrow">Lesson 02 · The machinery</p>
     <h2>Safe to run twice</h2>
     <p>You saw it in Lesson 1: the copying and cleaning happens at 2 a.m., run by a scheduler, with nobody watching. Schedulers have one relevant habit. When a job fails or a network blips, they run it again. So here's a question that sounds trivial and isn't. <strong>What happens if the same job runs twice?</strong></p>
-    <p>Below is a job that loads the day's $500 of sales into a table. The dashed line marks what the receipts actually add up to. The button is yours. Press it more than once. That's the entire experiment.</p>
   </div>
 
   <div class="col-wide">
     <div class="activity-todo">
       <p class="todo-label">TODO · activity</p>
-      <p>The old <em>The load job</em> activity was cut. This lesson needs a new activity designed for it.</p>
-      <p class="todo-note">The lesson text above still describes the run-it-twice exercise. Rewrite it alongside the new activity.</p>
     </div>
   </div>
 
@@ -218,14 +214,11 @@
     <p class="eyebrow">Lesson 04 · The question</p>
     <h2>Right answer, wrong question</h2>
     <p>Data work fails in two different ways, and telling them apart is a professional skill in itself. Engineers have asked the two questions the same way for fifty years. <strong>Are we building the thing right?</strong> Does the work do what we said it should? And <strong>are we building the right thing?</strong> Was "what we said it should do" actually what anyone needed? The first is called <em>verification</em>, the second <em>validation</em>. They fail independently. A dashboard can be flawlessly computed and useless, or aimed at exactly the right question and full of bugs.</p>
-    <p>Five incidents have landed on your desk. For each one you can dispatch two investigators. One <strong>audits the work</strong> by reading the code and checking the math. The other <strong>interviews the people</strong> to find out what was actually needed. Investigate however you like, then file the incident. One warning from experience. On certain incidents, one of your investigators will come back smiling and report that everything is fine.</p>
   </div>
 
   <div class="col-wide">
     <div class="activity-todo">
       <p class="todo-label">TODO · activity</p>
-      <p>The old <em>Failure investigation</em> activity was cut. This lesson needs a new activity designed for it.</p>
-      <p class="todo-note">The lesson text above still describes the two-investigator exercise. Rewrite it alongside the new activity.</p>
     </div>
   </div>
 
