@@ -3,161 +3,152 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Machine Learning Demos</title>
-<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<title>Interactive Learning</title>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
   :root {
-    --bg: #0a0a0f;
-    --surface: #12121a;
-    --surface2: #1a1a26;
-    --border: #2a2a3a;
-    --text: #e8e8f0;
-    --text-dim: #7a7a8e;
-    --accent: #6ee7b7;
-    --accent-dim: rgba(110, 231, 183, 0.12);
-    --highlight: #fbbf24;
+    --bg: #0d0e12;
+    --text: #ecedf2;
+    --dim: #8a8d9c;
+    --line: #24262f;
   }
 
   * { margin: 0; padding: 0; box-sizing: border-box; }
 
   body {
-    font-family: 'JetBrains Mono', monospace;
+    font-family: 'Space Grotesk', system-ui, sans-serif;
     background: var(--bg);
     color: var(--text);
     min-height: 100vh;
-    overflow-x: hidden;
-  }
-
-  .noise {
-    position: fixed; inset: 0; z-index: 0; pointer-events: none; opacity: 0.03;
-    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+    display: flex;
+    align-items: center;
   }
 
   .container {
-    position: relative; z-index: 1;
-    max-width: 800px; margin: 0 auto; padding: 80px 24px;
+    max-width: 980px;
+    margin: 0 auto;
+    padding: 72px 24px;
+    width: 100%;
   }
 
   .header {
-    text-align: center; margin-bottom: 72px;
+    margin-bottom: 56px;
+    max-width: 620px;
   }
-  .header .tag {
-    display: inline-block;
+  .header .kicker {
+    font-family: 'JetBrains Mono', monospace;
     font-size: 11px; letter-spacing: 3px; text-transform: uppercase;
-    color: var(--accent); background: var(--accent-dim);
-    padding: 6px 16px; border-radius: 2px; margin-bottom: 20px;
+    color: var(--dim); margin-bottom: 18px;
   }
   .header h1 {
-    font-family: 'Space Grotesk', sans-serif;
-    font-size: clamp(36px, 6vw, 56px); font-weight: 700;
-    line-height: 1.1; margin-bottom: 16px;
-    background: linear-gradient(135deg, #e8e8f0 40%, var(--accent));
-    -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+    font-size: clamp(34px, 5.5vw, 52px); font-weight: 700;
+    line-height: 1.1; margin-bottom: 18px; letter-spacing: -0.02em;
   }
   .header p {
-    font-size: 15px; color: var(--text-dim); max-width: 500px; margin: 0 auto; line-height: 1.7;
+    font-size: 16px; color: var(--dim); line-height: 1.7;
   }
 
-  .demos {
-    display: grid; gap: 20px;
+  .cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 24px;
   }
 
-  .demo-card {
-    display: block;
-    background: var(--surface);
-    border: 1px solid var(--border);
-    border-radius: 10px;
-    padding: 32px 32px 32px 36px;
+  .card {
+    display: flex;
+    flex-direction: column;
+    border-radius: 14px;
+    padding: 30px 30px 26px;
     text-decoration: none;
-    color: var(--text);
-    position: relative;
-    overflow: hidden;
-    transition: border-color 0.2s, transform 0.2s, box-shadow 0.2s;
+    border: 1px solid transparent;
+    min-height: 260px;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
   }
-  .demo-card:hover {
-    border-color: var(--accent);
-    transform: translateY(-3px);
-    box-shadow: 0 8px 32px rgba(110, 231, 183, 0.06);
-  }
+  .card:hover { transform: translateY(-4px); }
 
-  .demo-card .num {
-    position: absolute; top: -12px; right: 20px;
-    font-family: 'Space Grotesk', sans-serif;
-    font-size: 80px; font-weight: 700; color: var(--surface2);
-    line-height: 1; pointer-events: none;
-  }
-
-  .demo-card .type-tag {
-    display: inline-block;
+  .card .eyebrow {
+    font-family: 'JetBrains Mono', monospace;
     font-size: 10px; letter-spacing: 2px; text-transform: uppercase;
-    padding: 4px 10px; border-radius: 2px; margin-bottom: 14px;
+    margin-bottom: 16px;
   }
-  .tag-rl { color: var(--highlight); background: rgba(251, 191, 36, 0.1); }
-  .tag-sl { color: #818cf8; background: rgba(129, 140, 248, 0.1); }
-  .tag-ul { color: var(--accent); background: var(--accent-dim); }
+  .card h2 {
+    font-size: 26px; font-weight: 600; line-height: 1.2;
+    margin-bottom: 12px; letter-spacing: -0.01em;
+  }
+  .card .desc {
+    font-size: 14px; line-height: 1.65; margin-bottom: 24px;
+  }
+  .card .go {
+    margin-top: auto;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 12px; letter-spacing: 1px;
+    display: flex; align-items: center; gap: 8px;
+  }
+  .card .go span { transition: transform 0.2s ease; }
+  .card:hover .go span { transform: translateX(4px); }
 
-  .demo-card h2 {
-    font-family: 'Space Grotesk', sans-serif;
-    font-size: 22px; font-weight: 600; margin-bottom: 8px;
-    position: relative;
+  /* ML demos — dark, terminal-ish, matching that section's own look */
+  .card-ml {
+    background: #12121a;
+    border-color: #2a2a3a;
+    color: #e8e8f0;
+    font-family: 'JetBrains Mono', monospace;
   }
-  .demo-card .desc {
-    font-size: 13px; color: var(--text-dim); line-height: 1.7;
-    position: relative; max-width: 520px;
-  }
-
-  .demo-card .arrow {
-    position: absolute; right: 28px; top: 50%; transform: translateY(-50%);
-    font-size: 20px; color: var(--text-dim);
-    transition: color 0.2s, transform 0.2s;
-  }
-  .demo-card:hover .arrow {
-    color: var(--accent); transform: translateY(-50%) translateX(4px);
+  .card-ml h2 { font-family: 'Space Grotesk', sans-serif; }
+  .card-ml .eyebrow, .card-ml .go { color: #6ee7b7; }
+  .card-ml .desc { color: #7a7a8e; }
+  .card-ml:hover {
+    border-color: #6ee7b7;
+    box-shadow: 0 10px 40px rgba(110, 231, 183, 0.08);
   }
 
-  .demo-card.external .desc::after {
-    content: 'external link';
-    display: inline-block;
-    font-size: 10px; letter-spacing: 1px; text-transform: uppercase;
-    color: var(--text-dim); opacity: 0.5;
-    margin-left: 8px; vertical-align: middle;
+  /* Data lessons — light paper, serif, matching that section's own look */
+  .card-data {
+    background: #fafbfc;
+    border-color: #dde3e9;
+    color: #1c2733;
+  }
+  .card-data h2 {
+    font-family: "Iowan Old Style", Palatino, Georgia, serif;
+    font-weight: 600;
+  }
+  .card-data .eyebrow, .card-data .go {
+    font-family: ui-monospace, "SF Mono", Menlo, monospace;
+    color: #0e7490;
+  }
+  .card-data .desc {
+    color: #5d6b7a;
+    font-family: "Avenir Next", Avenir, "Segoe UI", system-ui, sans-serif;
+  }
+  .card-data:hover {
+    border-color: #0e7490;
+    box-shadow: 0 10px 40px rgba(14, 116, 144, 0.18);
   }
 </style>
 </head>
 <body>
-<div class="noise"></div>
 <div class="container">
 
   <div class="header">
-    <div class="tag">Interactive Demos</div>
-    <h1>Machine Learning</h1>
-    <p>Interactive demos that let you experience supervised, unsupervised, and reinforcement learning firsthand.</p>
+    <div class="kicker">Interactive</div>
+    <h1>Learn by poking at it</h1>
+    <p>Two sets of hands-on lessons — one on how machines learn, one on how data goes wrong. Everything runs in the browser, nothing to install.</p>
   </div>
 
-  <div class="demos">
+  <div class="cards">
 
-    <a class="demo-card" href="reinforcement-learning-demo.html">
-      <div class="num">01</div>
-      <div class="type-tag tag-rl">Reinforcement Learning</div>
-      <h2>Learn the Rules</h2>
-      <p class="desc">Colored shapes, hidden point values, three buttons. Figure out which actions score points through trial and error.</p>
-      <div class="arrow">→</div>
+    <a class="card card-ml" href="ml-demos/index.html">
+      <div class="eyebrow">3 demos</div>
+      <h2>Machine Learning</h2>
+      <p class="desc">Experience supervised, unsupervised, and reinforcement learning firsthand. Train a classifier, hunt for outliers, and figure out hidden rules by trial and error.</p>
+      <div class="go">Open demos <span>→</span></div>
     </a>
 
-    <a class="demo-card external" href="https://teachablemachine.withgoogle.com/train/image" target="_blank" rel="noopener">
-      <div class="num">02</div>
-      <div class="type-tag tag-sl">Supervised Learning</div>
-      <h2>Teachable Machine</h2>
-      <p class="desc">Train an image classifier in your browser by giving it labeled examples. Point your camera, add labels, and watch it learn your categories.</p>
-      <div class="arrow">→</div>
-    </a>
-
-    <a class="demo-card" href="unsupervised-anomaly-demo.html">
-      <div class="num">03</div>
-      <div class="type-tag tag-ul">Unsupervised Learning</div>
-      <h2>Spot the Outlier</h2>
-      <p class="desc">Find the anomalies in visual patterns and data tables. Build a mental model of "normal" and flag what deviates.</p>
-      <div class="arrow">→</div>
+    <a class="card card-data" href="lessons/data-lessons.html">
+      <div class="eyebrow">5 lessons</div>
+      <h2>How Data Actually Works</h2>
+      <p class="desc">Five ways a confident number can be wrong — double-counted taps, near-misses, survivorship bias, and the right answer to the wrong question.</p>
+      <div class="go">Open lessons <span>→</span></div>
     </a>
 
   </div>

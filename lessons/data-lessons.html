@@ -1,0 +1,312 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>How Data Actually Works — Interactive Lessons</title>
+<style>
+  :root{
+    --paper:#fafbfc;
+    --ink:#1c2733;
+    --slate:#5d6b7a;
+    --line:#dde3e9;
+    --accent:#0e7490;
+    --accent-soft:#e3f1f5;
+    --good:#15803d;
+    --good-soft:#e9f5ec;
+    --warn:#b45309;
+    --warn-soft:#fdf3e7;
+    --card:#ffffff;
+    --chrome:#f0f3f6;
+    --mono:ui-monospace,"SF Mono",Menlo,Consolas,"Liberation Mono",monospace;
+    --serif:"Iowan Old Style",Palatino,"Palatino Linotype",Georgia,serif;
+    --sans:"Avenir Next",Avenir,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  @media (prefers-reduced-motion:reduce){ html{scroll-behavior:auto} }
+  body{
+    margin:0; background:var(--paper); color:var(--ink);
+    font-family:var(--sans); font-size:17px; line-height:1.65;
+  }
+  .col{max-width:42rem; margin:0 auto; padding:0 1.25rem}
+  .col-wide{max-width:56rem; margin:0 auto; padding:0 1.25rem}
+
+  header.masthead{border-bottom:1px solid var(--line); padding:3.5rem 0 2.5rem; background:var(--card)}
+  .masthead .back-link{margin:0 0 1.4rem}
+  .masthead .back-link a{font-family:var(--mono); font-size:.72rem; letter-spacing:.12em; text-transform:uppercase; color:var(--slate); text-decoration:none}
+  .masthead .back-link a:hover{color:var(--accent)}
+  .masthead .kicker{font-family:var(--mono); font-size:.72rem; letter-spacing:.14em; text-transform:uppercase; color:var(--accent); margin:0 0 .9rem}
+  .masthead h1{font-family:var(--serif); font-size:2.4rem; line-height:1.15; margin:0 0 1rem; text-wrap:balance; font-weight:600}
+  .masthead p{color:var(--slate); max-width:36rem; margin:0}
+
+  section.lesson{padding:3.5rem 0 1rem; border-bottom:1px solid var(--line)}
+  .eyebrow{font-family:var(--mono); font-size:.72rem; letter-spacing:.14em; text-transform:uppercase; color:var(--accent); margin:0 0 .7rem}
+  section.lesson h2{font-family:var(--serif); font-size:1.75rem; line-height:1.2; margin:0 0 1.1rem; text-wrap:balance; font-weight:600}
+  section.lesson h3{font-family:var(--serif); font-size:1.15rem; margin:2rem 0 .6rem; font-weight:600}
+  section.lesson p{margin:0 0 1rem}
+  .note{color:var(--slate); font-size:.92rem}
+
+  details.check summary:focus-visible{outline:2px solid var(--accent); outline-offset:2px}
+
+  /* Check-yourself block */
+  .check{margin:2rem 0 2.5rem}
+  .check .check-label{font-family:var(--mono); font-size:.72rem; letter-spacing:.14em; text-transform:uppercase; color:var(--slate); margin:0 0 .8rem}
+  details.check{
+    border:1px solid var(--line); border-radius:8px; background:var(--card);
+    margin:0 0 .7rem; padding:0;
+  }
+  details.check summary{
+    cursor:pointer; padding:.85rem 1rem; font-weight:600; list-style:none;
+    display:flex; gap:.6rem; align-items:baseline;
+  }
+  details.check summary::-webkit-details-marker{display:none}
+  details.check summary::before{content:"?"; font-family:var(--mono); color:var(--accent); flex:none}
+  details.check[open] summary::before{content:"→"}
+  details.check .answer{
+    padding:0 1rem 1rem; color:var(--ink); font-size:.95rem; border-top:1px dashed var(--line);
+  }
+  details.check .answer p:first-child{margin-top:.9rem}
+  .think-hint{font-size:.85rem; color:var(--slate); font-style:italic; margin:.2rem 0 1rem}
+  /* Embedded activities — each lives in its own standalone file under activities/ */
+  .activity-frame{
+    display:block; width:100%; border:0; margin:2rem auto;
+    overflow:hidden; background:transparent;
+  }
+
+  /* Placeholder where an activity has been retired and not yet replaced */
+  .activity-todo{
+    border:1px dashed var(--line); border-radius:10px; background:var(--chrome);
+    padding:1.6rem 1.4rem; margin:2rem auto; max-width:56rem; color:var(--slate);
+  }
+  .activity-todo .todo-label{
+    font-family:var(--mono); font-size:.72rem; letter-spacing:.14em; text-transform:uppercase;
+    color:var(--warn); margin:0 0 .6rem;
+  }
+  .activity-todo p{margin:0 0 .5rem; font-size:.95rem}
+  .activity-todo .todo-note{font-size:.85rem; margin:0}
+
+  footer.endcap{padding:3rem 0 4rem; color:var(--slate); font-size:.9rem}
+</style>
+</head>
+<body>
+
+<header class="masthead">
+  <div class="col">
+    <p class="back-link"><a href="../index.html">← All lessons</a></p>
+    <p class="kicker">How data actually works · module one</p>
+    <h1>Five ways a confident number can be wrong</h1>
+    <p>A chart looks like a fact. It isn't. It's the last stop on a long trip: machinery that copies and reshapes data, software that can silently double it, AI that writes confident answers, questions that turn out to be the wrong questions, and datasets missing their most important rows. Each lesson below shows one way a good-looking number goes wrong, then lets you practice the habit that catches it. Play first. The ideas will follow.</p>
+  </div>
+</header>
+
+<!-- ================= LESSON 1 ================= -->
+<section class="lesson" id="lesson-1">
+  <div class="col">
+    <p class="eyebrow">Lesson 01 · The journey</p>
+    <h2>One tap, one number</h2>
+    <p>Somewhere in Berlin, a customer taps <em>Buy</em>. Weeks later, a manager looks at a revenue chart and makes a decision. Between those two moments, that one tap traveled through half a dozen systems. Along the way it got reshaped by choices someone coded months ago. Follow it, one stop at a time.</p>
+  </div>
+
+  <div class="col-wide">
+    <iframe class="activity-frame" data-activity="follow-the-record"
+            src="activities/follow-the-record.html"
+            title="Follow the record — interactive activity"
+            height="620" loading="lazy"></iframe>
+  </div>
+
+  <div class="col">
+    <div class="check">
+      <p class="check-label">Check yourself</p>
+      <p class="think-hint">Think it through before you open the answers.</p>
+      <details class="check">
+        <summary>At the cleaning stop, three things about the record were changed by choices someone coded: how money is written, how IDs are written, which region got attached. None of those choices were wrong. So why do data teams insist that every one of them be written down and reviewable?</summary>
+        <div class="answer">
+          <p>Because a different reasonable choice produces a different number. Count the euro order at yesterday's exchange rate instead of today's, or match IDs slightly differently, and revenue shifts. No bug anywhere. When two teams' numbers disagree, and they constantly do, the explanation almost always lives in these invisible decisions rather than in anyone's arithmetic. Writing the choices down, in code and in definitions everyone shares, turns "my spreadsheet says something different" from a week-long argument into a five-minute diff. A number you can trust is a number whose journey you can inspect.</p>
+        </div>
+      </details>
+      <details class="check">
+        <summary>The manager's chart reads only the final summary table. It never touches the raw data. Give one reason that separation is deliberate, and one risk it creates.</summary>
+        <div class="answer">
+          <p><strong>Why it's deliberate.</strong> Raw data is messy, huge, and constantly changing shape. If every chart read it directly, every chart would need its own cleaning logic, and they would all disagree. Cleaning once, in the middle, gives everyone the same answer. It also keeps slow analytical queries away from the systems running the actual business.</p>
+          <p><strong>The risk.</strong> Distance. Everyone downstream silently inherits whatever choices the cleaning steps made. If that logic is wrong, every chart built on it is wrong in the same convincing way, and the person reading the dashboard has no way to see it. Trust concentrates in the middle of the journey. That's exactly why the middle is where data teams put their tests.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+</section>
+
+
+<!-- ================= LESSON 2 ================= -->
+<section class="lesson" id="lesson-2">
+  <div class="col">
+    <p class="eyebrow">Lesson 02 · The machinery</p>
+    <h2>Safe to run twice</h2>
+    <p>You saw it in Lesson 1: the copying and cleaning happens at 2 a.m., run by a scheduler, with nobody watching. Schedulers have one relevant habit. When a job fails or a network blips, they run it again. So here's a question that sounds trivial and isn't. <strong>What happens if the same job runs twice?</strong></p>
+    <p>Below is a job that loads the day's $500 of sales into a table. The dashed line marks what the receipts actually add up to. The button is yours. Press it more than once. That's the entire experiment.</p>
+  </div>
+
+  <div class="col-wide">
+    <div class="activity-todo">
+      <p class="todo-label">TODO · activity</p>
+      <p>The old <em>The load job</em> activity was cut. This lesson needs a new activity designed for it.</p>
+      <p class="todo-note">The lesson text above still describes the run-it-twice exercise. Rewrite it alongside the new activity.</p>
+    </div>
+  </div>
+
+  <div class="col">
+    <div class="check">
+      <p class="check-label">Check yourself</p>
+      <p class="think-hint">Think it through before you open the answers.</p>
+      <details class="check">
+        <summary>The append version of this job is perfectly correct, as long as it runs exactly once per day. What does that tell you about how to judge whether a pipeline is "working"?</summary>
+        <div class="answer">
+          <p>"It has run fine so far" is evidence about the happy path only. A pipeline's real quality shows in how it behaves when something goes wrong: failures, retries, re-runs. On a long enough schedule, something always goes wrong. That's why experienced engineers judge pipelines by their failure behavior. They deliberately test the unhappy paths, asking "what happens if I kill this halfway and run it again?" They treat a job that has never been retried as untested rather than proven. The append job's bug was in its design from day one. The first unlucky retry just revealed it.</p>
+        </div>
+      </details>
+      <details class="check">
+        <summary>A teammate suggests, "Instead of rewriting the job to overwrite, let's just be careful never to run the same day twice." Why is that a losing strategy?</summary>
+        <div class="answer">
+          <p>Because re-running isn't an accident to avoid. It's a feature you will need on purpose. Schedulers retry failed jobs automatically. Upstream systems send corrections, and the honest response is to re-run Tuesday. Bugs get discovered weeks later and history has to be rebuilt. Re-running the past on purpose is so routine it has its own name, a <em>backfill</em>. "Being careful" turns every one of those into nerve-wracking manual surgery, and it doesn't survive handoffs to new teammates. A structural property does. Make the job safe to re-run and retries, corrections, and backfills all become boring. Boring is exactly what you want from your 2 a.m. infrastructure.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+</section>
+
+
+<!-- ================= LESSON 3 ================= -->
+<section class="lesson" id="lesson-3">
+  <div class="col">
+    <p class="eyebrow">Lesson 03 · Working with AI</p>
+    <h2>Almost right</h2>
+    <p>You will do data work with an AI assistant. Nearly everyone in the field already does. And in survey after survey, the same professionals who use AI daily name the same frustration above all the others. Answers that are <em>almost</em> right. Not wrong in ways that jump out. Wrong in ways that read smoothly, sound confident, and cost you an afternoon when they slip through.</p>
+    <p>Getting answers out of AI is the easy part. The skill that matters is <strong>review</strong>, deciding with evidence whether an answer is true. Below is a tiny orders table, small enough to check by eye. An AI assistant has answered five questions about it. Some answers are solid. Some aren't. You're the reviewer, and shipping a wrong number to your boss counts against you.</p>
+  </div>
+
+  <div class="col-wide">
+    <iframe class="activity-frame" data-activity="review-queue"
+            src="activities/review-queue.html"
+            title="Review queue — interactive activity"
+            height="660" loading="lazy"></iframe>
+  </div>
+
+  <div class="col">
+    <div class="check">
+      <p class="check-label">Check yourself</p>
+      <p class="think-hint">Think it through before you open the answers.</p>
+      <details class="check">
+        <summary>The refund-rate mistake took you ten seconds to catch, because the table has 8 rows. At a real company it has 40 million rows and you can't eyeball anything. What does "checking the AI's answer" look like then?</summary>
+        <div class="answer">
+          <p>You stop checking the <em>answer</em> and start checking the <em>method</em>. Ask for the query and read it. Does it filter to refunded orders, or count something else? Compute the number a second, independent way and see if the two agree. Sanity-check against what you already know. If last month's refund rate was 24% and the AI says 12.5%, something changed, either the business or the math. Spot-check a sample by hand. Professionals also build these checks into the pipeline as automated tests, so the checking happens every day instead of only when someone gets suspicious. The reflex is the same one you practiced here. Only the tools scale up.</p>
+        </div>
+      </details>
+      <details class="check">
+        <summary>Case 5 got the number right but invented a detail that wasn't in the data. Why is that arguably more dangerous than an answer that's plainly wrong?</summary>
+        <div class="answer">
+          <p>Because the true part buys trust for the false part. You verify the $70, feel done, and the invented detail rides along into your report where someone might act on it. Plainly wrong answers get caught by the first person who looks. A fabrication attached to a verified fact can survive several rounds of review, because each reviewer assumes that checking <em>part</em> of the answer was checking the answer. The lesson is that verification doesn't transfer. Every claim needs its own receipt, especially the ones sitting next to a claim that checked out.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+</section>
+
+
+<!-- ================= LESSON 4 ================= -->
+<section class="lesson" id="lesson-4">
+  <div class="col">
+    <p class="eyebrow">Lesson 04 · The question</p>
+    <h2>Right answer, wrong question</h2>
+    <p>Data work fails in two different ways, and telling them apart is a professional skill in itself. Engineers have asked the two questions the same way for fifty years. <strong>Are we building the thing right?</strong> Does the work do what we said it should? And <strong>are we building the right thing?</strong> Was "what we said it should do" actually what anyone needed? The first is called <em>verification</em>, the second <em>validation</em>. They fail independently. A dashboard can be flawlessly computed and useless, or aimed at exactly the right question and full of bugs.</p>
+    <p>Five incidents have landed on your desk. For each one you can dispatch two investigators. One <strong>audits the work</strong> by reading the code and checking the math. The other <strong>interviews the people</strong> to find out what was actually needed. Investigate however you like, then file the incident. One warning from experience. On certain incidents, one of your investigators will come back smiling and report that everything is fine.</p>
+  </div>
+
+  <div class="col-wide">
+    <div class="activity-todo">
+      <p class="todo-label">TODO · activity</p>
+      <p>The old <em>Failure investigation</em> activity was cut. This lesson needs a new activity designed for it.</p>
+      <p class="todo-note">The lesson text above still describes the two-investigator exercise. Rewrite it alongside the new activity.</p>
+    </div>
+  </div>
+
+  <div class="col">
+    <div class="check">
+      <p class="check-label">Check yourself</p>
+      <p class="think-hint">Think it through before you open the answers.</p>
+      <details class="check">
+        <summary>On every incident you filed under "built the wrong thing," the work auditor reported all clear. Automated tests are essentially that auditor, running forever. What does that imply about what a fully-passing test suite can and cannot tell you?</summary>
+        <div class="answer">
+          <p>A test is a spec written down. "Refunds must be excluded." "This ID must be unique." The machine then checks the work against that spec, tirelessly and forever. So a passing suite tells you the work matches the spec. That's verification. It tells you nothing about whether the spec matches the need, because tests enforce the spec faithfully whether the spec is right or wrong. A dashboard aimed at the wrong question passes every test its builders could write. Catching validation failures requires the other investigator: stepping outside the system, talking to the people the thing is for, watching what they actually do with it, and asking whether the question changed since the spec was written. Machines verify. Someone still has to validate.</p>
+        </div>
+      </details>
+      <details class="check">
+        <summary>In Lesson 3, you checked the AI's refund-rate answer against the table. Which of your two investigators were you being? What would the <em>other</em> investigation have looked like?</summary>
+        <div class="answer">
+          <p>The work auditor. You compared the claimed number against the data, which is checking the work. The interview would have questioned the question itself. Is "share of orders refunded" even the number the boss needs? Maybe what matters is refunded <em>dollars</em>, since two cheap refunds matter less than one big one. Maybe it's whether refunds are trending up, or which product drives them. An AI can increasingly help with the auditing kind of checking. The interviewing kind requires knowing why the question was asked, and that information lives in people, not in the table. That's precisely why it stays a human job.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+</section>
+
+
+<!-- ================= LESSON 5 ================= -->
+<section class="lesson" id="lesson-5">
+  <div class="col">
+    <p class="eyebrow">Lesson 05 · Judgment</p>
+    <h2>The planes that didn't come back</h2>
+    <p>World War II. Bombers return from missions over Europe full of holes, and the military maps every hit, hoping to armor the planes better. Armor is heavy, so you can't protect everything. A statistician named Abraham Wald was handed this data, and what he saw in it saved lives. Now you get handed the same data. You have armor for two zones. Study the hit map and choose.</p>
+  </div>
+
+  <div class="col-wide">
+    <iframe class="activity-frame" data-activity="armor-allocation"
+            src="activities/armor-allocation.html"
+            title="Armor allocation — interactive activity"
+            height="620" loading="lazy"></iframe>
+  </div>
+
+  <div class="col">
+    <div class="check">
+      <p class="check-label">Check yourself</p>
+      <p class="think-hint">Think it through before you open the answers.</p>
+      <details class="check">
+        <summary>Every dot on the hit map was real. Nobody made a measurement mistake. So where did the error live?</summary>
+        <div class="answer">
+          <p>In the population, not the measurements. The dataset was "hits on bombers <em>that returned</em>," and it got quietly treated as "hits on bombers." The planes hit in the engines and cockpit mostly never made it home to be measured. The most important evidence was structurally missing from the table, and no amount of careful analysis <em>of the table</em> could reveal that. This is why professionals interrogate a dataset with a question that sounds almost paranoid. <em>What would have to happen for a record to end up in this data, and what kinds of records can never get in?</em> It's a validation habit in the Lesson 4 sense. You're questioning the data's relationship to reality, not just the math done on it.</p>
+        </div>
+      </details>
+      <details class="check">
+        <summary>Your company surveys its current customers and scores 9 out of 10 on satisfaction. Explain why this might be the bomber problem wearing a business suit. Who are the planes that didn't come back?</summary>
+        <div class="answer">
+          <p>The survey only reaches customers who are still around to answer it. The angriest customers already canceled. They're the shot-down planes, invisible in the data precisely <em>because</em> of the thing you're trying to measure. A 9/10 from survivors is perfectly consistent with a company hemorrhaging unhappy customers. The fix mirrors Wald's. Go looking for the missing population instead of squeezing more analysis out of the survivors. That means exit interviews, outreach to churned customers, and comparing the surveyed group against the full customer list. Once you know this pattern you'll see it everywhere. Reviews come from people who didn't return the product. Success stories come from businesses that didn't fold. Workout advice comes from people the workout didn't injure.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+</section>
+
+
+<script>
+/* Size each embedded activity iframe to its content. The activities post their
+   height on load and whenever they change; until then the height attribute holds. */
+(function(){
+  "use strict";
+  var frames = Array.prototype.slice.call(document.querySelectorAll(".activity-frame"));
+  window.addEventListener("message", function(e){
+    var d = e.data;
+    if(!d || d.type !== "activity-height" || typeof d.height !== "number") return;
+    frames.forEach(function(f){
+      if(f.contentWindow === e.source) f.style.height = d.height + "px";
+    });
+  });
+})();
+</script>
+
+<footer class="endcap">
+  <div class="col">
+    <p>Built for the data-careers curriculum project. Each lesson is self-contained and can be embedded on its own.</p>
+  </div>
+</footer>
+
+</body>
+</html>
