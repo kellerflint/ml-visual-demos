@@ -95,7 +95,7 @@
     <p class="back-link"><a href="../index.html">← All lessons</a></p>
     <p class="kicker">How data actually works · module one</p>
     <h1>Five ways a confident number can be wrong</h1>
-    <p>A chart looks like a fact. It isn't. It's the last stop on a long trip: machinery that copies and reshapes data, software that can silently double it, AI that writes confident answers, questions that turn out to be the wrong questions, and datasets missing their most important rows. Each lesson below shows one way a good-looking number goes wrong, then lets you practice the habit that catches it. Play first. The ideas will follow.</p>
+    <p>A chart looks like a fact. It isn't. It's the last stop on a long trip: machinery that copies and reshapes data, software that can silently double it, AI that writes confident answers, questions that turn out to be the wrong questions, and datasets missing their most important rows.</p>
   </div>
 </header>
 
@@ -292,14 +292,17 @@
       if(f.contentWindow === e.source) f.style.height = d.height + "px";
     });
   });
+  frames.forEach(function(f){
+    function ping(){
+      try { f.contentWindow.postMessage({type:"activity-height-request"}, "*"); } catch(err) {}
+    }
+    f.addEventListener("load", ping);
+    ping();
+  });
 })();
 </script>
 
-<footer class="endcap">
-  <div class="col">
-    <p>Built for the data-careers curriculum project. Each lesson is self-contained and can be embedded on its own.</p>
-  </div>
-</footer>
+<footer class="endcap"></footer>
 
 </body>
 </html>

@@ -272,16 +272,24 @@
   "use strict";
   if(window.parent === window) return;
   const ID = "review-queue";
+  const card = document.querySelector(".activity");
   let last = 0;
   function post(){
-    const h = Math.ceil(document.documentElement.scrollHeight);
+    /* Measure the card, not documentElement: scrollHeight is clamped to the
+       iframe's own height, so it can grow but never report a shrink. */
+    const h = Math.ceil(card.getBoundingClientRect().height);
     if(h === last) return;
     last = h;
     window.parent.postMessage({type:"activity-height", id:ID, height:h}, "*");
   }
   window.addEventListener("load", post);
   window.addEventListener("resize", post);
-  if(window.ResizeObserver) new ResizeObserver(post).observe(document.body);
+  /* The parent may attach its listener after we've already loaded, so it can
+     ask us to report again. */
+  window.addEventListener("message", function(e){
+    if(e.data && e.data.type === "activity-height-request"){ last = 0; post(); }
+  });
+  if(window.ResizeObserver) new ResizeObserver(post).observe(card);
   document.addEventListener("click", ()=>setTimeout(post, 0));
   post();
 })();
