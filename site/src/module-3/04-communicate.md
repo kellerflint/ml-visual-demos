@@ -1,16 +1,16 @@
 ---
-order: 6
+order: 4
 title: Say it
-kicker: Module 3 · Part 5
+kicker: Module 3 · Part 3
 standfirst: >
   Four sentences for someone who will only ever read the summary. The AI writes them better than you do, using only your numbers, and you should still hold some of them back.
 status: scaffold
 prev:
-  url: /module-3/05-bias/
-  label: Part 4 · Check who is missing
+  url: /module-3/03-explore/
+  label: Part 2 · Explore it
 next:
-  url: /module-3/07-review/
-  label: Talk it through
+  url: /module-3/05-build/
+  label: Do it from scratch
 ---
 
 <!-- authoring note: Phase 1 -> 3 -> 4. Concept, then do it, then compare. -->
@@ -37,7 +37,7 @@ What should land: the difference between a measurement and a claim; that adding 
 The director needs a short written summary. **Students write their own version first, before seeing anything the AI produces.** They will want to skip this and it is load-bearing.
 {% endtodo %}
 
-{% notebook "Notebook 5 — Say it" %}
+{% notebook "Notebook 3 — Say it" %}
 Starts from a clean copy, so you can work this part whatever happened in an earlier one.
 
 {% todo "To build" %}
@@ -81,17 +81,15 @@ Say the awkward bit honestly: the part where the AI helped most is also the part
 Timing, what to poll the room on, which question is worth arguing about.
 {% endtodo %}
 
-{% compare "Looking back at all five parts" %}
+{% compare "Looking back at all three parts" %}
 | | Came out right | Time, inc. checking | Could explain it | Holds up next time | Would notice if broken |
 |---|---|---|---|---|---|
-| Clean it | | | | | |
-| Reshape it | | | | | |
+| Prep it | | | | | |
 | Explore it | | | | | |
-| Check who is missing | | | | | |
 | Say it | | | | | |
 
 {% todo %}
 Closing question: which of these are worth handing to an AI, and which are better done yourself?
-Five parts of evidence behind the answer.
+Three parts of evidence behind the answer.
 {% endtodo %}
 {% endcompare %}

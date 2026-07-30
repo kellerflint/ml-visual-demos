@@ -1,5 +1,5 @@
 ---
-order: 8
+order: 5
 title: Do it from scratch
 kicker: Module 3 · On your own
 standfirst: >
@@ -7,8 +7,8 @@ standfirst: >
   Everything up to here was practice with the guardrails on.
 status: scaffold
 prev:
-  url: /module-3/07-review/
-  label: Talk it through
+  url: /module-3/04-communicate/
+  label: Part 3 · Say it
 next:
   url: /module-3/
   label: Module 3 overview

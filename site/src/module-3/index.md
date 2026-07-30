@@ -138,54 +138,31 @@ receipt — especially the ones sitting next to a claim that checked out.
   <div class="meta"><span><b>~25 min</b></span></div>
 </a>
 
-<a class="lcard" href="{{ '/module-3/02-clean/' | url }}">
+<a class="lcard" href="{{ '/module-3/02-prep/' | url }}">
   <p class="num">Part 1</p>
-  <h3>Clean it</h3>
-  <p>The same thing spelled six ways, dates in three formats, an age of 999. What to fix, what to
-  throw away, and what it costs you.</p>
-  <div class="meta"><span><b>~90 min</b></span></div>
+  <h3>Prep it</h3>
+  <p>Making the data consistent, then building the columns your questions actually need. Two
+  jobs that look like chores and are really a run of decisions.</p>
+  <div class="meta"><span><b>~100 min</b></span></div>
 </a>
 
-<a class="lcard" href="{{ '/module-3/03-transform/' | url }}">
+<a class="lcard" href="{{ '/module-3/03-explore/' | url }}">
   <p class="num">Part 2</p>
-  <h3>Reshape it</h3>
-  <p>The columns you have rarely match the question. Making new ones, and noticing when one has
-  stopped meaning anything.</p>
-  <div class="meta"><span><b>~70 min</b></span></div>
-</a>
-
-<a class="lcard" href="{{ '/module-3/04-explore/' | url }}">
-  <p class="num">Part 3</p>
   <h3>Explore it</h3>
-  <p>Answer the questions you were actually asked, and make a chart that reads correctly to
-  someone who was somewhere else.</p>
-  <div class="meta"><span><b>~85 min</b></span></div>
+  <p>Answer the questions you were actually asked, then work out who is missing from the answer
+  before anyone acts on it.</p>
+  <div class="meta"><span><b>~110 min</b></span></div>
 </a>
 
-<a class="lcard" href="{{ '/module-3/05-bias/' | url }}">
-  <p class="num">Part 4</p>
-  <h3>Check who is missing</h3>
-  <p>Some of the people in this data are barely in it. Whether that is a paperwork problem or
-  something worth reporting.</p>
-  <div class="meta"><span><b>~90 min</b></span></div>
-</a>
-
-<a class="lcard" href="{{ '/module-3/06-communicate/' | url }}">
-  <p class="num">Part 5</p>
+<a class="lcard" href="{{ '/module-3/04-communicate/' | url }}">
+  <p class="num">Part 3</p>
   <h3>Say it</h3>
   <p>Four sentences for someone who will only ever read the summary. Every number correct and the
   meaning still wrong is the failure mode.</p>
   <div class="meta"><span><b>~70 min</b></span></div>
 </a>
 
-<a class="lcard" href="{{ '/module-3/07-review/' | url }}">
-  <p class="num">Wrap up</p>
-  <h3>Talk it through</h3>
-  <p>You did the work. Can you explain the decisions you made and why?</p>
-  <div class="meta"><span><b>~30 min</b></span></div>
-</a>
-
-<a class="lcard" href="{{ '/module-3/08-build/' | url }}">
+<a class="lcard" href="{{ '/module-3/05-build/' | url }}">
   <p class="num">On your own</p>
   <h3>Do it from scratch</h3>
   <p>A dataset that is new to you, a real question, and your own judgment about how to

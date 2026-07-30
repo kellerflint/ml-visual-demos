@@ -1,16 +1,16 @@
 ---
-order: 4
+order: 3
 title: Explore it
-kicker: Module 3 · Part 3
+kicker: Module 3 · Part 2
 standfirst: >
-  Answer the questions the director actually asked, and make a chart that reads correctly to someone who was somewhere else.
+  Answer the questions you were actually asked, then work out who is missing from the answer before anyone acts on it.
 status: scaffold
 prev:
-  url: /module-3/03-transform/
-  label: Part 2 · Reshape it
+  url: /module-3/02-prep/
+  label: Part 1 · Prep it
 next:
-  url: /module-3/05-bias/
-  label: Part 4 · Check who is missing
+  url: /module-3/04-communicate/
+  label: Part 3 · Say it
 ---
 
 <!-- authoring note: Phase 1 -> 3 -> 4. Concept, then do it, then compare. -->
@@ -19,25 +19,27 @@ next:
 Two charts of the same data telling different stories. Student picks which one to send.
 {% endtodo %}
 
-{% section "Get a feel for it", "~30 min" %}
+{% section "Get a feel for it", "~45 min" %}
 
 {% slot "activity", "Concept level. Candidates: an axis starting somewhere other than zero, an average hiding two separate groups, a trend read off too few points." %}
 
+{% slot "activity", "Concept level, away from the clinic entirely. The survivorship shape: a population you can only see part of, where the part you cannot see is the answer." %}
+
 ### Think it through
 
-{% todo "Check yourself · 2–3 questions" %}
+{% todo "Check yourself · 3–4 questions" %}
 Arguable. These are the discussion if the class is running together.
 
-What should land: an average can describe nobody in the data; the same numbers support more than one chart and the chart does some of the arguing; a pattern and a wobble look identical until you check how many points you have.
+What should land: an average can describe nobody in the data; a pattern and a wobble look identical until you check how many points you have; missing data usually has a reason behind it; who is absent changes what your numbers are about.
 {% endtodo %}
 
-{% section "Do it for real", "~40 min" %}
+{% section "Do it for real", "~45 min" %}
 
 {% todo "Name the job" %}
-Give the director's actual questions. At least one should need working out what it even means before it can be answered.
+Give the director's actual questions. Then, before any of it goes in a report, check who is actually represented in the answer.
 {% endtodo %}
 
-{% notebook "Notebook 3 — Explore it" %}
+{% notebook "Notebook 2 — Explore it" %}
 Starts from a clean copy, so you can work this part whatever happened in an earlier one.
 
 {% todo "To build" %}
@@ -49,14 +51,14 @@ Starts from a clean copy, so you can work this part whatever happened in an earl
 
 {% checklist "How to know it worked" %}
 - Does your number answer the question that was asked, or an easier one nearby?
-- Check what every percentage is a percentage *of*
-- Look at the spread behind any average you are about to report
+- Check what every percentage is a percentage *of*, and put the group size next to it
 - Read your own chart as a stranger would. What would you conclude?
+- Ask whether a gap comes from how the data was collected or from what it describes
 {% endchecklist %}
 
-{% section "How a practitioner did it", "~15 min" %}
+{% section "How a practitioner did it", "~20 min" %}
 
-{% slot "video", "Habiba, ~3 min. How she decides what to plot, and a chart she remade because the first version said more than she meant.", "180px" %}
+{% slot "video", "Habiba, ~4 min. The most valuable recording in the module. A time missing data turned out to mean something: how she worked out which kind of missing it was, and who she asked.", "180px" %}
 
 {% todo "The practitioner's version" %}
 Their cells, framed as one defensible way through. Doubles as the recovery path for anyone
@@ -73,7 +75,7 @@ whose notebook is beyond saving.
 | How would you find out if it broke? | | |
 
 {% todo %}
-AI is good at making charts. This should land on the fact that deciding what is worth plotting is the part it cannot do.
+AI is good at making charts and at listing things to check. Deciding what is worth plotting, and what a gap means, is the part it cannot do.
 {% endtodo %}
 {% endcompare %}
 

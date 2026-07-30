@@ -10,8 +10,8 @@ prev:
   url: /module-3/
   label: Module 3 overview
 next:
-  url: /module-3/02-clean/
-  label: Part 1 · Clean it
+  url: /module-3/02-prep/
+  label: Part 1 · Prep it
 ---
 
 <!-- authoring note: introduces the scenario and the working pattern. Deliberately no
