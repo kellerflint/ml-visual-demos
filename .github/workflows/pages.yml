@@ -1,0 +1,65 @@
+name: Deploy to GitHub Pages
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+          cache-dependency-path: site/package-lock.json
+
+      - name: Install
+        working-directory: site
+        run: npm ci
+
+      # The course is served from /<repo>/course/, so every absolute URL it
+      # emits needs that prefix.
+      - name: Build the course
+        working-directory: site
+        env:
+          ELEVENTY_PATH_PREFIX: /${{ github.event.repository.name }}/course/
+        run: npx eleventy
+
+      # Assemble what gets published: the hand-written pages that already live
+      # at the repo root, plus the built course under /course/.
+      - name: Assemble
+        run: |
+          mkdir -p _deploy/course
+          cp index.html _deploy/
+          cp -r ml-demos _deploy/
+          cp -r lessons  _deploy/
+          cp -r site/_site/. _deploy/course/
+          touch _deploy/.nojekyll
+          echo "--- publishing ---" && find _deploy -type f | sort
+
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: _deploy
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v4
