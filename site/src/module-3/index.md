@@ -20,19 +20,19 @@ prev:
        3  almost right  -> how you check
      Activity files are the originals, copied into src/activities/. -->
 
-In this module you will use AI to write the Python that cleans, explores and analyzes a real dataset. The datasets you'll get will be messy, real world ones. They might have missing values, dates written different ways, fields spelled different ways, and some visits recorded twice. You will learn how to 
-think about concerns in data, describe the data work you want done, work with the AI to write the code you need, and verify what you get back.
+In this module you will use AI to write the Python that cleans, explores and analyzes a real
+dataset. The datasets you'll get will be messy, real-world ones. They might have missing values,
+dates written more than one way, the same field spelled several ways, and some records entered
+twice. You will learn how to think about what can go wrong in data, describe the data work you
+want done, work with the AI to write the code you need, and verify what you get back.
 
-AI writes code that runs and produces a number, and
-along the way it settles a dozen small questions you never asked it about. It also does what you
-say rather than what you meant, so a loose instruction buys you a confident answer to a different
-question. Catching either one means knowing the data well enough to see that the result is wrong.
+Each part in this module starts with a short activity, moves into a notebook where you do the real
+work with AI, and ends with a recording of a working data scientist doing the same task, so you
+can see where your approach was different from theirs.
 
-Each part in this module starts with a short activity, moves into a notebook where you do the real work
-with AI, and ends with a recording of a working data scientist doing the same task, so you can
-see where your approach was different from theirs.
-
-{% slot "video", "Module intro. What you will be doing and what you will build by the end.", "180px" %}
+Before jumping into the real work, we'll cover the overall data lifecycle, concerns and bias in
+data, and verifying AI answers, so you have them in mind when working through the rest of the
+module.
 
 {% section "One tap, one number" %}
 
@@ -108,9 +108,9 @@ workout didn't injure.
 
 {% section "Almost right" %}
 
-So far, two ways a number goes wrong: decisions made inside the machinery, and a dataset that was
-never complete to begin with. In this module you will be making both kinds of call with an AI
-sitting next to you.
+You have now seen a number go wrong two ways, once from decisions made inside the machinery and
+once from a dataset that was never complete. In this module you make both kinds of call yourself,
+with an AI writing the code.
 
 You will do data work with an AI assistant. Nearly everyone in the field already does. And in
 survey after survey, the same professionals who use AI daily name the same frustration above all

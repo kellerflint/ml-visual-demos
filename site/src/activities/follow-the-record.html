@@ -90,7 +90,11 @@
   .a1-reccard .lbl{font-size:.62rem; letter-spacing:.1em; text-transform:uppercase; color:var(--accent); display:block; margin-bottom:.3rem}
   .a1-reccard .f{display:block; padding:.06rem 0}
   .a1-reccard .f b{color:var(--ink); font-weight:600}
-  .a1-reccard .f .was{color:var(--warn); text-decoration:line-through; margin-right:.4rem}
+  .a1-reccard .f .was{
+    color:var(--warn); margin-right:.4rem;
+    text-decoration:line-through; text-decoration-thickness:2px;
+    text-decoration-color:var(--warn); text-decoration-skip-ink:none;
+  }
   .a1-reccard .f .now{color:var(--good); font-weight:700}
   .a1-reccard .f.new .now{color:var(--good)}
   table.a1-table{border-collapse:collapse; font-variant-numeric:tabular-nums; font-family:var(--mono); font-size:.76rem; margin:.2rem 0 .6rem}
@@ -105,6 +109,23 @@
   .a1-chart .row.you .rbar{background:var(--accent)}
   .a1-chart .rval{font-family:var(--mono); font-size:.72rem; color:var(--ink)}
   .a1-callout{font-size:.85rem; color:var(--slate); border-left:3px solid var(--accent); padding:.15rem 0 .15rem .7rem; max-width:36rem}
+  /* stop 3: the same table in two places, with the move between them */
+  .a1-move{display:flex; align-items:flex-end; gap:.8rem; flex-wrap:wrap; margin:.2rem 0 .7rem}
+  .a1-move .side{min-width:0}
+  .a1-move .sidelabel{
+    font-family:var(--mono); font-size:.62rem; letter-spacing:.09em; text-transform:uppercase;
+    color:var(--slate); display:block; margin-bottom:.3rem;
+  }
+  .a1-move .side.dest .sidelabel{color:var(--accent)}
+  .a1-move table.a1-table{margin:0}
+  .a1-move .arrow{
+    font-family:var(--mono); font-size:1.5rem; line-height:1; color:var(--accent);
+    flex:none; padding-bottom:1.1rem;
+  }
+  @media (max-width:700px){
+    .a1-move{align-items:flex-start; flex-direction:column}
+    .a1-move .arrow{transform:rotate(90deg); padding:.1rem 0 .1rem 2.5rem}
+  }
 </style>
 </head>
 <body>
@@ -143,21 +164,30 @@
     return h + '</div>';
   }
 
+  /* The orders table, drawn identically wherever it lives. */
+  function ordersTable(){
+    return '<table class="a1-table"><tr><th>order_id</th><th>user</th><th>amount</th><th>time</th></tr>'
+      + '<tr><td>W-2209</td><td>U-102</td><td>"$8.99"</td><td>…07:55+02:00</td></tr>'
+      + '<tr class="you"><td>W-2210</td><td>U-441</td><td>"$120.00"</td><td>…08:02+02:00</td></tr>'
+      + '<tr><td>W-2211</td><td>U-583</td><td>"$66.00"</td><td>…08:09+02:00</td></tr></table>';
+  }
+
   const steps = [
     { title:"A customer taps Buy at 08:02",
       body: '<p>The moment the payment clears, the web store writes this down. A record is born.</p>'
-        + card([{k:"order_id",v:"W-2210"},{k:"user",v:"U-441"},{k:"amount",v:"\"$120.00\""},{k:"time",v:"2026-07-21T08:02Z"}]),
+        + card([{k:"order_id",v:"W-2210"},{k:"user",v:"U-441"},{k:"amount",v:"\"$120.00\""},{k:"time",v:"2026-07-21T08:02+02:00"}]),
       status:"Stop 1 of 6 · Berlin, breakfast time." },
     { title:"The store's own database",
-      body: '<p>Your record sits with every other order, in a database tuned to run the store fast. It is not built to answer questions.</p>'
-        + '<table class="a1-table"><tr><th>order_id</th><th>user</th><th>amount</th><th>time</th></tr>'
-        + '<tr><td>W-2209</td><td>U-102</td><td>"$8.99"</td><td>…07:55Z</td></tr>'
-        + '<tr class="you"><td>W-2210</td><td>U-441</td><td>"$120.00"</td><td>…08:02Z</td></tr>'
-        + '<tr><td>W-2211</td><td>U-583</td><td>"$66.00"</td><td>…08:09Z</td></tr></table>',
+      body: '<p>Your record sits with every other order in a database.</p>'
+        + ordersTable(),
       status:"Stop 2 of 6 · Still raw, still untouched." },
     { title:"The overnight copy at 2:00 a.m.",
-      body: '<p>A scheduled job copies the day\'s orders into the <b>warehouse</b>. That is a database built to answer questions about lots of data at once.</p>'
-        + card([{k:"order_id",v:"W-2210"},{k:"user",v:"U-441"},{k:"amount",v:"\"$120.00\""},{k:"time",v:"2026-07-21T08:02Z"}])
+      body: '<p>A scheduled job copies the day\'s orders into the <b>warehouse</b>. That is a database built to hold and answer questions about lots of data at once.</p>'
+        + '<div class="a1-move">'
+        +   '<div class="side"><span class="sidelabel">store database</span>' + ordersTable() + '</div>'
+        +   '<div class="arrow" aria-hidden="true">&rarr;</div>'
+        +   '<div class="side dest"><span class="sidelabel">warehouse</span>' + ordersTable() + '</div>'
+        + '</div>'
         + '<p class="a1-callout">Nothing about the record changed except its address.</p>',
       status:"Stop 3 of 6 · Delivered to the warehouse, unchanged." },
     { title:"Cleaning is where the choices live",
@@ -166,13 +196,13 @@
             {k:"order_id",v:"W-2210"},
             {k:"user",was:"U-441",now:"u_441"},
             {k:"amount",was:"\"$120.00\"",now:"120.00"},
-            {k:"time",was:"08:02Z",now:"04:02 ET"},
+            {k:"time",was:"08:02+02:00",now:"06:02Z"},
             {k:"region",isNew:true,now:"EU"}
           ])
-        + '<p class="a1-callout">Three of those are <b>judgment calls</b> somebody coded: one style of ID, money as a plain number in one currency, a region looked up from a customer file. All reasonable. All invisible to whoever reads the chart.</p>',
+        + '<p class="a1-callout">Four of those are <b>judgment calls</b> somebody coded. One style of ID, money as a plain number in one currency, every timestamp moved to UTC, and a region looked up from a customer file. All reasonable, and the UTC one by itself decides which calendar day a late-evening Berlin order lands on. All invisible to whoever reads the chart.</p>',
       status:"Stop 4 of 6 · Same purchase, new shape. By choice." },
     { title:"Summing up",
-      body: '<p>Your record joins every other EU order from today and becomes part of a single row in a small summary table. This is the table charts actually read. It is tiny, fast, and shaped like the question people keep asking.</p>'
+      body: '<p>Your record joins every other EU order from today and becomes part of a single row in a small summary table. It is tiny, fast, and shaped like the question people keep asking.</p>'
         + '<table class="a1-table"><tr><th>region</th><th>orders</th><th>revenue</th></tr>'
         + '<tr><td>US</td><td>2</td><td>212.00</td></tr>'
         + '<tr class="you"><td>EU</td><td>3</td><td>195.00</td></tr></table>'
