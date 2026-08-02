@@ -77,6 +77,9 @@
   .a2-grid{display:grid; grid-template-columns: minmax(0,auto) minmax(0,1fr); gap:1.4rem}
   @media (max-width:44rem){ .a2-grid{grid-template-columns:1fr} }
   .a2-caption{font-family:var(--mono); font-size:.72rem; letter-spacing:.08em; text-transform:uppercase; color:var(--slate); margin:.2rem 0 .5rem}
+  /* The table cannot wrap, so give it its own scroller rather than
+     letting it push the whole activity sideways on a phone. */
+  .a2-data{overflow-x:auto; -webkit-overflow-scrolling:touch}
   .a2-data table{font-family:var(--mono); font-size:.76rem}
   tr.a2-hl td{background:var(--warn-soft)}
   tr.a2-hl-good td{background:var(--good-soft)}

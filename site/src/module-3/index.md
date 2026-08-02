@@ -36,7 +36,7 @@ Along the way it got reshaped by choices someone coded months ago. Follow it, on
 
 {% check "Think it through before you open the answers." %}
 
-{% q "At the cleaning stop, three things about the record were changed by choices someone coded: how money is written, how IDs are written, which region got attached. None of those choices were wrong. So why do data teams insist that every one of them be written down and reviewable?" %}
+{% q "Cleaning changed your record in four ways, and none of them were wrong. So why do data teams insist that every one of those choices be written down and reviewable?" %}
 Because a different reasonable choice produces a different number. Count the euro order at
 yesterday's exchange rate instead of today's, or match IDs slightly differently, and revenue
 shifts. No bug anywhere. When two teams' numbers disagree, and they constantly do, the
@@ -71,7 +71,7 @@ hit, hoping to armor the planes better. Armor is heavy, so you can't protect eve
 statistician named Abraham Wald was handed this data, and what he saw in it saved lives. Now you
 get handed the same data. You have armor for two zones. Study the hit map and choose.
 
-{% activity "armor-allocation.html", "Armor allocation", "800px" %}
+{% activity "armor-allocation.html", "Armor allocation", "440px" %}
 
 {% check "Think it through before you open the answers." %}
 
@@ -84,7 +84,7 @@ professionals interrogate a dataset with a question that sounds almost paranoid.
 to happen for a record to end up in this data, and what kinds of records can never get in?*
 {% endq %}
 
-{% q "Your company surveys its current customers and scores 9 out of 10 on satisfaction. Explain why this might be the bomber problem wearing a business suit. Who are the planes that didn't come back?" %}
+{% q "Your company surveys its current customers and scores 9 out of 10 on satisfaction. Explain why this might be the bomber problem wearing a business suit." %}
 The survey only reaches customers who are still around to answer it. The angriest customers
 already canceled. They're the shot-down planes, invisible in the data precisely *because* of the
 thing you're trying to measure. A 9/10 from survivors is perfectly consistent with a company

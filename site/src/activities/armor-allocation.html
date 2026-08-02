@@ -68,8 +68,8 @@
   button.btn:disabled{opacity:.45; cursor:default}
 
   /* ---- activity-specific ---- */
-  .a5-layout{display:grid; grid-template-columns:minmax(0,1.2fr) minmax(0,1fr); gap:1.2rem; align-items:start}
-  @media (max-width:44rem){ .a5-layout{grid-template-columns:1fr} }
+  .a5-layout{display:grid; grid-template-columns:minmax(0,1fr) minmax(0,1fr); gap:1.1rem; align-items:start}
+  @media (max-width:30rem){ .a5-layout{grid-template-columns:1fr} }
   .a5-zone{fill:transparent; stroke:transparent; cursor:pointer}
   .a5-zone.hover{fill:rgba(14,116,144,.08); stroke:var(--accent); stroke-dasharray:4 3}
   .a5-zone.armored{fill:rgba(14,116,144,.16); stroke:var(--accent); stroke-width:2}
@@ -100,12 +100,10 @@
 </div>
   <div class="activity-body">
     <div class="a5-layout">
-      <svg id="a5-plane" viewBox="0 0 360 300" width="100%" style="max-width:26rem" aria-label="Top-down bomber diagram with hit locations">
-        <ellipse cx="180" cy="150" rx="28" ry="130" fill="#e8edf2" stroke="#b8c2cc"/>
-        <rect x="30" y="120" width="300" height="34" rx="14" fill="#e8edf2" stroke="#b8c2cc"/>
-        <rect x="140" y="255" width="80" height="16" rx="8" fill="#e8edf2" stroke="#b8c2cc"/>
-        <circle cx="100" cy="137" r="13" fill="#dde3e9" stroke="#b8c2cc"/>
-        <circle cx="260" cy="137" r="13" fill="#dde3e9" stroke="#b8c2cc"/>
+      <svg id="a5-plane" viewBox="0 0 300 300" width="100%" style="max-width:20rem" aria-label="Top-down bomber diagram with hit locations">
+        <ellipse cx="150" cy="150" rx="26" ry="130" fill="#e8edf2" stroke="#b8c2cc"/>
+        <rect x="30" y="120" width="240" height="34" rx="14" fill="#e8edf2" stroke="#b8c2cc"/>
+        <rect x="115" y="255" width="70" height="16" rx="8" fill="#e8edf2" stroke="#b8c2cc"/>
         <g id="a5-zones"></g>
         <g id="a5-hits" pointer-events="none"></g>
       </svg>
@@ -130,10 +128,10 @@
   /* zones: recorded hits are from RETURNING planes only.
      True vulnerability is the inverse: engines/cockpit hits usually downed the plane. */
   const zones = [
-    { id:"cockpit",  label:"Cockpit",  hits:9,  lift:9,  shape:{x:158,y:28,w:44,h:52},  labelPos:[210,50] },
-    { id:"engines",  label:"Engines",  hits:4,  lift:13, shape:{x:78,y:112,w:204,h:50}, labelPos:[290,120] },
-    { id:"fuselage", label:"Fuselage", hits:74, lift:1,  shape:{x:150,y:86,w:60,h:160}, labelPos:[218,220] },
-    { id:"wings",    label:"Wing tips",hits:58, lift:2,  shape:{x:30,y:112,w:44,h:50, x2:286,y2:112,w2:44,h2:50}, labelPos:[30,100] }
+    { id:"cockpit",  label:"Cockpit",  hits:9,  lift:9,  shape:{x:126,y:28,w:48,h:52},  labelPos:[178,50] },
+    { id:"engines",  label:"Engines",  hits:4,  lift:13, shape:{x:72,y:112,w:156,h:50}, labelPos:[180,112] },
+    { id:"fuselage", label:"Fuselage", hits:74, lift:1,  shape:{x:120,y:86,w:60,h:160}, labelPos:[184,220] },
+    { id:"wings",    label:"Wing tips",hits:58, lift:2,  shape:{x:30,y:112,w:40,h:50, x2:230,y2:112,w2:40,h2:50}, labelPos:[30,102] }
   ];
   const BASE_RETURN = 70;
 
@@ -165,8 +163,8 @@
     const g = $("a5-hits");
     const rand = rng(7);
     const clusters = [
-      {x:78,y:112,w:204,h:50,n:46},
-      {x:158,y:28,w:44,h:52,n:28}
+      {x:72,y:112,w:156,h:50,n:46},
+      {x:126,y:28,w:48,h:52,n:28}
     ];
     clusters.forEach(cl=>{
       for(let i=0;i<cl.n;i++){
