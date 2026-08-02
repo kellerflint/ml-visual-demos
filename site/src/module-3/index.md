@@ -2,8 +2,7 @@
 title: Preparing, Exploring & Analyzing Data with AI
 kicker: AI in Data Science · Module 3
 standfirst: >
-  Using AI for data cleaning, transformation, exploratory analysis and bias detection, and
-  learning to verify what it hands back.
+  Learning to use AI for data cleaning, transformation, exploratory analysis, bias detection, and verifying results.
 eleventyExcludeFromCollections: true
 next:
   url: /module-3/01-understand/
@@ -12,13 +11,6 @@ prev:
   url: /
   label: All modules
 ---
-
-<!-- authoring note: topic only; the clinic scenario starts in 01-the-job.
-     Three beats, lifted from lessons/data-lessons.html:
-       1  the journey   -> what this work is
-       2  the planes    -> how data misleads
-       3  almost right  -> how you check
-     Activity files are the originals, copied into src/activities/. -->
 
 In this module you will use AI to write the Python that cleans, explores and analyzes a real
 dataset. The datasets you'll get will be messy, real-world ones. They might have missing values,
@@ -40,7 +32,7 @@ Somewhere in Berlin, a customer taps *Buy*. Weeks later, a manager looks at a re
 makes a decision. Between those two moments, that one tap traveled through half a dozen systems.
 Along the way it got reshaped by choices someone coded months ago. Follow it, one stop at a time.
 
-{% activity "follow-the-record.html", "Follow the record", "640px" %}
+{% activity "follow-the-record.html", "Follow the record", "600px" %}
 
 {% check "Think it through before you open the answers." %}
 
@@ -79,7 +71,7 @@ hit, hoping to armor the planes better. Armor is heavy, so you can't protect eve
 statistician named Abraham Wald was handed this data, and what he saw in it saved lives. Now you
 get handed the same data. You have armor for two zones. Study the hit map and choose.
 
-{% activity "armor-allocation.html", "Armor allocation", "620px" %}
+{% activity "armor-allocation.html", "Armor allocation", "800px" %}
 
 {% check "Think it through before you open the answers." %}
 
@@ -122,7 +114,7 @@ evidence whether an answer is true. Below is a tiny orders table, small enough t
 AI assistant has answered five questions about it. Some answers are solid. Some aren't. You're the
 reviewer, and shipping a wrong number to your boss counts against you.
 
-{% activity "review-queue.html", "Review queue", "660px" %}
+{% activity "review-queue.html", "Review queue", "1060px" %}
 
 {% check "Think it through before you open the answers." %}
 
