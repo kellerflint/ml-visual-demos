@@ -143,10 +143,10 @@
   const steps = [
     { title:"A customer taps Buy at 08:02",
       body: '<p>The moment the payment clears, the web store writes this down. A record is born.</p>'
-        + card([{k:"order_id",v:"W-2210"},{k:"user",v:"U-441"},{k:"amount",v:"\"$120.00\""},{k:"time",v:"2026-07-21 08:02 Berlin"}]) },
+        + card([{k:"order_id",v:"W-2210"},{k:"user",v:"U-441"},{k:"amount",v:"\"$120.00\""},{k:"time",v:"2026-07-21 08:02 CEST"}]) },
     { title:"The store's own database",
       body: '<p>Your record sits with every other order in a database. Overnight, a scheduled job copies the day\'s orders somewhere built for analysis, so that heavy questions never slow the store down. Your record makes that trip unchanged.</p>'
-        + '<table class="a1-table"><tr><th>order_id</th><th>user</th><th>amount</th><th>time (Berlin)</th></tr>'
+        + '<table class="a1-table"><tr><th>order_id</th><th>user</th><th>amount</th><th>time (CEST)</th></tr>'
         + '<tr><td>W-2209</td><td>U-102</td><td>"$8.99"</td><td>07:55</td></tr>'
         + '<tr class="you"><td>W-2210</td><td>U-441</td><td>"$120.00"</td><td>08:02</td></tr>'
         + '<tr><td>W-2211</td><td>U-583</td><td>"$66.00"</td><td>08:09</td></tr></table>' },
@@ -156,10 +156,10 @@
             {k:"order_id",v:"W-2210"},
             {k:"user",was:"U-441",now:"u_441"},
             {k:"amount",was:"\"$120.00\"",now:"120.00"},
-            {k:"time",was:"08:02 Berlin",now:"06:02 UTC"},
+            {k:"time",was:"08:02 CEST",now:"06:02 UTC"},
             {k:"region",isNew:true,now:"EU"}
           ])
-        + '<p class="a1-callout">Four of those are <b>judgment calls</b> somebody coded. One style of ID, money as a plain number in one currency, every timestamp moved to UTC, and a region looked up from a customer file. All reasonable, all invisible to whoever reads the chart.</p>' },
+        + '<p class="a1-callout">Four of those are <b>judgment calls</b> somebody coded. One style of ID, money as a plain number in one currency, every timestamp moved to UTC, and a region looked up from a customer file. All reasonable, all invisible to whoever reads the final chart.</p>' },
     { title:"Summing up",
       body: '<p>Your record joins every other EU order from today and becomes part of a single row in a small summary table. It is tiny, fast, and shaped like the question people keep asking.</p>'
         + '<table class="a1-table"><tr><th>region</th><th>orders</th><th>revenue</th></tr>'
@@ -172,7 +172,7 @@
         + '<div class="row"><span class="rlab">US</span><div class="rbar" style="width:66%"></div><span class="rval">$212</span></div>'
         + '<div class="row you"><span class="rlab">EU</span><div class="rbar" style="width:61%"></div><span class="rval">$195 ← your tap is in here</span></div>'
         + '</div>'
-        + '<p class="a1-callout">The chart looks like a fact. It\'s really the last stop of everything you just watched. A store database, an overnight copy, a cleaning step full of coded choices, and an aggregation. When a data professional sees a chart, this journey is what they see. Every stop is a place the number could have gone quietly wrong.</p>' }
+        + '<p class="a1-callout">The chart looks like a fact. It\'s really the last stop of everything you just watched. A store database, a cleaning step full of choices, and an aggregation.</p>' }
   ];
 
   let idx = 0;
