@@ -83,7 +83,9 @@
   .a5-tally td.num{text-align:right; font-variant-numeric:tabular-nums}
   .a5-tally tr.armored td{color:var(--accent); font-weight:700}
   .a5-actionrow{margin:1rem 0}
-  .a5-result{font-size:.92rem; border-radius:8px; padding:.85rem 1rem}
+  /* Spans the full row under both columns rather than being squeezed
+     into the one beside the diagram. */
+  .a5-result{grid-column:1 / -1; font-size:.92rem; border-radius:8px; padding:.85rem 1rem}
   .a5-result.meh{background:var(--warn-soft); border:1px solid #f0d9b8}
   .a5-result.good{background:var(--good-soft); border:1px solid #bfe0c8}
   .a5-result .rate{font-family:var(--mono); font-size:1.05rem; display:block; margin-bottom:.4rem}
@@ -112,8 +114,8 @@
         <div class="a5-actionrow">
           <button class="btn primary" id="a5-fly" type="button" disabled>Send out the next wave</button>
         </div>
-        <div class="a5-result" id="a5-result" hidden></div>
       </div>
+      <div class="a5-result" id="a5-result" hidden></div>
     </div>
   </div>
   <div class="activity-status" id="a5-status">Armor chosen: none yet. Pick two zones.</div>
