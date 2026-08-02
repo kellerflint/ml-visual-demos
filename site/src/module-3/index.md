@@ -40,7 +40,7 @@ Somewhere in Berlin, a customer taps *Buy*. Weeks later, a manager looks at a re
 makes a decision. Between those two moments, that one tap traveled through half a dozen systems.
 Along the way it got reshaped by choices someone coded months ago. Follow it, one stop at a time.
 
-{% activity "follow-the-record.html", "Follow the record", "620px" %}
+{% activity "follow-the-record.html", "Follow the record", "640px" %}
 
 {% check "Think it through before you open the answers." %}
 
