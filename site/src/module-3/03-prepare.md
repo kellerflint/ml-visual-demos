@@ -23,7 +23,7 @@ A fix that looks obvious and costs more than it appears to.
 
 {% slot "activity", "Concept level. A cleaning step that quietly discards more than the student expects." %}
 
-{% slot "activity", "Concept level. A threshold that stops discriminating — student picks a cutoff, sees it label most of the population, realises the label has stopped telling them anything." %}
+{% slot "activity", "Concept level. A threshold that stops discriminating. Student picks a cutoff, sees it label most of the population, realises the label has stopped telling them anything." %}
 
 ### Think it through
 
@@ -39,7 +39,7 @@ What should land: that collapsing categories is a decision; that a fix which sil
 Make the data consistent, then build the columns the next part needs.
 {% endtodo %}
 
-{% notebook "Notebook 2 — Prepare" %}
+{% notebook "Notebook 2 · Prepare" %}
 Starts from a clean copy, so you can work this part whatever happened in an earlier one.
 
 {% todo "To build" %}

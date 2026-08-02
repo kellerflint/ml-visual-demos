@@ -67,10 +67,10 @@ to a free AI chat tool.
 {% section "Do it for real" %}
 
 {% todo "Name the job" %}
-Find out what is in this file. Change nothing yet — the fixing is the next part.
+Find out what is in this file. Change nothing yet. The fixing is the next part.
 {% endtodo %}
 
-{% notebook "Notebook 1 — Explore" %}
+{% notebook "Notebook 1 · Explore" %}
 Starts from a clean copy, so you can work this part whatever happened in an earlier one.
 
 {% todo "To build" %}

@@ -39,7 +39,7 @@ What should land: an average can describe nobody in the data; a pattern and a wo
 Answer it. Then check who is actually represented in the answer.
 {% endtodo %}
 
-{% notebook "Notebook 3 — Analyze" %}
+{% notebook "Notebook 3 · Analyze" %}
 Starts from a clean copy, so you can work this part whatever happened in an earlier one.
 
 {% todo "To build" %}

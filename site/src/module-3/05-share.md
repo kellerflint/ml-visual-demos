@@ -37,7 +37,7 @@ What should land: the difference between a measurement and a claim; that adding 
 Write the summary, and say what you think should happen. **Write your own version first, before seeing anything the AI produces.** They will want to skip this and it is load-bearing.
 {% endtodo %}
 
-{% notebook "Notebook 4 — Share" %}
+{% notebook "Notebook 4 · Share" %}
 Starts from a clean copy, so you can work this part whatever happened in an earlier one.
 
 {% todo "To build" %}

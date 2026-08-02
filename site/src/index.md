@@ -5,7 +5,7 @@ title: AI in Data Science
 kicker: Community college course · six modules
 standfirst: >
   Preparing AI-enhanced data practitioners. Students learn to direct AI tools on real data
-  work — and to tell whether the result is any good.
+  work, and to tell whether the result is any good.
 description: A six-module course introducing community college students to the role of the AI-enhanced data practitioner.
 ---
 
