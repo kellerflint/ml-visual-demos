@@ -19,7 +19,7 @@ next:
 A number that should take ten seconds to look up, and does not.
 {% endtodo %}
 
-{% section "Get a feel for it", "~30 min" %}
+{% section "Get a feel for it" %}
 
 {% slot "activity", "Concept level, away from the keyboard. The same thing written more than one way, counted as more than one thing." %}
 
@@ -31,7 +31,7 @@ Arguable. These are the discussion if the class is running together.
 What should land: the difference between a value being wrong and a value being inconsistent; that scrolling through rows will never surface this; that counting the values in a column is the habit that does.
 {% endtodo %}
 
-{% section "Before your first run", "~15 min" %}
+{% section "Before your first run" %}
 
 {% todo %}
 The mechanics, the first time they are needed.
@@ -64,7 +64,7 @@ One sentence on why the first rule matters. You will need a Google account for C
 to a free AI chat tool.
 {% endtodo %}
 
-{% section "Do it for real", "~35 min" %}
+{% section "Do it for real" %}
 
 {% todo "Name the job" %}
 Find out what is in this file. Change nothing yet — the fixing is the next part.
@@ -87,9 +87,9 @@ Starts from a clean copy, so you can work this part whatever happened in an earl
 - Have you written down what looks wrong, without fixing any of it yet?
 {% endchecklist %}
 
-{% section "How a practitioner did it", "~15 min" %}
+{% section "How a practitioner did it" %}
 
-{% slot "video", "Habiba, ~3 min. Her first-look routine on an unfamiliar file, and what she checks before anything else.", "180px" %}
+{% slot "video", "Habiba. Her first-look routine on an unfamiliar file, and what she checks before anything else.", "180px" %}
 
 {% todo "The practitioner's version" %}
 Their profiling pass, framed as one defensible way through.

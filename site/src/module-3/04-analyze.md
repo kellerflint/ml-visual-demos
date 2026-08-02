@@ -19,7 +19,7 @@ next:
 Two charts of the same data telling different stories. Student picks which one to send.
 {% endtodo %}
 
-{% section "Get a feel for it", "~40 min" %}
+{% section "Get a feel for it" %}
 
 {% slot "activity", "Concept level. Candidates: an axis starting somewhere other than zero, an average hiding two separate groups, a trend read off too few points." %}
 
@@ -33,7 +33,7 @@ Arguable. These are the discussion if the class is running together.
 What should land: an average can describe nobody in the data; a pattern and a wobble look identical until you check how many points you have; missing data usually has a reason behind it; who is absent changes what your numbers are about.
 {% endtodo %}
 
-{% section "Do it for real", "~40 min" %}
+{% section "Do it for real" %}
 
 {% todo "Name the job" %}
 Answer it. Then check who is actually represented in the answer.
@@ -56,9 +56,9 @@ Starts from a clean copy, so you can work this part whatever happened in an earl
 - Ask whether a gap comes from how the data was collected or from what it describes
 {% endchecklist %}
 
-{% section "How a practitioner did it", "~20 min" %}
+{% section "How a practitioner did it" %}
 
-{% slot "video", "Habiba, ~4 min. The most valuable recording in the module. A time missing data turned out to mean something: how she worked out which kind of missing it was, and who she asked.", "180px" %}
+{% slot "video", "Habiba. The most valuable recording in the module. A time missing data turned out to mean something: how she worked out which kind of missing it was, and who she asked.", "180px" %}
 
 {% todo "The practitioner's version" %}
 Their analysis and charts, with the reasoning for the chart choices made explicit.

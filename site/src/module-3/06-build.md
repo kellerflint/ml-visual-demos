@@ -17,7 +17,7 @@ next:
 <!-- authoring note: the whole loop unaided. Most expensive page to build,
      most valuable to have. -->
 
-{% section "The brief", "~10 min" %}
+{% section "The brief" %}
 
 {% todo "To write" %}
 A new dataset and a real question about it. You get the situation and the question, the way
@@ -35,7 +35,7 @@ What the dataset needs to be:
 
 {% slot "notebook", "Near-empty. Data loading only. The blankness is the point.", "150px" %}
 
-{% section "What to hand in", "~5 min" %}
+{% section "What to hand in" %}
 
 {% todo %}
 The deliverable is what this module is about: the question you settled on, the prompts you

@@ -24,7 +24,7 @@ prev:
 Short. The shape of the work and the order of what is coming. A few paragraphs at most.
 {% endtodo %}
 
-{% section "One tap, one number", "~20 min" %}
+{% section "One tap, one number" %}
 
 Somewhere in Berlin, a customer taps *Buy*. Weeks later, a manager glances at a revenue chart
 and makes a decision. Between those two moments, that one tap traveled through half a dozen
@@ -59,7 +59,7 @@ the journey, which is exactly why that middle is where data teams put their test
 
 {% endcheck %}
 
-{% section "The planes that didn't come back", "~20 min" %}
+{% section "The planes that didn't come back" %}
 
 World War II. Bombers return from missions over Europe full of holes, and the military maps
 every hit, hoping to armor the planes better. Armor is heavy — you can't protect everything. A
@@ -94,7 +94,7 @@ injure.
 
 {% endcheck %}
 
-{% section "Almost right", "~25 min" %}
+{% section "Almost right" %}
 
 You will do data work with an AI assistant — nearly everyone in the field already does. And in
 survey after survey, the same professionals who use AI daily name one frustration above all the
@@ -134,42 +134,42 @@ receipt — especially the ones sitting next to a claim that checked out.
   <p class="num">Part 1</p>
   <h3>Understand</h3>
   <p>Somebody asks you a question. Working out what they actually need, and what would count as an answer, comes before anything you can type.</p>
-  <div class="meta"><span><b>~65 min</b></span></div>
+  <div class="meta"><span><b>TBD min</b></span></div>
 </a>
 
 <a class="lcard" href="{{ '/module-3/02-explore/' | url }}">
   <p class="num">Part 2</p>
   <h3>Explore</h3>
   <p>Find out what you have been handed before you change any of it. Shape, types, ranges, what is missing, what the categories contain.</p>
-  <div class="meta"><span><b>~95 min</b></span></div>
+  <div class="meta"><span><b>TBD min</b></span></div>
 </a>
 
 <a class="lcard" href="{{ '/module-3/03-prepare/' | url }}">
   <p class="num">Part 3</p>
   <h3>Prepare</h3>
   <p>Fix what you found, and build the columns your question needs. Both look like chores and are really a run of decisions.</p>
-  <div class="meta"><span><b>~90 min</b></span></div>
+  <div class="meta"><span><b>TBD min</b></span></div>
 </a>
 
 <a class="lcard" href="{{ '/module-3/04-analyze/' | url }}">
   <p class="num">Part 4</p>
   <h3>Analyze</h3>
   <p>Answer the question, then work out who is missing from the answer before anyone acts on it.</p>
-  <div class="meta"><span><b>~100 min</b></span></div>
+  <div class="meta"><span><b>TBD min</b></span></div>
 </a>
 
 <a class="lcard" href="{{ '/module-3/05-share/' | url }}">
   <p class="num">Part 5</p>
   <h3>Share</h3>
   <p>Four sentences for someone who will only ever read the summary. Every number correct and the meaning still wrong is the failure mode.</p>
-  <div class="meta"><span><b>~75 min</b></span></div>
+  <div class="meta"><span><b>TBD min</b></span></div>
 </a>
 
 <a class="lcard" href="{{ '/module-3/06-build/' | url }}">
   <p class="num">On your own</p>
   <h3>Do it from scratch</h3>
   <p>A dataset that is new to you, a real question, and your own judgment about how to approach it.</p>
-  <div class="meta"><span><b>~2 hrs</b></span></div>
+  <div class="meta"><span><b>TBD min</b></span></div>
 </a>
 
 </div>

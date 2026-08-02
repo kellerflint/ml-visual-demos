@@ -19,7 +19,7 @@ next:
 A sentence where every number is right and the impression it leaves is wrong. Student decides whether to send it.
 {% endtodo %}
 
-{% section "Get a feel for it", "~30 min" %}
+{% section "Get a feel for it" %}
 
 {% slot "activity", "Concept level. Sentence by sentence: supported, unsupported, or true but misleading. The third one is the whole point." %}
 
@@ -31,7 +31,7 @@ Arguable. These are the discussion if the class is running together.
 What should land: the difference between a measurement and a claim; that adding a verb like *shows* or *driven by* smuggles in a claim beyond what the data says; that a summary can hide the thing the reader most needed.
 {% endtodo %}
 
-{% section "Do it for real", "~30 min" %}
+{% section "Do it for real" %}
 
 {% todo "Name the job" %}
 Write the summary, and say what you think should happen. **Write your own version first, before seeing anything the AI produces.** They will want to skip this and it is load-bearing.
@@ -54,9 +54,9 @@ Starts from a clean copy, so you can work this part whatever happened in an earl
 - Read it as the director. What would you do next? Is that supported?
 {% endchecklist %}
 
-{% section "How a practitioner did it", "~15 min" %}
+{% section "How a practitioner did it" %}
 
-{% slot "video", "Susan, ~3 min. When is AI worth skipping? Her rubric with examples.", "180px" %}
+{% slot "video", "Susan. When is AI worth skipping? Her rubric with examples.", "180px" %}
 
 {% todo "The practitioner's version" %}
 A practitioner's summary of the same findings, with the reasoning for what got left out.

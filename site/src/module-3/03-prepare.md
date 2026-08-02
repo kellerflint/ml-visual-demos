@@ -19,7 +19,7 @@ next:
 A fix that looks obvious and costs more than it appears to.
 {% endtodo %}
 
-{% section "Get a feel for it", "~35 min" %}
+{% section "Get a feel for it" %}
 
 {% slot "activity", "Concept level. A cleaning step that quietly discards more than the student expects." %}
 
@@ -33,7 +33,7 @@ Arguable. These are the discussion if the class is running together.
 What should land: that collapsing categories is a decision; that a fix which silently drops data is worse than one that fails loudly; that where you put a boundary changes the answer.
 {% endtodo %}
 
-{% section "Do it for real", "~40 min" %}
+{% section "Do it for real" %}
 
 {% todo "Name the job" %}
 Make the data consistent, then build the columns the next part needs.
@@ -56,9 +56,9 @@ Starts from a clean copy, so you can work this part whatever happened in an earl
 - For any yes/no flag, check what share of rows it covers. Does it still single anyone out?
 {% endchecklist %}
 
-{% section "How a practitioner did it", "~15 min" %}
+{% section "How a practitioner did it" %}
 
-{% slot "video", "Habiba, ~3 min. A messy column and a derived column from real work. What she did, and who she had to ask.", "180px" %}
+{% slot "video", "Habiba. A messy column and a derived column from real work. What she did, and who she had to ask.", "180px" %}
 
 {% todo "The practitioner's version" %}
 Their cells, framed as one defensible way through. Doubles as the recovery path for anyone whose notebook is beyond saving.

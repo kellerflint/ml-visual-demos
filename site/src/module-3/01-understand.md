@@ -19,7 +19,7 @@ next:
 A request from the director that sounds clear and is not. Student decides what it is asking for.
 {% endtodo %}
 
-{% section "Get a feel for it", "~25 min" %}
+{% section "Get a feel for it" %}
 
 {% slot "activity", "Concept level. A vague ask, and several defensible readings of it that lead somewhere different. Student commits to one." %}
 
@@ -31,7 +31,7 @@ Arguable. These are the discussion if the class is running together.
 What should land: that a question can be answerable and still be the wrong question; that what would change based on the answer tells you what the answer needs to be; that the person asking often cannot say what they need.
 {% endtodo %}
 
-{% section "Do it for real", "~25 min" %}
+{% section "Do it for real" %}
 
 {% todo "Name the job" %}
 Turn the request into something you could actually answer, and write down what you would need in order to answer it.
@@ -49,9 +49,9 @@ answer, and what you would have to ask them.
 - Would a different reasonable reading of the request change your answer?
 {% endchecklist %}
 
-{% section "How a practitioner did it", "~15 min" %}
+{% section "How a practitioner did it" %}
 
-{% slot "video", "Habiba, ~3 min. A vague request from real work, and how she pinned it down before touching anything.", "180px" %}
+{% slot "video", "Habiba. A vague request from real work, and how she pinned it down before touching anything.", "180px" %}
 
 {% todo "The practitioner's version" %}
 Their brief for the same request, framed as one defensible reading.
