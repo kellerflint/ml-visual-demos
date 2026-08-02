@@ -136,7 +136,7 @@ td{color:var(--ink)}
    The header is its own rounded bar floating above the frame. The frame
    itself carries no border, so an activity shorter than its given height
    leaves plain page background rather than an outlined empty box. */
-.activity-embed{margin:2rem auto}
+.activity-embed{margin:2rem auto 1.25rem}
 .activity-header{
   display:flex; align-items:center; gap:.75rem; justify-content:space-between;
   background:var(--chrome); border:1px solid var(--line); border-radius:10px;
@@ -381,3 +381,9 @@ body.prov-off #prov-legend{display:none}
   .prov{border-left-color:transparent; padding-left:0; margin-left:0}
   .prov::before{display:none}
 }
+
+/* The frame is now sized to its content, so the only space under an
+   activity is its own bottom margin. Whatever follows gives up its top
+   margin so the two stop stacking up. Last in the file so it wins against
+   the element rules above. */
+.activity-embed + *{margin-top:0}
