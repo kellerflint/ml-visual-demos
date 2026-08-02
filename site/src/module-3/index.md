@@ -139,12 +139,7 @@ receipt, especially the ones sitting next to a claim that checked out.
 
 {% endcheck %}
 
-## What's ahead
-
-Five parts, in the order the work actually happens. Each one has a short activity to build the
-idea, a notebook where you do it on a real clinic dataset with an AI, and a recording of a working
-data scientist doing the same task so you can see where your version differs from theirs. Then a
-dataset you have never seen, a question, and no instructions.
+## What's next
 
 <div class="cards">
 
