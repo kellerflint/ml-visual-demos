@@ -2,8 +2,8 @@
 title: Preparing, Exploring & Analyzing Data with AI
 kicker: AI in Data Science · Module 3
 standfirst: >
-  Most of data work happens before there is a number to look at. The judgment about whether to
-  believe it happens after.
+  Using AI for data cleaning, transformation, exploratory analysis and bias detection, and
+  learning to verify what it hands back.
 eleventyExcludeFromCollections: true
 next:
   url: /module-3/01-understand/
@@ -20,25 +20,19 @@ prev:
        3  almost right  -> how you check
      Activity files are the originals, copied into src/activities/. -->
 
-Somebody asks you a question. You get handed a file. At the end of it, a number goes in front of
-a person who is going to act on it.
+In this module you will use AI to write the Python that cleans, explores and analyzes a real dataset. The datasets you'll get will be messy, real world ones. They might have missing values, dates written different ways, fields spelled different ways, and some visits recorded twice. You will learn how to 
+think about concerns in data, describe the data work you want done, work with the AI to write the code you need, and verify what you get back.
 
-Everything between those points is this module. Working out what the question actually is.
-Finding out what you were handed before you change any of it. Fixing what's broken and building
-the columns your question needs. Getting an answer, then working out who is missing from it.
-Saying it in four sentences to someone who will only ever read the summary.
+AI writes code that runs and produces a number, and
+along the way it settles a dozen small questions you never asked it about. It also does what you
+say rather than what you meant, so a loose instruction buys you a confident answer to a different
+question. Catching either one means knowing the data well enough to see that the result is wrong.
 
-Every one of those steps is a decision, and you will be making them alongside an AI that decides
-fast and sounds certain either way. Learning to direct that work, and to tell whether the result
-holds up, is the job this module is about.
+Each part in this module starts with a short activity, moves into a notebook where you do the real work
+with AI, and ends with a recording of a working data scientist doing the same task, so you can
+see where your approach was different from theirs.
 
-{% slot "video", "Module intro. The shape of the work and what you will build by the end.", "180px" %}
-
-Start with the three activities below. Each one plants something you will use in every part that
-follows: where a number comes from, how a dataset can mislead you while every value in it is
-correct, and what it takes to check an answer that reads well. You can do all three with what is
-on the screen. By the end of this page you will have met, in miniature, every problem the rest of
-the module works through slowly.
+{% slot "video", "Module intro. What you will be doing and what you will build by the end.", "180px" %}
 
 {% section "One tap, one number" %}
 
