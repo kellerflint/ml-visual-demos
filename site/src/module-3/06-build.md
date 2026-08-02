@@ -1,5 +1,5 @@
 ---
-order: 5
+order: 6
 title: Do it from scratch
 kicker: Module 3 · On your own
 standfirst: >
@@ -7,14 +7,15 @@ standfirst: >
   Everything up to here was practice with the guardrails on.
 status: scaffold
 prev:
-  url: /module-3/04-communicate/
-  label: Part 3 · Say it
+  url: /module-3/05-share/
+  label: Part 5 · Share
 next:
   url: /module-3/
   label: Module 3 overview
 ---
 
-<!-- authoring note: Phase 6. Most expensive page to build, most valuable to have. -->
+<!-- authoring note: the whole loop unaided. Most expensive page to build,
+     most valuable to have. -->
 
 {% section "The brief", "~10 min" %}
 
@@ -37,8 +38,8 @@ What the dataset needs to be:
 {% section "What to hand in", "~5 min" %}
 
 {% todo %}
-The deliverable is the two things this module is about: the prompts you wrote, and what you
-checked and concluded. Plus whatever the person asking wanted.
+The deliverable is what this module is about: the question you settled on, the prompts you
+wrote, what you checked and concluded, and what you would tell the person who asked.
 {% endtodo %}
 
 {% section "Afterwards" %}

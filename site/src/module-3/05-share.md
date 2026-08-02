@@ -1,19 +1,19 @@
 ---
-order: 4
-title: Say it
-kicker: Module 3 · Part 3
+order: 5
+title: Share
+kicker: Module 3 · Part 5
 standfirst: >
   Four sentences for someone who will only ever read the summary. The AI writes them better than you do, using only your numbers, and you should still hold some of them back.
 status: scaffold
 prev:
-  url: /module-3/03-explore/
-  label: Part 2 · Explore it
+  url: /module-3/04-analyze/
+  label: Part 4 · Analyze
 next:
-  url: /module-3/05-build/
+  url: /module-3/06-build/
   label: Do it from scratch
 ---
 
-<!-- authoring note: Phase 1 -> 3 -> 4. Concept, then do it, then compare. -->
+<!-- authoring note: template — cold open, concept, do it, compare. -->
 
 {% todo "Cold open" %}
 A sentence where every number is right and the impression it leaves is wrong. Student decides whether to send it.
@@ -34,10 +34,10 @@ What should land: the difference between a measurement and a claim; that adding 
 {% section "Do it for real", "~30 min" %}
 
 {% todo "Name the job" %}
-The director needs a short written summary. **Students write their own version first, before seeing anything the AI produces.** They will want to skip this and it is load-bearing.
+Write the summary, and say what you think should happen. **Write your own version first, before seeing anything the AI produces.** They will want to skip this and it is load-bearing.
 {% endtodo %}
 
-{% notebook "Notebook 3 — Say it" %}
+{% notebook "Notebook 4 — Share" %}
 Starts from a clean copy, so you can work this part whatever happened in an earlier one.
 
 {% todo "To build" %}
@@ -54,13 +54,12 @@ Starts from a clean copy, so you can work this part whatever happened in an earl
 - Read it as the director. What would you do next? Is that supported?
 {% endchecklist %}
 
-{% section "How a practitioner did it", "~10 min" %}
+{% section "How a practitioner did it", "~15 min" %}
 
 {% slot "video", "Susan, ~3 min. When is AI worth skipping? Her rubric with examples.", "180px" %}
 
 {% todo "The practitioner's version" %}
-Their cells, framed as one defensible way through. Doubles as the recovery path for anyone
-whose notebook is beyond saving.
+A practitioner's summary of the same findings, with the reasoning for what got left out.
 {% endtodo %}
 
 {% compare %}
@@ -73,23 +72,10 @@ whose notebook is beyond saving.
 | How would you find out if it broke? | | |
 
 {% todo %}
-Say the awkward bit honestly: the part where the AI helped most is also the part where getting it wrong costs most.
+The part where the AI helped most is also the part where getting it wrong costs most. Say that honestly.
 {% endtodo %}
 {% endcompare %}
 
 {% todo "Facilitation notes" %}
 Timing, what to poll the room on, which question is worth arguing about.
 {% endtodo %}
-
-{% compare "Looking back at all three parts" %}
-| | Came out right | Time, inc. checking | Could explain it | Holds up next time | Would notice if broken |
-|---|---|---|---|---|---|
-| Prep it | | | | | |
-| Explore it | | | | | |
-| Say it | | | | | |
-
-{% todo %}
-Closing question: which of these are worth handing to an AI, and which are better done yourself?
-Three parts of evidence behind the answer.
-{% endtodo %}
-{% endcompare %}

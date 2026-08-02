@@ -1,25 +1,25 @@
 ---
-order: 3
-title: Explore it
-kicker: Module 3 · Part 2
+order: 4
+title: Analyze
+kicker: Module 3 · Part 4
 standfirst: >
-  Answer the questions you were actually asked, then work out who is missing from the answer before anyone acts on it.
+  Answer the question you settled on in Part 1, then work out who is missing from the answer before anyone acts on it.
 status: scaffold
 prev:
-  url: /module-3/02-prep/
-  label: Part 1 · Prep it
+  url: /module-3/03-prepare/
+  label: Part 3 · Prepare
 next:
-  url: /module-3/04-communicate/
-  label: Part 3 · Say it
+  url: /module-3/05-share/
+  label: Part 5 · Share
 ---
 
-<!-- authoring note: Phase 1 -> 3 -> 4. Concept, then do it, then compare. -->
+<!-- authoring note: template — cold open, concept, do it, compare. -->
 
 {% todo "Cold open" %}
 Two charts of the same data telling different stories. Student picks which one to send.
 {% endtodo %}
 
-{% section "Get a feel for it", "~45 min" %}
+{% section "Get a feel for it", "~40 min" %}
 
 {% slot "activity", "Concept level. Candidates: an axis starting somewhere other than zero, an average hiding two separate groups, a trend read off too few points." %}
 
@@ -33,13 +33,13 @@ Arguable. These are the discussion if the class is running together.
 What should land: an average can describe nobody in the data; a pattern and a wobble look identical until you check how many points you have; missing data usually has a reason behind it; who is absent changes what your numbers are about.
 {% endtodo %}
 
-{% section "Do it for real", "~45 min" %}
+{% section "Do it for real", "~40 min" %}
 
 {% todo "Name the job" %}
-Give the director's actual questions. Then, before any of it goes in a report, check who is actually represented in the answer.
+Answer it. Then check who is actually represented in the answer.
 {% endtodo %}
 
-{% notebook "Notebook 2 — Explore it" %}
+{% notebook "Notebook 3 — Analyze" %}
 Starts from a clean copy, so you can work this part whatever happened in an earlier one.
 
 {% todo "To build" %}
@@ -61,8 +61,7 @@ Starts from a clean copy, so you can work this part whatever happened in an earl
 {% slot "video", "Habiba, ~4 min. The most valuable recording in the module. A time missing data turned out to mean something: how she worked out which kind of missing it was, and who she asked.", "180px" %}
 
 {% todo "The practitioner's version" %}
-Their cells, framed as one defensible way through. Doubles as the recovery path for anyone
-whose notebook is beyond saving.
+Their analysis and charts, with the reasoning for the chart choices made explicit.
 {% endtodo %}
 
 {% compare %}

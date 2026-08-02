@@ -6,8 +6,8 @@ standfirst: >
   exists, and the judgment about whether to believe it once it does.
 eleventyExcludeFromCollections: true
 next:
-  url: /module-3/01-the-job/
-  label: The job
+  url: /module-3/01-understand/
+  label: Start · Understand
 prev:
   url: /
   label: All modules
@@ -130,43 +130,45 @@ receipt — especially the ones sitting next to a claim that checked out.
 
 <div class="cards">
 
-<a class="lcard" href="{{ '/module-3/01-the-job/' | url }}">
-  <p class="num">Next</p>
-  <h3>The job</h3>
-  <p>The clinic, the data you have been handed, and how each part of this module is going to
-  work.</p>
-  <div class="meta"><span><b>~25 min</b></span></div>
+<a class="lcard" href="{{ '/module-3/01-understand/' | url }}">
+  <p class="num">Part 1</p>
+  <h3>Understand</h3>
+  <p>Somebody asks you a question. Working out what they actually need, and what would count as an answer, comes before anything you can type.</p>
+  <div class="meta"><span><b>~65 min</b></span></div>
 </a>
 
-<a class="lcard" href="{{ '/module-3/02-prep/' | url }}">
-  <p class="num">Part 1</p>
-  <h3>Prep it</h3>
-  <p>Making the data consistent, then building the columns your questions actually need. Two
-  jobs that look like chores and are really a run of decisions.</p>
+<a class="lcard" href="{{ '/module-3/02-explore/' | url }}">
+  <p class="num">Part 2</p>
+  <h3>Explore</h3>
+  <p>Find out what you have been handed before you change any of it. Shape, types, ranges, what is missing, what the categories contain.</p>
+  <div class="meta"><span><b>~95 min</b></span></div>
+</a>
+
+<a class="lcard" href="{{ '/module-3/03-prepare/' | url }}">
+  <p class="num">Part 3</p>
+  <h3>Prepare</h3>
+  <p>Fix what you found, and build the columns your question needs. Both look like chores and are really a run of decisions.</p>
+  <div class="meta"><span><b>~90 min</b></span></div>
+</a>
+
+<a class="lcard" href="{{ '/module-3/04-analyze/' | url }}">
+  <p class="num">Part 4</p>
+  <h3>Analyze</h3>
+  <p>Answer the question, then work out who is missing from the answer before anyone acts on it.</p>
   <div class="meta"><span><b>~100 min</b></span></div>
 </a>
 
-<a class="lcard" href="{{ '/module-3/03-explore/' | url }}">
-  <p class="num">Part 2</p>
-  <h3>Explore it</h3>
-  <p>Answer the questions you were actually asked, then work out who is missing from the answer
-  before anyone acts on it.</p>
-  <div class="meta"><span><b>~110 min</b></span></div>
+<a class="lcard" href="{{ '/module-3/05-share/' | url }}">
+  <p class="num">Part 5</p>
+  <h3>Share</h3>
+  <p>Four sentences for someone who will only ever read the summary. Every number correct and the meaning still wrong is the failure mode.</p>
+  <div class="meta"><span><b>~75 min</b></span></div>
 </a>
 
-<a class="lcard" href="{{ '/module-3/04-communicate/' | url }}">
-  <p class="num">Part 3</p>
-  <h3>Say it</h3>
-  <p>Four sentences for someone who will only ever read the summary. Every number correct and the
-  meaning still wrong is the failure mode.</p>
-  <div class="meta"><span><b>~70 min</b></span></div>
-</a>
-
-<a class="lcard" href="{{ '/module-3/05-build/' | url }}">
+<a class="lcard" href="{{ '/module-3/06-build/' | url }}">
   <p class="num">On your own</p>
   <h3>Do it from scratch</h3>
-  <p>A dataset that is new to you, a real question, and your own judgment about how to
-  approach it.</p>
+  <p>A dataset that is new to you, a real question, and your own judgment about how to approach it.</p>
   <div class="meta"><span><b>~2 hrs</b></span></div>
 </a>
 

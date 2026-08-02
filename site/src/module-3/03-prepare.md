@@ -1,27 +1,27 @@
 ---
-order: 2
-title: Prep it
-kicker: Module 3 · Part 1
+order: 3
+title: Prepare
+kicker: Module 3 · Part 3
 standfirst: >
-  Two jobs that look like chores and are really a run of decisions: making the data consistent, then building the columns your questions actually need.
+  Now fix what you found, and build the columns your question needs. Both look like chores and are really a run of decisions.
 status: scaffold
 prev:
-  url: /module-3/01-the-job/
-  label: The job
+  url: /module-3/02-explore/
+  label: Part 2 · Explore
 next:
-  url: /module-3/03-explore/
-  label: Part 2 · Explore it
+  url: /module-3/04-analyze/
+  label: Part 4 · Analyze
 ---
 
-<!-- authoring note: Phase 1 -> 3 -> 4. Concept, then do it, then compare. -->
+<!-- authoring note: template — cold open, concept, do it, compare. -->
 
 {% todo "Cold open" %}
-A situation with a decision in it. No definitions, no "in this part you will learn."
+A fix that looks obvious and costs more than it appears to.
 {% endtodo %}
 
-{% section "Get a feel for it", "~40 min" %}
+{% section "Get a feel for it", "~35 min" %}
 
-{% slot "activity", "Concept level, away from the keyboard. The same thing written more than one way, counted as more than one thing." %}
+{% slot "activity", "Concept level. A cleaning step that quietly discards more than the student expects." %}
 
 {% slot "activity", "Concept level. A threshold that stops discriminating — student picks a cutoff, sees it label most of the population, realises the label has stopped telling them anything." %}
 
@@ -30,16 +30,16 @@ A situation with a decision in it. No definitions, no "in this part you will lea
 {% todo "Check yourself · 3–4 questions" %}
 Arguable. These are the discussion if the class is running together.
 
-What should land: the difference between a value being wrong and a value being inconsistent; that collapsing categories is a decision; that a fix which silently drops data is worse than one that fails loudly; that where you put a boundary changes the answer.
+What should land: that collapsing categories is a decision; that a fix which silently drops data is worse than one that fails loudly; that where you put a boundary changes the answer.
 {% endtodo %}
 
-{% section "Do it for real", "~45 min" %}
+{% section "Do it for real", "~40 min" %}
 
 {% todo "Name the job" %}
-The data needs making consistent, and the questions coming next need columns that do not exist yet. Working out what that means here is the exercise.
+Make the data consistent, then build the columns the next part needs.
 {% endtodo %}
 
-{% notebook "Notebook 1 — Prep it" %}
+{% notebook "Notebook 2 — Prepare" %}
 Starts from a clean copy, so you can work this part whatever happened in an earlier one.
 
 {% todo "To build" %}
@@ -58,11 +58,10 @@ Starts from a clean copy, so you can work this part whatever happened in an earl
 
 {% section "How a practitioner did it", "~15 min" %}
 
-{% slot "video", "Habiba, ~3 min. A messy column and a derived column from real work. What she actually did, and who she had to ask.", "180px" %}
+{% slot "video", "Habiba, ~3 min. A messy column and a derived column from real work. What she did, and who she had to ask.", "180px" %}
 
 {% todo "The practitioner's version" %}
-Their cells, framed as one defensible way through. Doubles as the recovery path for anyone
-whose notebook is beyond saving.
+Their cells, framed as one defensible way through. Doubles as the recovery path for anyone whose notebook is beyond saving.
 {% endtodo %}
 
 {% compare %}
@@ -75,7 +74,7 @@ whose notebook is beyond saving.
 | How would you find out if it broke? | | |
 
 {% todo %}
-This part should surface where the difficulty actually sits, and that an AI will happily pick your thresholds for you.
+An AI will happily pick your thresholds and your mappings for you. Picking them is the actual job.
 {% endtodo %}
 {% endcompare %}
 
