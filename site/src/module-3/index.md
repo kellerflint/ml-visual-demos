@@ -49,13 +49,11 @@ a number whose journey you can inspect.
 {% q "The manager's chart reads only the final summary table. It never touches the raw data. Give one reason that separation is deliberate, and one risk it creates." %}
 **Why it's deliberate.** Raw data is messy, huge, and constantly changing shape. If every chart
 read it directly, every chart would need its own cleaning logic, and they would all disagree.
-Cleaning once, in the middle, gives everyone the same answer. It also keeps slow analytical
-queries away from the systems running the actual business.
+Cleaning once gives everyone the same answer.
 
 **The risk.** Distance. Everyone downstream silently inherits whatever choices the cleaning steps
 made. If that logic is wrong, every chart built on it is wrong in the same convincing way, and the
-person reading the dashboard has no way to see it. Trust concentrates in the middle of the
-journey. That's exactly why the middle is where data teams put their tests.
+person reading the dashboard has no way to see it.
 {% endq %}
 
 {% endcheck %}
@@ -91,9 +89,9 @@ thing you're trying to measure. A 9/10 from survivors is perfectly consistent wi
 hemorrhaging unhappy customers. The fix mirrors Wald's. Go looking for the missing population
 instead of squeezing more analysis out of the survivors. That means exit interviews, outreach to
 churned customers, and comparing the surveyed group against the full customer list. Once you know
-this pattern you'll see it everywhere. Reviews come from people who didn't return the product.
-Success stories come from businesses that didn't fold. Workout advice comes from people the
-workout didn't injure.
+this pattern you'll see it everywhere. The successful founders telling you to drop out are the
+ones it worked for. A bootcamp's job placement rate counts the students who finished. The employee
+engagement survey went to people who haven't quit.
 {% endq %}
 
 {% endcheck %}
