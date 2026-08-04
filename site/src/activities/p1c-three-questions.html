@@ -40,8 +40,10 @@
   button.btn:disabled{opacity:.45; cursor:default}
   button.btn:focus-visible{outline:2px solid var(--accent); outline-offset:2px}
 
-  .p1c-stage{font-family:var(--mono); font-size:.66rem; letter-spacing:.09em; text-transform:uppercase;
-    color:var(--slate); margin:0 0 .5rem}
+  .p1c-step{font-family:var(--mono); font-size:.66rem; letter-spacing:.09em; text-transform:uppercase;
+    color:var(--accent); margin:0 0 .2rem}
+  .p1c-stepnote{font-size:.85rem; color:var(--slate); margin:0 0 .55rem}
+  .p1c-q.spent.off{opacity:.5}
   .p1c-q{
     border:1px solid var(--line); border-radius:8px; padding:.5rem .7rem; margin:0 0 .45rem;
     background:#fcfdfe; cursor:pointer; font-size:.9rem;
@@ -76,14 +78,15 @@
 
 <div class="activity" id="p1c">
   <div class="activity-instructions">
-    <span class="a-instr">The director is free for a moment. <strong>Pick three questions</strong>,
-    read what they get you, then pick the brief her answers actually support.</span>
+    <span class="a-instr">Two steps. <strong>Ask the director three questions</strong>, read what they
+    get you, then <strong>choose and send the brief</strong> the answers support.</span>
     <div class="a-actions">
       <button class="btn primary" id="p1c-go" type="button" disabled>Ask them</button>
     </div>
   </div>
   <div class="activity-body">
-    <p class="p1c-stage" id="p1c-stage">choose 3 of 7 · 0 chosen</p>
+    <p class="p1c-step">Step 1 · Ask the director</p>
+    <p class="p1c-stepnote" id="p1c-stage">Pick 3 of the 7 questions, then ask them. 0 chosen.</p>
     <div id="p1c-questions"></div>
     <div class="p1c-briefs" id="p1c-briefs"></div>
     <p class="p1c-verdict" id="p1c-verdict" hidden></p>
@@ -128,12 +131,13 @@
   ];
 
   const picked = new Set();
-  let asked = false, chosen = null;
+  let asked = false, sel = null, decided = false;
 
   function drawQuestions(){
     $("p1c-questions").innerHTML = QUESTIONS.map((x,i)=>{
       const on = picked.has(i);
-      return `<div class="p1c-q ${on?'on':''} ${asked?'spent':''}" data-i="${i}" tabindex="0" role="button">
+      const off = asked && !on;
+      return `<div class="p1c-q ${on?'on':''} ${asked?'spent':''} ${off?'off':''}" data-i="${i}" tabindex="0" role="button">
         ${x.q}
         ${asked && on ? `<p class="p1c-a">${x.a}</p>` : ""}
       </div>`;
@@ -152,27 +156,39 @@
   }
 
   function sync(){
-    $("p1c-stage").textContent = asked
-      ? "her answers, and four candidate briefs. pick the one the answers support"
-      : `choose 3 of 7 · ${picked.size} chosen`;
-    $("p1c-go").disabled = asked || picked.size !== 3;
+    const btn = $("p1c-go");
+    if(!asked){
+      $("p1c-stage").textContent = `Pick 3 of the 7 questions, then ask them. ${picked.size} chosen.`;
+      btn.textContent = "Ask them";
+      btn.disabled = picked.size !== 3;
+    } else if(!decided){
+      btn.textContent = "Send this brief";
+      btn.disabled = sel === null;
+    } else {
+      btn.textContent = "Brief sent";
+      btn.disabled = true;
+    }
   }
 
   function drawBriefs(){
-    $("p1c-briefs").innerHTML = BRIEFS.map((b,i)=>{
-      let cls = "";
-      if(chosen!==null){ cls = b.good ? "good" : (chosen===i ? "bad" : ""); }
+    if(!asked){ $("p1c-briefs").innerHTML = ""; return; }
+    let h = `<p class="p1c-step" style="margin-top:1rem">Step 2 · Choose the brief</p>
+      <p class="p1c-stepnote">The answers are in, dimmed questions stay unanswered. Pick the one brief the
+      answers support, then send it.</p>`;
+    h += BRIEFS.map((b,i)=>{
+      let cls = sel===i ? "sel" : "";
+      if(decided){ cls = b.good ? "good" : (sel===i ? "bad" : ""); }
       return `<div class="p1c-b ${cls}" data-i="${i}" tabindex="0" role="button">
         <span class="tag">${b.tag}</span>${b.t}
-        ${chosen!==null && (chosen===i || b.good) ? `<p class="p1c-why">${b.why}</p>` : ""}
+        ${decided && (sel===i || b.good) ? `<p class="p1c-why">${b.why}</p>` : ""}
       </div>`;
     }).join("");
+    $("p1c-briefs").innerHTML = h;
     $("p1c-briefs").querySelectorAll(".p1c-b").forEach(el=>{
       const pick = ()=>{
-        if(chosen!==null) return;
-        chosen = +el.dataset.i;
-        drawBriefs();
-        verdict();
+        if(decided) return;
+        sel = (sel === +el.dataset.i) ? null : +el.dataset.i;
+        drawBriefs(); sync();
       };
       el.addEventListener("click", pick);
       el.addEventListener("keydown", e=>{ if(e.key==="Enter"||e.key===" "){ e.preventDefault(); pick(); } });
@@ -194,15 +210,21 @@
     } else {
       extra = "All three of your questions bought logistics. Useful, cheap, and none of them shape the work. The two answers a brief is built from, the decision and the audience, went unasked, which is why choosing between these briefs felt like guessing. It was.";
     }
-    v.innerHTML = (BRIEFS[chosen].good
-      ? "<b>That is the brief her answers support.</b> "
+    v.innerHTML = (BRIEFS[sel].good
+      ? "<b>That is the brief the answers support.</b> "
       : "<b>The stronger brief is B, and the reveal above says why.</b> ") + extra;
   }
 
   $("p1c-go").addEventListener("click", ()=>{
-    if(picked.size!==3) return;
-    asked = true;
-    drawQuestions(); sync(); drawBriefs();
+    if(!asked){
+      if(picked.size!==3) return;
+      asked = true;
+      drawQuestions(); drawBriefs(); sync();
+    } else if(!decided){
+      if(sel===null) return;
+      decided = true;
+      drawBriefs(); sync(); verdict();
+    }
   });
 
   /* The ask and the brief pick are deliberate reveals, so they may grow the
