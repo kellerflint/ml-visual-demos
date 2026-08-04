@@ -81,15 +81,19 @@ your own answers.
 
 {% slot "video", "Habiba. The most valuable recording in the module. A time missing data turned out to mean something: how she worked out which kind of missing it was, and who she asked.", "180px" %}
 
-{% compare %}
-| | You | The practitioner |
-|---|---|---|
-| Did it come out right? | | |
-| How long did it take, including checking? | | |
-| Could you explain every step? | | |
-| What happens when the next file arrives? | | |
-| How would you find out if it broke? | | |
-{% endcompare %}
+Then hold your work next to hers, twice.
+
+**Her suspicion against yours.** She tells a story about missing data that
+turned out to mean something. Notice the moment she stopped trusting the
+number, what tipped her off, what she checked next, and who she went to ask.
+Compare that to your own missingness check. Did anything in your Job 6 output
+deserve the follow-up she would have given it?
+
+**Her caveat against yours.** She had to tell somebody what the data could
+and could not support, the same sentence you wrote at the end of the notebook.
+Put yours next to how she handled it. Does your caveat name a number, a
+consequence, and a next step, or does it hedge in general terms? Rewrite
+yours now if hers exposes it, because Part 5 sends it to the director.
 
 AI is good at making charts and at listing things to check. Deciding what is
 worth plotting, and what a gap means at this particular clinic, is the part

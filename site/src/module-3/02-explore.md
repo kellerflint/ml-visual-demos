@@ -116,15 +116,19 @@ pin down. It never hands you the prompt.
 
 {% slot "video", "Habiba. Her first-look routine on an unfamiliar file, and what she checks before anything else.", "180px" %}
 
-{% compare %}
-| | You | The practitioner |
-|---|---|---|
-| Did it come out right? | | |
-| How long did it take, including checking? | | |
-| Could you explain every step? | | |
-| What happens when the next file arrives? | | |
-| How would you find out if it broke? | | |
-{% endcompare %}
+Then hold your work next to hers, twice.
+
+**Her routine against yours.** She checks things in an order, and the order
+has reasons. What does she look at first, and why that first? Which of her
+checks did you never think to run, and which of yours did she skip? Her
+routine is the product of every file that has burned her. Yours is one file
+old. The gap between them is a list of things worth stealing.
+
+**Her quality report against yours.** Same file, two problem lists. What did
+she flag that you missed, and what did you flag that she passed over without
+a note? The second kind is as interesting as the first, because it usually
+means she knows something about data like this that makes the oddity
+ordinary.
 
 An AI profiles a file quickly and well. Deciding which of its findings matter,
 and which are ordinary for data like this, is the part that still belongs to

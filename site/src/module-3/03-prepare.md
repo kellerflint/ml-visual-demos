@@ -82,15 +82,19 @@ lesson, and the notebook walks you through reading it.
 
 {% slot "video", "Habiba. A messy column and a derived column from real work. What she did, and who she had to ask.", "180px" %}
 
-{% compare %}
-| | You | The practitioner |
-|---|---|---|
-| Did it come out right? | | |
-| How long did it take, including checking? | | |
-| Could you explain every step? | | |
-| What happens when the next file arrives? | | |
-| How would you find out if it broke? | | |
-{% endcompare %}
+Then hold your work next to hers, twice.
+
+**How she decides against how you decided.** Watch what she does when a fix
+needs a judgment call. Some calls she makes from the data, and some she takes
+to a person, and knowing which is which is the skill on display. Compare that
+to your decision log. Which of your calls did you make alone that she would
+have taken to somebody?
+
+**Her decision log against yours.** Find one call the two of you made
+differently, dropped against kept, merged against separate, and trace what
+your version does downstream that hers would have done differently. If her
+reasoning is better, your log is one line longer now, and that is the log
+working.
 
 An AI will happily pick your thresholds and your mappings for you. Picking them
 is the actual job, and the prompt is where you do it.

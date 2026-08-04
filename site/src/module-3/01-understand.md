@@ -65,35 +65,50 @@ you. That written framing is exactly the brief you produce below.
 {% section "Do it for real" %}
 
 The job. Turn the director's email into a brief you could hand back to her,
-one page at most. No notebook in this part. The thinking is the work, and it
-goes in writing.
+one page at most, and specific enough that she could reply "yes, that" or
+"no, more like this." Getting that yes before opening any file is the whole
+move.
 
-Your brief has four parts. The question as you understand it, stated so
-someone else could tell when it has been answered. Who the answer is for and
-what they will do with it. What would count as an answer, the tables or
-numbers you expect to produce. And what you still need to ask, because
-three questions were fewer than you wanted.
+Write these five things.
+
+- **The question.** The director's request, restated as something with an
+  answer. "Which patients account for most of our visits, and how are we
+  serving uninsured patients" has an answer. "Understand what's going on"
+  does not.
+- **The audience and the decision.** Who reads this, and what they will do
+  with it.
+- **What the data can answer.** You know it is two years of visit records.
+  List the questions records like that can address, who came in, how often,
+  for what, covered how. This is where a broad business ask meets what a
+  file can actually say.
+- **What it cannot.** The director may want to know if patients are getting
+  healthier or happier. Visit records hold neither. Saying so now costs one
+  sentence. Discovering it in week three costs the project.
+- **What you still need to ask.** Three questions were fewer than you wanted.
 
 {% checklist "How to know it worked" %}
 - Could someone else read your question and know when it had been answered?
 - Have you said who the answer is for and what they will do with it?
+- Does your brief promise anything visit records cannot deliver?
 - Have you listed what you still need to ask?
-- Would a different reasonable reading of the request change your answer?
 {% endchecklist %}
 
 {% section "How a practitioner did it" %}
 
 {% slot "video", "Habiba. A vague request from real work, and how she pinned it down before touching anything.", "180px" %}
 
-{% compare %}
-| | You | The practitioner |
-|---|---|---|
-| Did it come out right? | | |
-| How long did it take, including checking? | | |
-| Could you explain every step? | | |
-| What happens when the next file arrives? | | |
-| How would you find out if it broke? | | |
-{% endcompare %}
+Then hold your work next to hers, twice.
+
+**Her approach against yours.** How did she take the request apart, and where
+does that differ from how you did? Look for the move she made that you didn't,
+and the move you made that she skipped. One of those differences usually
+matters, and the useful sentence to write is which one, and what picking it up
+would have changed about your brief.
+
+**Her brief against yours.** Same email, two briefs. Do they aim at the same
+question? Does hers promise anything yours holds back, or hold back anything
+yours promises? Where the two disagree, decide which version the director is
+better served by, because that, and only that, is the test a brief answers to.
 
 The framing decides the answer. An AI will answer whatever you ask with equal
 confidence, which is exactly why the asking is the part that stays yours.
