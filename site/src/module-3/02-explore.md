@@ -63,7 +63,7 @@ when I opened it" convinces nobody.
 You need two things for the rest of this module. A Google account, for Colab.
 And a free AI chat tool, any of the major ones.
 
-{% slot "video", "Susan's Colab walkthrough. Copying to your own Drive, turning off Colab's built-in AI assistance, line numbers, sessions.", "180px" %}
+{% slot "video", "A Colab walkthrough. Copying to your own Drive, turning off Colab's built-in AI assistance, line numbers, sessions.", "180px" %}
 
 {% callout %}
 **If anything stops working:** Runtime → Restart session and run all. Try that
@@ -114,20 +114,20 @@ pin down. It never hands you the prompt.
 
 {% section "How a practitioner did it" %}
 
-{% slot "video", "Habiba. Her first-look routine on an unfamiliar file, and what she checks before anything else.", "180px" %}
+{% slot "video", "The practitioner. Their first-look routine on an unfamiliar file, and what they check before anything else.", "180px" %}
 
-Then hold your work next to hers, twice.
+Then hold your work next to theirs, twice.
 
-**Her routine against yours.** She checks things in an order, and the order
-has reasons. What does she look at first, and why that first? Which of her
-checks did you never think to run, and which of yours did she skip? Her
-routine is the product of every file that has burned her. Yours is one file
+**Their routine against yours.** They check things in an order, and the order
+has reasons. What do they look at first, and why that first? Which of their
+checks did you never think to run, and which of yours did they skip? Their
+routine is the product of every file that has burned them. Yours is one file
 old. The gap between them is a list of things worth stealing.
 
-**Her quality report against yours.** Same file, two problem lists. What did
-she flag that you missed, and what did you flag that she passed over without
+**Their quality report against yours.** Same file, two problem lists. What did
+they flag that you missed, and what did you flag that they passed over without
 a note? The second kind is as interesting as the first, because it usually
-means she knows something about data like this that makes the oddity
+means they know something about data like this that makes the oddity
 ordinary.
 
 An AI profiles a file quickly and well. Deciding which of its findings matter,

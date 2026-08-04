@@ -59,7 +59,7 @@ the missingness check just told you is false here.
 
 The job. Answer the director's five questions, and attach to each answer the
 check that says who it is about. Both halves go in your notebook. The questions
-come from Habiba's original analysis plan for this dataset. Top diagnoses,
+come from the original analysis plan for this dataset. Top diagnoses,
 frequent visitors, seasonal patterns, diagnosis by age group, and the gaps
 between visits.
 
@@ -79,21 +79,21 @@ your own answers.
 
 {% section "How a practitioner did it" %}
 
-{% slot "video", "Habiba. The most valuable recording in the module. A time missing data turned out to mean something: how she worked out which kind of missing it was, and who she asked.", "180px" %}
+{% slot "video", "The practitioner. The most valuable recording in the module. A time missing data turned out to mean something: how they worked out which kind of missing it was, and who they asked.", "180px" %}
 
-Then hold your work next to hers, twice.
+Then hold your work next to theirs, twice.
 
-**Her suspicion against yours.** She tells a story about missing data that
-turned out to mean something. Notice the moment she stopped trusting the
-number, what tipped her off, what she checked next, and who she went to ask.
-Compare that to your own missingness check. Did anything in your Job 6 output
-deserve the follow-up she would have given it?
+**Their suspicion against yours.** They tell a story about missing data that
+turned out to mean something. Notice the moment they stopped trusting the
+number, what tipped them off, what they checked next, and who they went to
+ask. Compare that to your own missingness check. Did anything in your Job 6
+output deserve the follow-up they would have given it?
 
-**Her caveat against yours.** She had to tell somebody what the data could
+**Their caveat against yours.** They had to tell somebody what the data could
 and could not support, the same sentence you wrote at the end of the notebook.
-Put yours next to how she handled it. Does your caveat name a number, a
+Put yours next to how they handled it. Does your caveat name a number, a
 consequence, and a next step, or does it hedge in general terms? Rewrite
-yours now if hers exposes it, because Part 5 sends it to the director.
+yours now if theirs exposes it, because Part 5 sends it to the director.
 
 AI is good at making charts and at listing things to check. Deciding what is
 worth plotting, and what a gap means at this particular clinic, is the part

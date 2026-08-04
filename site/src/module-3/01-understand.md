@@ -77,14 +77,12 @@ Write these five things.
   does not.
 - **The audience and the decision.** Who reads this, and what they will do
   with it.
-- **What the data can answer.** You know it is two years of visit records.
-  List the questions records like that can address, who came in, how often,
-  for what, covered how. This is where a broad business ask meets what a
-  file can actually say.
-- **What it cannot.** The director may want to know if patients are getting
-  healthier or happier. Visit records hold neither. Saying so now costs one
-  sentence. Discovering it in week three costs the project.
-- **What you still need to ask.** Three questions were fewer than you wanted.
+- **What the data can and cannot answer.** These are visit records. Name two
+  questions records like that can answer, and one thing the director might
+  want that they cannot.
+- **What you still need to ask.** Three questions were fewer than you wanted,
+  and working through the brief has probably surfaced more. Write the two you
+  would ask the director next.
 
 {% checklist "How to know it worked" %}
 - Could someone else read your question and know when it had been answered?
@@ -95,18 +93,18 @@ Write these five things.
 
 {% section "How a practitioner did it" %}
 
-{% slot "video", "Habiba. A vague request from real work, and how she pinned it down before touching anything.", "180px" %}
+{% slot "video", "The practitioner. A vague request from real work, and how they pinned it down before touching anything.", "180px" %}
 
-Then hold your work next to hers, twice.
+Then hold your work next to theirs, twice.
 
-**Her approach against yours.** How did she take the request apart, and where
-does that differ from how you did? Look for the move she made that you didn't,
-and the move you made that she skipped. One of those differences usually
-matters, and the useful sentence to write is which one, and what picking it up
-would have changed about your brief.
+**Their approach against yours.** How did they take the request apart, and
+where does that differ from how you did? Look for the move they made that you
+didn't, and the move you made that they skipped. One of those differences
+usually matters, and the useful sentence to write is which one, and what
+picking it up would have changed about your brief.
 
-**Her brief against yours.** Same email, two briefs. Do they aim at the same
-question? Does hers promise anything yours holds back, or hold back anything
+**Their brief against yours.** Same email, two briefs. Do they aim at the same
+question? Does theirs promise anything yours holds back, or hold back anything
 yours promises? Where the two disagree, decide which version the director is
 better served by, because that, and only that, is the test a brief answers to.
 

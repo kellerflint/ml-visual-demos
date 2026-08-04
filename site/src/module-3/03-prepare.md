@@ -80,19 +80,19 @@ lesson, and the notebook walks you through reading it.
 
 {% section "How a practitioner did it" %}
 
-{% slot "video", "Habiba. A messy column and a derived column from real work. What she did, and who she had to ask.", "180px" %}
+{% slot "video", "The practitioner. A messy column and a derived column from real work. What they did, and who they had to ask.", "180px" %}
 
-Then hold your work next to hers, twice.
+Then hold your work next to theirs, twice.
 
-**How she decides against how you decided.** Watch what she does when a fix
-needs a judgment call. Some calls she makes from the data, and some she takes
+**How they decide against how you decided.** Watch what they do when a fix
+needs a judgment call. Some calls they make from the data, and some they take
 to a person, and knowing which is which is the skill on display. Compare that
-to your decision log. Which of your calls did you make alone that she would
+to your decision log. Which of your calls did you make alone that they would
 have taken to somebody?
 
-**Her decision log against yours.** Find one call the two of you made
+**Their decision log against yours.** Find one call the two of you made
 differently, dropped against kept, merged against separate, and trace what
-your version does downstream that hers would have done differently. If her
+your version does downstream that theirs would have done differently. If their
 reasoning is better, your log is one line longer now, and that is the log
 working.
 

@@ -79,20 +79,20 @@ by claim, and the deliverable is the version you would actually send.
 
 {% section "How a practitioner did it" %}
 
-{% slot "video", "Susan. When is AI worth skipping? Her rubric with examples.", "180px" %}
+{% slot "video", "The practitioner. When is AI worth skipping? Their rubric with examples.", "180px" %}
 
-Then hold your work next to hers, twice.
+Then hold your work next to theirs, twice.
 
-**What she uses AI for against what you did.** Her rubric is a working
-professional's answer to where AI belongs in her own writing process, drawn
-before you had to make the same calls in Notebook 4. Where does her line sit
-compared to where you drew yours? If she skips AI somewhere you leaned on it,
-her reason is the interesting part.
+**What they use AI for against what you did.** Their rubric is a working
+professional's answer to where AI belongs in their own writing process, drawn
+before you had to make the same calls in Notebook 4. Where does their line sit
+compared to where you drew yours? If they skip AI somewhere you leaned on it,
+their reason is the interesting part.
 
 **What got left out.** A four-sentence summary is mostly the things it
 declines to say. Compare what you cut against what a practitioner cuts, the
 tempting number with no receipt, the finding that needs a threshold to mean
-anything. If your final version kept something her rubric would have
+anything. If your final version kept something their rubric would have
 flagged, that is the sentence to reread before anything goes to a director.
 
 Drafting is where the AI helped most in this whole module, and the summary is
