@@ -9,16 +9,11 @@ prev:
   label: Module 3 overview
 ---
 
-Three variants were built for each part, in different directions. One safe and
-direct, one visual, one more ambitious or game-shaped. The winner is wired into
-the part page; everything here works and is height-locked, so swapping a
-winner is a one-line change in the part's markdown.
+Three variants were built for each part, in different directions. One safe and direct, one visual, one more ambitious or game-shaped. The winner is wired into the part page; everything here works and is height-locked, so swapping a winner is a one-line change in the part's markdown.
 
 {% section "Part 1 · Understand" %}
 
-**Wired in: C.** The part's core skill is asking, and C makes the student
-spend limited questions and live with what they bought. A is the safe
-commit-then-reveal, B is the same idea as a picture.
+**Wired in: C.** The part's core skill is asking, and C makes the student spend limited questions and live with what they bought. A is the safe commit-then-reveal, B is the same idea as a picture.
 
 ### A · Four readings
 
@@ -34,9 +29,7 @@ commit-then-reveal, B is the same idea as a picture.
 
 {% section "Part 2 · Explore" %}
 
-**Wired in: C.** It rehearses the exact five checks the notebook then asks
-students to prompt an AI for, on the real 812-row file. A teaches the same
-census idea more gently, B makes one sharp point about eyes versus counts.
+**Wired in: C.** It rehearses the exact five checks the notebook then asks students to prompt an AI for, on the real 812-row file. A teaches the same census idea more gently, B makes one sharp point about eyes versus counts.
 
 ### A · First look
 
@@ -52,10 +45,7 @@ census idea more gently, B makes one sharp point about eyes versus counts.
 
 {% section "Part 3 · Prepare" %}
 
-**Wired in: B.** The page's cold open and the notebook both carry the date
-lesson, so the activity carries the other big cleaning class, categories, and
-the silent .map() erasure. A is the date-policy explorer, C is the
-threshold-versus-purpose toy.
+**Wired in: B.** The page's cold open and the notebook both carry the date lesson, so the activity carries the other big cleaning class, categories, and the silent .map() erasure. A is the date-policy explorer, C is the threshold-versus-purpose toy.
 
 ### A · Three ways to fix a date
 
@@ -71,9 +61,7 @@ threshold-versus-purpose toy.
 
 {% section "Part 4 · Analyze" %}
 
-**Wired in: A.** Commit-before-reveal is the notebook's spine, and A drills it
-three times, including the inversion. B is the same missingness story as one
-picture, C wraps it in a decision with stakes.
+**Wired in: A.** Commit-before-reveal is the notebook's spine, and A drills it three times, including the inversion. B is the same missingness story as one picture, C wraps it in a decision with stakes.
 
 ### A · Missing on purpose · wired in
 
@@ -89,9 +77,7 @@ picture, C wraps it in a decision with stakes.
 
 {% section "Part 5 · Share" %}
 
-**Wired in: A.** Judging sentences one at a time is exactly the notebook's
-fact-check job. B is the receipts idea as a picture, C is constructive, building
-the summary under constraint.
+**Wired in: A.** Judging sentences one at a time is exactly the notebook's fact-check job. B is the receipts idea as a picture, C is constructive, building the summary under constraint.
 
 ### A · The red pen · wired in
 
