@@ -189,6 +189,7 @@
 
   /* Reserve the report's height so the reveal does not resize the activity. */
   function lockHeight(){
+    if(!document.body.clientWidth){ requestAnimationFrame(lockHeight); return; }
     const rep = $("p2b-report");
     const keep = rep.innerHTML;
     rep.style.minHeight = "0";

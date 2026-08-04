@@ -4,7 +4,6 @@ title: Prepare
 kicker: Module 3 · Part 3
 standfirst: >
   Now fix what you found, and build the columns your question needs. Both look like chores and are really a run of decisions.
-status: scaffold
 prev:
   url: /module-3/02-explore/
   label: Part 2 · Explore
@@ -13,40 +12,64 @@ next:
   label: Part 4 · Analyze
 ---
 
-<!-- authoring note: template — cold open, concept, do it, compare. -->
+One of the dates in your quality report reads `2023-00-00`. The row it sits on
+is a real visit. It has a diagnosis, a provider, a copay of $0, a patient who
+was there. The date is the only broken thing on the row.
 
-{% todo "Cold open" %}
-A fix that looks obvious and costs more than it appears to.
-{% endtodo %}
+You have three honest options. Drop the row and lose a real visit. Keep the row
+and let one unparseable value crash every date operation downstream. Or set the
+date to missing and keep the rest, which saves the visit and quietly changes
+what "visits per month" means. There is no fourth option where the problem goes
+away, and an AI asked to "fix the dates" will pick one of the three without
+telling you which.
+
+That is what preparing data is. A run of small decisions, each with a cost, made
+one column at a time and written down. This part you make them yourself.
 
 {% section "Get a feel for it" %}
 
-{% slot "activity", "Concept level. A cleaning step that quietly discards more than the student expects." %}
+Cleaning one column, start to finish. Sort the clinic file's 14 spellings of
+gender into the three categories the analysis needs, and watch what happens to
+the ones you miss.
 
-{% slot "activity", "Concept level. A threshold that stops discriminating. Student picks a cutoff, sees it label most of the population, realises the label has stopped telling them anything." %}
+{% activity "p3b-label-machine.html", "The label machine", "640px" %}
 
-### Think it through
+{% check "Think it through before you open the answers." %}
 
-{% todo "Check yourself · 3–4 questions" %}
-Arguable. These are the discussion if the class is running together.
+{% q "Your map handles 13 of the 14 spellings and you run it. Nothing errors. What happened to the rows with the 14th spelling?" %}
+They are still there, and their gender is now missing. A pandas `.map()` turns
+any value it has no rule for into `NaN`, silently. Thirteen right rules and one
+gap means the run looks perfect, the counts look plausible, and a slice of real
+patients has quietly left every gender breakdown you will ever make. This is
+why the check after a mapping is always the same. Count the values before,
+count them after, and make the totals match. A fix that fails loudly is a
+gift. The dangerous ones succeed.
+{% endq %}
 
-What should land: that collapsing categories is a decision; that a fix which silently drops data is worse than one that fails loudly; that where you put a boundary changes the answer.
-{% endtodo %}
+{% q "The AI merges Commercial into Private and self-pay into Uninsured without being asked. Both merges happen to be right. What is still wrong?" %}
+Nobody decided. Whether Commercial insurance counts as Private is a fact about
+this clinic's billing, and the AI does not know this clinic. It pattern-matched
+what those words usually mean, got lucky, and buried the call inside working
+code. The next merge it invents may be wrong in a way nobody catches, because
+merges do not error. The fix is in how you ask. Spell out the target categories
+and every mapping in the prompt, so the AI types them and you own them.
+{% endq %}
+
+{% endcheck %}
 
 {% section "Do it for real" %}
 
-{% todo "Name the job" %}
-Make the data consistent, then build the columns the next part needs.
-{% endtodo %}
+The job. Take the raw file and your Part 2 quality report, fix every problem on
+the list, then build the six columns the analysis ahead needs. Every fix that
+loses or changes a row gets a line in your decision log saying what you did and
+why.
 
-{% notebook "Notebook 2 · Prepare" %}
-Starts from a clean copy, so you can work this part whatever happened in an earlier one.
-
-{% todo "To build" %}
-- Space for your own prompt
-- Space to paste and run what comes back
-- Space to write down what you checked
-{% endtodo %}
+{% notebook "Notebook 2 · Prepare", "https://colab.research.google.com/github/kellerflint/ml-visual-demos/blob/main/notebooks/m3-prepare.ipynb" %}
+Starts from the raw file, so this part works whatever happened in your Part 2
+notebook. Seven jobs: duplicates, the date decision, three category cleanups,
+impossible numbers, then the new columns. The date job will fail on the first
+try. That failure is part of the lesson, and the notebook walks you through
+reading it.
 {% endnotebook %}
 
 {% checklist "How to know it worked" %}
@@ -60,10 +83,6 @@ Starts from a clean copy, so you can work this part whatever happened in an earl
 
 {% slot "video", "Habiba. A messy column and a derived column from real work. What she did, and who she had to ask.", "180px" %}
 
-{% todo "The practitioner's version" %}
-Their cells, framed as one defensible way through. Doubles as the recovery path for anyone whose notebook is beyond saving.
-{% endtodo %}
-
 {% compare %}
 | | You | The practitioner |
 |---|---|---|
@@ -72,12 +91,7 @@ Their cells, framed as one defensible way through. Doubles as the recovery path 
 | Could you explain every step? | | |
 | What happens when the next file arrives? | | |
 | How would you find out if it broke? | | |
-
-{% todo %}
-An AI will happily pick your thresholds and your mappings for you. Picking them is the actual job.
-{% endtodo %}
 {% endcompare %}
 
-{% todo "Facilitation notes" %}
-Timing, what to poll the room on, which question is worth arguing about.
-{% endtodo %}
+An AI will happily pick your thresholds and your mappings for you. Picking them
+is the actual job, and the prompt is where you do it.

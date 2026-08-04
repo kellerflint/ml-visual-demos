@@ -225,6 +225,7 @@
 
   /* Reserve the tallest output so tool-hopping never resizes the activity. */
   function lockHeight(){
+    if(!document.body.clientWidth){ requestAnimationFrame(lockHeight); return; }
     const out = $("p2c-out");
     const keep = out.innerHTML;
     out.style.minHeight = "0";

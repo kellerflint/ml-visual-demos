@@ -278,6 +278,218 @@ somebody has to be able to defend later.
     return cells
 
 
+# ---------------------------------------------------------------- notebook 2
+def prepare():
+    cells = [
+        md("""
+# Module 3 · Notebook 2 · Prepare
+
+Your Part 2 quality report lists everything wrong with the clinic file. This
+notebook fixes every line of it, then builds the six columns the analysis in
+Part 4 needs. Each fix is a decision, and the deliverable is the fixed data
+plus a decision log that says what you chose and why.
+
+One rule for the whole notebook. Any step that removes or changes rows gets
+checked with arithmetic before you move on. You know the raw file has 812 rows.
+Every row you lose has to be accounted for.
+"""),
+        GROUND_RULES_NOTE,
+        md("""
+## Setup
+
+Run this cell as it is.
+"""),
+        code(f"""
+import pandas as pd
+
+url = "{RAW_URL}"
+df = pd.read_csv(url)
+print(f"Loaded {{df.shape[0]}} rows and {{df.shape[1]}} columns")
+"""),
+    ]
+
+    cells += job(
+        1, "Duplicates",
+        "Your report counted rows that appear twice. Remove the copies, keep "
+        "the originals, and put the result in a new DataFrame named `df_clean`.",
+        """
+- work from `df` into a new DataFrame named `df_clean`
+- remove exact duplicate rows only, keeping the first of each pair
+- print the row count before and after
+""",
+        """
+812 minus the duplicate count from your report has to equal the new row count
+exactly. If it removed more than your report counted, the code dropped
+something it should have kept, and you want to know that now rather than in
+Part 4.
+
+Decision log line: how many rows removed, and why they were safe to remove.
+""",
+    )
+
+    cells += job(
+        2, "The date column, first attempt",
+        "Ask for the simplest thing. Convert `visit_date` to datetime. This "
+        "attempt is going to fail, and the failure is worth reading slowly.",
+        """
+- convert the `visit_date` column of `df_clean` to datetime
+- nothing else, this is the naive version on purpose
+""",
+        """
+Run it and read the error message from the bottom up. It names the exact value
+it choked on and the format it expected. Since pandas 2.0, `to_datetime` reads
+the first value, locks onto that value's format, and applies it to every row.
+Three formats in one column means the lock is wrong for two thirds of the file.
+
+The AI's code did what you asked. What you asked for was impossible as asked.
+Keep the error on screen and go to Job 3.
+""",
+    )
+
+    cells += job(
+        3, "The date column, decided",
+        "Now make the real decisions. Your report found values like "
+        "`Feb 30 2023`, `not recorded`, `13/45/2023`, and `2023-00-00`. Those "
+        "rows are real visits with one broken field. Decide what happens to "
+        "them, then parse the column so every surviving value is a datetime.",
+        """
+- parse mixed formats. Tell the AI the three shapes the column contains
+- two-part dates like 08-04-2023 read as month first. Say so explicitly,
+  because the AI has to pick one reading and it should be yours
+- your policy for unparseable values: drop those rows, or keep them with the
+  date set to missing. Pick one and put it in the prompt
+- print how many rows were affected and the final row count
+""",
+        """
+Arithmetic first. Four values in the file parse as nothing. If you dropped
+them, your count fell by exactly 4. If you kept them as missing, the count
+held and `visit_date` now has exactly 4 missing values. Any other number means
+the code did something you did not decide.
+
+Then spot-check the reading. Find a row that was `08-04-2023` and confirm it
+parsed to August 4th, because you said month first. 174 rows of your
+deduplicated file change month under the other reading, which is why the
+choice went in the prompt instead of staying in the AI's head.
+
+Decision log lines: your policy for the four, and the month-first call.
+
+The course's cleaned file, which Parts 4 and 5 use, dropped the four rows and
+reads two-part dates month first. Your log can differ. It just has to say so.
+""",
+    )
+
+    cells += job(
+        4, "Categories",
+        "Three columns say the same things too many ways. gender has 14 "
+        "spellings for 3 categories, insurance_type has 18 for 4, visit_type "
+        "has 16 for 4. Standardize all three, and turn follow_up_required's "
+        "ten variants into 1 and 0.",
+        """
+- every target category by name: gender to Female, Male, Other; insurance_type
+  to Medicaid, Medicare, Private, Uninsured; visit_type to Office Visit,
+  Telehealth, Follow-Up, Urgent Care; follow_up_required to 1 and 0
+- every mapping spelled out, from your Part 2 category census. The two
+  judgment calls are yours to state: the clinic's billing office confirms
+  Commercial bills as Private, and self-pay means Uninsured
+- values with no rule should stay visible, so ask for a count of unmapped
+  values per column after mapping
+""",
+        """
+Count the values in each column after the run. Three categories in gender,
+four in insurance_type, four in visit_type, two in follow_up_required, and
+zero unmapped. Then the arithmetic. Each column's counts have to sum to your
+current row count, because none of these columns had missing values in the
+raw file. A shortfall means the map missed a spelling and `.map()` erased it
+without a sound. That silent erasure is the single most common cleaning bug
+there is.
+
+Decision log lines: the Commercial call and the self-pay call.
+""",
+    )
+
+    cells += job(
+        5, "Impossible numbers",
+        "Your report found ages of -5 and 999, and negative copays. The rows "
+        "are real visits. The values are not. Set the impossible values to "
+        "missing and keep the rows.",
+        """
+- age outside 0 to 120 becomes missing, the row stays
+- negative copay_amount becomes missing, the row stays
+- print how many values changed in each column
+""",
+        """
+Ten ages and fourteen copays, exactly, and the row count does not move at all.
+Compare that to Job 1, where rows disappeared. Both are correct and they are
+different operations. A duplicate row is wrong as a row. An impossible age is
+one wrong field on a right row, and deleting the visit to fix the age would
+throw away a diagnosis, a provider, and a copay that are all real.
+
+Decision log line: impossible values nulled, rows kept.
+""",
+    )
+
+    cells += job(
+        6, "The new columns",
+        "The fixing is done. Now build the columns Part 4's questions need. "
+        "Six of them, all derived from data you already have.",
+        """
+- visit_month, visit_year, and a short month name, from visit_date
+- age_group using bins 0-18, 19-35, 36-50, 51-65, 65+
+- is_high_utilizer, true for patients with 4 or more visits in the file,
+  attached to every row of that patient
+- days_since_last_visit, days since that patient's previous visit, missing
+  for a patient's first visit. The data has to be sorted by patient and date
+  before this one, and the prompt should say so
+""",
+        """
+Three checks, each fast.
+
+Count age_group. The 0-18 bin holds about ten visits. Look at the actual ages
+in it before you conclude the clinic treats children. Every one is exactly 18,
+because the youngest patient in this file is 18 and the bin label promises
+more than the data contains. Labels lie when nobody reads what is inside them.
+
+Count is_high_utilizer. It flags over half the panel. A flag that covers most
+patients is a definition problem, and 4-or-more was a choice somebody made.
+Note it for Part 4, where high utilizers are one of the director's questions.
+
+Count missing days_since_last_visit. It should equal the number of patients,
+one first visit each. If it equals something else, the sort before the diff
+went wrong, and gap numbers in Part 4 would be quietly scrambled.
+""",
+    )
+
+    cells += [
+        md("""
+## The decision log
+
+The second deliverable. Edit this cell so it reads true for your run.
+
+| Decision | What I chose | Why |
+|---|---|---|
+| Duplicate rows | | |
+| Unparseable dates | | |
+| Two-part date reading | | |
+| Commercial | | |
+| self-pay | | |
+| Impossible age and copay | | |
+| High-utilizer threshold | | |
+
+**Rows in, rows out:** 812 in, ____ out, every loss accounted for above.
+"""),
+        md("""
+## Where this leaves you
+
+The file is consistent, dated, and six columns richer, and every choice that
+got it there is written down. Part 4 finally asks the director's questions.
+It uses the course's cleaned file so that everyone analyzes identical data,
+and your decision log is what makes your own version defensible.
+"""),
+    ]
+    return cells
+
+
 if __name__ == "__main__":
     os.makedirs("notebooks", exist_ok=True)
     write("notebooks/m3-explore.ipynb", explore())
+    write("notebooks/m3-prepare.ipynb", prepare())
