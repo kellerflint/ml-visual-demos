@@ -40,9 +40,13 @@
   button.btn:disabled{opacity:.45; cursor:default}
   button.btn:focus-visible{outline:2px solid var(--accent); outline-offset:2px}
 
+  .p1c-stephead{display:flex; align-items:center; gap:1rem; margin:0 0 .6rem}
+  .p1c-stephead .lead{flex:1; min-width:0}
   .p1c-step{font-family:var(--mono); font-size:.66rem; letter-spacing:.09em; text-transform:uppercase;
-    color:var(--accent); margin:0 0 .2rem}
-  .p1c-stepnote{font-size:.85rem; color:var(--slate); margin:0 0 .55rem}
+    color:var(--accent); margin:0 0 .15rem}
+  .p1c-stepnote{font-size:.85rem; color:var(--slate); margin:0}
+  .p1c-stephead .btn{flex:none}
+  @media (max-width:560px){ .p1c-stephead{flex-wrap:wrap} .p1c-stephead .btn{margin-left:auto} }
   .p1c-q.spent.off{opacity:.5}
   .p1c-q{
     border:1px solid var(--line); border-radius:8px; padding:.5rem .7rem; margin:0 0 .45rem;
@@ -78,15 +82,17 @@
 
 <div class="activity" id="p1c">
   <div class="activity-instructions">
-    <span class="a-instr">Two steps. <strong>Ask the director three questions</strong>, read what they
-    get you, then <strong>choose and send the brief</strong> the answers support.</span>
-    <div class="a-actions">
-      <button class="btn primary" id="p1c-go" type="button" disabled>Ask them</button>
-    </div>
+    <span class="a-instr">The director is free for a moment. <strong>Ask three questions</strong>, read
+    what they get you, then choose the brief the answers support.</span>
   </div>
   <div class="activity-body">
-    <p class="p1c-step">Step 1 · Ask the director</p>
-    <p class="p1c-stepnote" id="p1c-stage">Pick 3 of the 7 questions, then ask them. 0 chosen.</p>
+    <div class="p1c-stephead">
+      <div class="lead">
+        <p class="p1c-step">Step 1 · Ask the director</p>
+        <p class="p1c-stepnote" id="p1c-stage">Pick 3 of the 7 questions. 0 chosen.</p>
+      </div>
+      <button class="btn primary" id="p1c-go" type="button" disabled>Ask them</button>
+    </div>
     <div id="p1c-questions"></div>
     <div class="p1c-briefs" id="p1c-briefs"></div>
     <p class="p1c-verdict" id="p1c-verdict" hidden></p>
@@ -158,23 +164,25 @@
   function sync(){
     const btn = $("p1c-go");
     if(!asked){
-      $("p1c-stage").textContent = `Pick 3 of the 7 questions, then ask them. ${picked.size} chosen.`;
+      $("p1c-stage").textContent = `Pick 3 of the 7 questions. ${picked.size} chosen.`;
       btn.textContent = "Ask them";
       btn.disabled = picked.size !== 3;
-    } else if(!decided){
-      btn.textContent = "Send this brief";
-      btn.disabled = sel === null;
     } else {
-      btn.textContent = "Brief sent";
+      $("p1c-stage").textContent = "Asked. The three answers are below.";
+      btn.textContent = "Asked";
       btn.disabled = true;
     }
   }
 
   function drawBriefs(){
     if(!asked){ $("p1c-briefs").innerHTML = ""; return; }
-    let h = `<p class="p1c-step" style="margin-top:1rem">Step 2 · Choose the brief</p>
-      <p class="p1c-stepnote">The answers are in, dimmed questions stay unanswered. Pick the one brief the
-      answers support, then send it.</p>`;
+    let h = `<div class="p1c-stephead" style="margin-top:1.1rem">
+      <div class="lead">
+        <p class="p1c-step">Step 2 · Choose the brief</p>
+        <p class="p1c-stepnote">Pick the one brief the answers support, then send it.</p>
+      </div>
+      <button class="btn primary" id="p1c-send" type="button" ${sel===null||decided?"disabled":""}>${decided?"Sent":"Send this brief"}</button>
+    </div>`;
     h += BRIEFS.map((b,i)=>{
       let cls = sel===i ? "sel" : "";
       if(decided){ cls = b.good ? "good" : (sel===i ? "bad" : ""); }
@@ -188,10 +196,16 @@
       const pick = ()=>{
         if(decided) return;
         sel = (sel === +el.dataset.i) ? null : +el.dataset.i;
-        drawBriefs(); sync();
+        drawBriefs();
       };
       el.addEventListener("click", pick);
       el.addEventListener("keydown", e=>{ if(e.key==="Enter"||e.key===" "){ e.preventDefault(); pick(); } });
+    });
+    const send = $("p1c-send");
+    if(send) send.addEventListener("click", ()=>{
+      if(sel===null || decided) return;
+      decided = true;
+      drawBriefs(); verdict();
     });
   }
 
@@ -216,15 +230,9 @@
   }
 
   $("p1c-go").addEventListener("click", ()=>{
-    if(!asked){
-      if(picked.size!==3) return;
-      asked = true;
-      drawQuestions(); drawBriefs(); sync();
-    } else if(!decided){
-      if(sel===null) return;
-      decided = true;
-      drawBriefs(); sync(); verdict();
-    }
+    if(asked || picked.size!==3) return;
+    asked = true;
+    drawQuestions(); drawBriefs(); sync();
   });
 
   /* The ask and the brief pick are deliberate reveals, so they may grow the
