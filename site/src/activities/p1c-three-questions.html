@@ -1,0 +1,254 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Three questions — interactive activity</title>
+<meta name="description" content="You get the director for three questions. Choose them, hear her answers, then choose the brief they support.">
+<style>
+  :root{
+    --paper:#fafbfc; --ink:#1c2733; --slate:#5d6b7a; --line:#dde3e9;
+    --accent:#0e7490; --accent-soft:#e3f1f5; --good:#15803d; --good-soft:#e9f5ec;
+    --warn:#b45309; --warn-soft:#fdf3e7; --card:#ffffff; --chrome:#f0f3f6;
+    --mono:ui-monospace,"SF Mono",Menlo,Consolas,"Liberation Mono",monospace;
+    --serif:"Iowan Old Style",Palatino,"Palatino Linotype",Georgia,serif;
+    --sans:"Avenir Next",Avenir,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+  }
+  *{box-sizing:border-box}
+  html,body{margin:0; padding:0; background:transparent}
+  body{color:var(--ink); font-family:var(--sans); font-size:17px; line-height:1.65}
+  .activity{
+    background:var(--card); border:1px solid var(--line); border-radius:10px;
+    max-width:56rem; margin:0 auto; overflow:hidden; box-shadow:0 1px 3px rgba(28,39,51,.06);
+  }
+  .activity-instructions{
+    display:flex; align-items:center; gap:1rem; padding:.7rem .9rem;
+    font-size:.92rem; color:var(--slate); border-bottom:1px dashed var(--line); background:var(--card);
+  }
+  .a-instr{flex:1; min-width:0}
+  .a-actions{display:flex; gap:.5rem; flex:none}
+  @media (max-width:560px){ .activity-instructions{flex-wrap:wrap} .a-actions{margin-left:auto} }
+  .activity-body{padding:1rem .9rem 1.2rem}
+  button.btn{
+    font-family:var(--sans); font-size:.88rem; font-weight:600;
+    border:1px solid var(--accent); color:var(--accent); background:var(--card);
+    border-radius:6px; padding:.4rem .85rem; cursor:pointer;
+  }
+  button.btn:hover{background:var(--accent-soft)}
+  button.btn.primary{background:var(--accent); color:#fff}
+  button.btn.primary:hover{background:#0c637c}
+  button.btn:disabled{opacity:.45; cursor:default}
+  button.btn:focus-visible{outline:2px solid var(--accent); outline-offset:2px}
+
+  .p1c-stage{font-family:var(--mono); font-size:.66rem; letter-spacing:.09em; text-transform:uppercase;
+    color:var(--slate); margin:0 0 .5rem}
+  .p1c-q{
+    border:1px solid var(--line); border-radius:8px; padding:.5rem .7rem; margin:0 0 .45rem;
+    background:#fcfdfe; cursor:pointer; font-size:.9rem;
+  }
+  .p1c-q:hover{border-color:var(--accent)}
+  .p1c-q.on{border-color:var(--accent); background:var(--accent-soft)}
+  .p1c-q.spent{cursor:default}
+  .p1c-q:focus-visible{outline:2px solid var(--accent); outline-offset:2px}
+  .p1c-a{font-size:.86rem; color:var(--slate); margin:.4rem 0 0; padding:.4rem 0 0 .7rem;
+    border-top:1px dashed var(--line); border-left:3px solid var(--accent)}
+  .p1c-a b{color:var(--ink)}
+
+  .p1c-briefs{margin:.9rem 0 0}
+  .p1c-b{
+    border:1px solid var(--line); border-radius:8px; padding:.55rem .75rem; margin:0 0 .5rem;
+    background:#fcfdfe; cursor:pointer; font-size:.88rem;
+  }
+  .p1c-b:hover{border-color:var(--accent)}
+  .p1c-b.good{border-color:#bfe0c8; background:var(--good-soft)}
+  .p1c-b.bad{border-color:#f0d9b8; background:var(--warn-soft)}
+  .p1c-b .tag{font-family:var(--mono); font-size:.6rem; letter-spacing:.06em; text-transform:uppercase;
+    color:var(--slate); display:block; margin:0 0 .15rem}
+  .p1c-b:focus-visible{outline:2px solid var(--accent); outline-offset:2px}
+  .p1c-why{font-size:.8rem; color:var(--slate); margin:.35rem 0 0; padding-top:.35rem; border-top:1px dashed var(--line)}
+  .p1c-why b{color:var(--ink)}
+  .p1c-verdict{font-size:.85rem; color:var(--slate); border-left:3px solid var(--accent);
+    padding:.15rem 0 .15rem .7rem; margin:.6rem 0 0; max-width:38rem}
+  .p1c-verdict b{color:var(--ink)}
+</style>
+</head>
+<body>
+
+<div class="activity" id="p1c">
+  <div class="activity-instructions">
+    <span class="a-instr">The director is free for a moment. <strong>Pick three questions</strong>,
+    read what they get you, then pick the brief her answers actually support.</span>
+    <div class="a-actions">
+      <button class="btn primary" id="p1c-go" type="button" disabled>Ask them</button>
+    </div>
+  </div>
+  <div class="activity-body">
+    <p class="p1c-stage" id="p1c-stage">choose 3 of 7 · 0 chosen</p>
+    <div id="p1c-questions"></div>
+    <div class="p1c-briefs" id="p1c-briefs"></div>
+    <p class="p1c-verdict" id="p1c-verdict" hidden></p>
+  </div>
+</div>
+
+<script>
+(function(){
+  "use strict";
+  const $ = (id)=>document.getElementById(id);
+
+  const QUESTIONS = [
+    {q:"What decision will this feed? What might change because of it?", key:"decision",
+     a:"<b>We're deciding whether to hire a care coordinator.</b> And the county funder keeps asking how we serve uninsured patients, so that angle matters too."},
+    {q:"Who is going to see this, exactly?", key:"audience",
+     a:"<b>The board next month.</b> And I'd love material we can reuse for the funder report in the spring, if that's easy."},
+    {q:"When you say visit patterns, what do you picture?", key:"meaning",
+     a:"I guess... who comes in, how often, for what? <b>You tell me what the data can say.</b> You know it better than I do."},
+    {q:"Do you want slides or a written report?", key:"format",
+     a:"Slides for the board, I suppose. Honestly, whatever carries the point."},
+    {q:"Which two years should I use?", key:"years",
+     a:"2022 and 2023. Whatever we have complete."},
+    {q:"How polished does this need to be?", key:"polish",
+     a:"Board-ready. But I care about the content, they can forgive a plain chart."},
+    {q:"Is there budget to collect anything new?", key:"budget",
+     a:"No. Whatever is in the system already is what we have."}
+  ];
+
+  const BRIEFS = [
+    {tag:"Brief A", t:"A general overview of visit volume by month for 2022 and 2023, with charts of overall trends.",
+     good:false,
+     why:"<b>This answers the email without answering the director.</b> It uses no decision and no audience, so nothing in it is aimed. It would be received politely and change nothing, which is the fate of most unaimed data work."},
+    {tag:"Brief B", t:"For the board and the spring funder report: who uses the clinic and how often, centered on repeat visitors (the care-coordinator decision) and on how the clinic serves uninsured patients, with data limitations stated.",
+     good:true,
+     why:"<b>Every clause traces to something she said.</b> The audience is both real ones, the center of gravity is the actual decision, the uninsured angle serves the funder, and the limitations clause is the analyst protecting the work. This brief could be handed back to her for a yes before a single file is opened."},
+    {tag:"Brief C", t:"An analysis of clinical outcomes by diagnosis, to identify where treatment protocols could improve.",
+     good:false,
+     why:"<b>Nothing she said asked for this, and the data cannot deliver it.</b> Visit records carry diagnoses and dates. Outcomes, whether anyone got better, are simply absent from the file. A brief that promises what the data lacks fails later, in the worst week possible."},
+    {tag:"Brief D", t:"An interactive dashboard the director can explore herself, updated monthly with all clinic metrics.",
+     good:false,
+     why:"<b>A form nobody requested, solving a problem nobody stated.</b> She asked for something before a board meeting. A dashboard is a standing product with standing costs, and proposing one now trades her actual deadline for an imagined one."}
+  ];
+
+  const picked = new Set();
+  let asked = false, chosen = null;
+
+  function drawQuestions(){
+    $("p1c-questions").innerHTML = QUESTIONS.map((x,i)=>{
+      const on = picked.has(i);
+      return `<div class="p1c-q ${on?'on':''} ${asked?'spent':''}" data-i="${i}" tabindex="0" role="button">
+        ${x.q}
+        ${asked && on ? `<p class="p1c-a">${x.a}</p>` : ""}
+      </div>`;
+    }).join("");
+    $("p1c-questions").querySelectorAll(".p1c-q").forEach(el=>{
+      const toggle = ()=>{
+        if(asked) return;
+        const i = +el.dataset.i;
+        if(picked.has(i)) picked.delete(i);
+        else if(picked.size < 3) picked.add(i);
+        drawQuestions(); sync();
+      };
+      el.addEventListener("click", toggle);
+      el.addEventListener("keydown", e=>{ if(e.key==="Enter"||e.key===" "){ e.preventDefault(); toggle(); } });
+    });
+  }
+
+  function sync(){
+    $("p1c-stage").textContent = asked
+      ? "her answers, and four candidate briefs. pick the one the answers support"
+      : `choose 3 of 7 · ${picked.size} chosen`;
+    $("p1c-go").disabled = asked || picked.size !== 3;
+  }
+
+  function drawBriefs(){
+    $("p1c-briefs").innerHTML = BRIEFS.map((b,i)=>{
+      let cls = "";
+      if(chosen!==null){ cls = b.good ? "good" : (chosen===i ? "bad" : ""); }
+      return `<div class="p1c-b ${cls}" data-i="${i}" tabindex="0" role="button">
+        <span class="tag">${b.tag}</span>${b.t}
+        ${chosen!==null && (chosen===i || b.good) ? `<p class="p1c-why">${b.why}</p>` : ""}
+      </div>`;
+    }).join("");
+    $("p1c-briefs").querySelectorAll(".p1c-b").forEach(el=>{
+      const pick = ()=>{
+        if(chosen!==null) return;
+        chosen = +el.dataset.i;
+        drawBriefs();
+        verdict();
+      };
+      el.addEventListener("click", pick);
+      el.addEventListener("keydown", e=>{ if(e.key==="Enter"||e.key===" "){ e.preventDefault(); pick(); } });
+    });
+  }
+
+  function verdict(){
+    const v = $("p1c-verdict");
+    v.hidden = false;
+    const gotDecision = [...picked].some(i=>QUESTIONS[i].key==="decision");
+    const gotAudience = [...picked].some(i=>QUESTIONS[i].key==="audience");
+    let extra;
+    if(gotDecision && gotAudience){
+      extra = "You spent your three questions where they pay. The decision and the audience are the two answers a brief is built from, and everything else was affordable to leave unasked.";
+    } else if(gotDecision || gotAudience){
+      extra = "You caught one of the two answers a brief is built from. The other, " +
+        (gotDecision ? "who will see this," : "what decision it feeds,") +
+        " had to be guessed, and guesses in a brief are debts the analysis repays later.";
+    } else {
+      extra = "All three of your questions bought logistics. Useful, cheap, and none of them shape the work. The two answers a brief is built from, the decision and the audience, went unasked, which is why choosing between these briefs felt like guessing. It was.";
+    }
+    v.innerHTML = (BRIEFS[chosen].good
+      ? "<b>That is the brief her answers support.</b> "
+      : "<b>The stronger brief is B, and the reveal above says why.</b> ") + extra;
+  }
+
+  $("p1c-go").addEventListener("click", ()=>{
+    if(picked.size!==3) return;
+    asked = true;
+    drawQuestions(); sync(); drawBriefs();
+  });
+
+  /* The ask and the brief pick are deliberate reveals, so they may grow the
+     activity. Only the verdict is reserved, so choosing a brief never shifts
+     what is already on screen. */
+  function lockHeight(){
+    if(!document.body.clientWidth){ requestAnimationFrame(lockHeight); return; }
+    const v = $("p1c-verdict");
+    const keepV = v.innerHTML, keepVH = v.hidden;
+    v.hidden = false; v.style.minHeight = "0";
+    v.innerHTML = "<b>x</b> " + "word ".repeat(60);
+    const tv = v.scrollHeight;
+    v.innerHTML = keepV; v.hidden = keepVH;
+    v.style.minHeight = tv + "px";
+  }
+
+  drawQuestions(); sync(); lockHeight();
+  let rt;
+  window.addEventListener("resize", ()=>{ clearTimeout(rt); rt = setTimeout(lockHeight, 120); });
+  if(document.fonts && document.fonts.ready) document.fonts.ready.then(lockHeight);
+})();
+</script>
+
+<script>
+/* Embed helper: reports the activity's height so the parent page can size the frame. */
+(function(){
+  "use strict";
+  if(window.parent === window) return;
+  const card = document.querySelector(".activity");
+  let last = 0;
+  function post(){
+    const h = Math.ceil(card.getBoundingClientRect().height);
+    if(h === last) return;
+    last = h;
+    window.parent.postMessage({type:"activity-height", id:"p1c-three-questions", height:h}, "*");
+  }
+  window.addEventListener("load", post);
+  window.addEventListener("resize", post);
+  window.addEventListener("message", function(e){
+    if(e.data && e.data.type === "activity-height-request"){ last = 0; post(); }
+  });
+  if(window.ResizeObserver) new ResizeObserver(post).observe(card);
+  document.addEventListener("click", ()=>setTimeout(post, 0));
+  post();
+})();
+</script>
+
+</body>
+</html>

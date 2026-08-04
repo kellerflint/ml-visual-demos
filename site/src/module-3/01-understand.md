@@ -4,7 +4,6 @@ title: Understand
 kicker: Module 3 · Part 1
 standfirst: >
   Somebody asks you a question. Working out what they actually need, and what would count as an answer, comes before anything you can type.
-status: scaffold
 prev:
   url: /module-3/
   label: Module 3 overview
@@ -13,34 +12,68 @@ next:
   label: Part 2 · Explore
 ---
 
-<!-- authoring note: template — cold open, concept, do it, compare. -->
+Monday morning, this is in your inbox.
 
-{% todo "Cold open" %}
-A request from the director that sounds clear and is not. Student decides what it is asking for.
-{% endtodo %}
+> **From:** Clinic Director
+> **Subject:** visit data
+>
+> Before the board meeting next month, can you pull together something on our
+> visit patterns from the last two years? I want to understand what's really
+> going on with our patients. Whatever you think is most useful. Thanks!
+
+Read it twice. It is friendly, it is urgent, and it contains no question.
+"Visit patterns" could mean who comes in, or how often, or for what, or when.
+"Really going on" could mean a money problem, a staffing problem, or plain
+curiosity. The audience might be the director, the board, or somebody the
+board answers to. Every one of those readings leads to a different month of
+work, and the email supports all of them.
+
+Answering the wrong reading well is the most expensive mistake in data work,
+because everything downstream inherits it, and it is the mistake an AI cannot
+catch for you. The AI answers whatever question you settle on. Settling on the
+right one happens here, before any file is opened, and it mostly happens by
+asking.
 
 {% section "Get a feel for it" %}
 
-{% slot "activity", "Concept level. A vague ask, and several defensible readings of it that lead somewhere different. Student commits to one." %}
+You get the director for three questions before she disappears into meetings.
+Choose them well, then choose the brief her answers support.
 
-### Think it through
+{% activity "p1c-three-questions.html", "Three questions", "700px" %}
 
-{% todo "Check yourself · 2–3 questions" %}
-Arguable. These are the discussion if the class is running together.
+{% check "Think it through before you open the answers." %}
 
-What should land: that a question can be answerable and still be the wrong question; that what would change based on the answer tells you what the answer needs to be; that the person asking often cannot say what they need.
-{% endtodo %}
+{% q "The question that unlocked the most was about the decision, what will change based on this work. Why does that one question do so much?" %}
+Because a decision gives every later choice a test. Knowing the work feeds a
+care-coordination hire tells you repeat visitors matter, tells you which
+columns count, tells you what the four summary sentences should be about, and
+tells you what to leave out. Without a decision, every cut of the data is
+equally defensible and none of it is aimed. The request said "whatever you
+think is most useful." Useful has no meaning until you know what it is for.
+{% endq %}
+
+{% q "The director answered the meaning question with a shrug. You tell me what the data can say. What did that answer actually give you?" %}
+Permission, and a warning. Permission to propose the framing yourself, which
+is a normal part of the job and much better discovered now than after a month
+of work. And a warning that nobody upstream has thought this through, so
+whatever you propose becomes the plan. When the framing is yours, writing it
+down and getting a yes on it before doing the work is what protects both of
+you. That written framing is exactly the brief you produce below.
+{% endq %}
+
+{% endcheck %}
 
 {% section "Do it for real" %}
 
-{% todo "Name the job" %}
-Turn the request into something you could actually answer, and write down what you would need in order to answer it.
-{% endtodo %}
+The job. Turn the director's email into a brief you could hand back to her,
+one page at most. No notebook in this part. The thinking is the work, and it
+goes in writing.
 
-{% todo "The deliverable" %}
-A short written brief rather than a notebook: the real question, who it is for, what would count as an
-answer, and what you would have to ask them.
-{% endtodo %}
+Your brief has four parts. The question as you understand it, stated so
+someone else could tell when it has been answered. Who the answer is for and
+what they will do with it. What would count as an answer, the tables or
+numbers you expect to produce. And what you still need to ask, because
+three questions were fewer than you wanted.
 
 {% checklist "How to know it worked" %}
 - Could someone else read your question and know when it had been answered?
@@ -53,10 +86,6 @@ answer, and what you would have to ask them.
 
 {% slot "video", "Habiba. A vague request from real work, and how she pinned it down before touching anything.", "180px" %}
 
-{% todo "The practitioner's version" %}
-Their brief for the same request, framed as one defensible reading.
-{% endtodo %}
-
 {% compare %}
 | | You | The practitioner |
 |---|---|---|
@@ -65,12 +94,7 @@ Their brief for the same request, framed as one defensible reading.
 | Could you explain every step? | | |
 | What happens when the next file arrives? | | |
 | How would you find out if it broke? | | |
-
-{% todo %}
-This part should surface that the framing decides the answer, and that an AI will answer whatever you ask rather than what you meant.
-{% endtodo %}
 {% endcompare %}
 
-{% todo "Facilitation notes" %}
-Timing, what to poll the room on, which question is worth arguing about.
-{% endtodo %}
+The framing decides the answer. An AI will answer whatever you ask with equal
+confidence, which is exactly why the asking is the part that stays yours.
