@@ -69,7 +69,7 @@ one page at most, and specific enough that she could reply "yes, that" or
 "no, more like this." Getting that yes before opening any file is the whole
 move.
 
-Write these five things.
+Write these things.
 
 - **The question.** The director's request, restated as something with an
   answer. "Which patients account for most of our visits, and how are we
@@ -83,13 +83,6 @@ Write these five things.
 - **What you still need to ask.** Three questions were fewer than you wanted,
   and working through the brief has probably surfaced more. Write the two you
   would ask the director next.
-
-{% checklist "How to know it worked" %}
-- Could someone else read your question and know when it had been answered?
-- Have you said who the answer is for and what they will do with it?
-- Does your brief promise anything visit records cannot deliver?
-- Have you listed what you still need to ask?
-{% endchecklist %}
 
 {% section "How a practitioner did it" %}
 
