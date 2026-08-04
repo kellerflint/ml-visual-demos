@@ -156,6 +156,9 @@
     if(e.data && e.data.type === "activity-height-request"){ last = 0; post(); }
   });
   if(window.ResizeObserver) new ResizeObserver(post).observe(card);
+  /* settle-timers: fonts and late reflows can land after every event above,
+     so post a few extra times; the last===h guard keeps it quiet. */
+  [700, 1600, 3200, 5000].forEach(function(ms){ setTimeout(post, ms); });
   document.addEventListener("click", ()=>setTimeout(post, 0));
   post();
 })();

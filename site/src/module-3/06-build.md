@@ -15,8 +15,7 @@ next:
 
 A different inbox this time.
 
-> **From:** Shelter Manager, Austin Animal Center
-> **Subject:** council budget review
+> **From:** Shelter Manager, Austin Animal Center<br>**Subject:** council budget review
 >
 > The city council reviews our budget in October. Can you put together
 > something on last year's intakes? I keep telling them we're stretched past

@@ -14,8 +14,7 @@ next:
 
 Monday morning, this is in your inbox.
 
-> **From:** Clinic Director
-> **Subject:** visit data
+> **From:** Clinic Director<br>**Subject:** visit data
 >
 > Before the board meeting next month, can you pull together something on our
 > visit patterns from the last two years? I want to understand what's really

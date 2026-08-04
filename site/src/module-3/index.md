@@ -18,9 +18,10 @@ dates written more than one way, the same field spelled several ways, and some r
 twice. You will learn how to think about what can go wrong in data, describe the data work you
 want done, work with the AI to write the code you need, and verify what you get back.
 
-Each part in this module starts with a short activity, moves into a notebook where you do the real
-work with AI, and ends with a recording of a working data scientist doing the same task, so you
-can see where your approach was different from theirs.
+Each part in this module starts with a short activity, moves into the real work, and ends with a
+recording of a working data scientist doing the same task, so you can see where your approach was
+different from theirs. The real work happens in a notebook with an AI writing the code from your
+prompts, except in Part 1, where it is a written brief and the thinking is the work.
 
 Before jumping into the real work, we'll cover the overall data lifecycle, concerns and bias in
 data, and verifying AI answers, so you have them in mind when working through the rest of the

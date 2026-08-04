@@ -22,11 +22,11 @@ description: A six-module course introducing community college students to the r
 </a>
 
 <a class="lcard" href="{{ '/module-3/' | url }}">
-  <p class="num">Module 03 · in redesign</p>
+  <p class="num">Module 03 · draft</p>
   <h3>Preparing, Exploring &amp; Analyzing Data with AI</h3>
   <p>Data cleaning, transformation, exploratory analysis and bias detection, done with AI and
-  verified by the student. Being rebuilt around the six-phase model.</p>
-  <div class="meta"><span><b>Placeholder</b></span></div>
+  verified by the student. Six parts, drafted and awaiting review.</p>
+  <div class="meta"><span><b>Full draft</b></span></div>
 </a>
 
 </div>

@@ -66,10 +66,9 @@ why.
 
 {% notebook "Notebook 2 · Prepare", "https://colab.research.google.com/github/kellerflint/ml-visual-demos/blob/main/notebooks/m3-prepare.ipynb" %}
 Starts from the raw file, so this part works whatever happened in your Part 2
-notebook. Seven jobs: duplicates, the date decision, three category cleanups,
-impossible numbers, then the new columns. The date job will fail on the first
-try. That failure is part of the lesson, and the notebook walks you through
-reading it.
+notebook. Six jobs take you from duplicates through the new columns, and the
+date job is designed to fail on the first try. That failure is part of the
+lesson, and the notebook walks you through reading it.
 {% endnotebook %}
 
 {% checklist "How to know it worked" %}

@@ -97,8 +97,12 @@
       function ping() {
         try { f.contentWindow.postMessage({ type: "activity-height-request" }, "*"); } catch (err) {}
       }
-      f.addEventListener("load", ping);
-      ping();
+      /* Activities re-measure themselves after their fonts land, and that can
+         race the load-time report. Re-ask a couple of times so the frame
+         always settles on the final height. */
+      function pingSoonAndLater() { ping(); setTimeout(ping, 1000); setTimeout(ping, 3000); }
+      f.addEventListener("load", pingSoonAndLater);
+      pingSoonAndLater();
     });
   }
 

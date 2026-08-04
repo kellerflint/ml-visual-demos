@@ -28,7 +28,7 @@ commit-then-reveal, B is the same idea as a picture.
 
 {% activity "p1b-the-fork.html", "The fork", "700px" %}
 
-### C · Three questions — wired in
+### C · Three questions · wired in
 
 {% activity "p1c-three-questions.html", "Three questions", "700px" %}
 
@@ -46,7 +46,7 @@ census idea more gently, B makes one sharp point about eyes versus counts.
 
 {% activity "p2b-eyes-dont-scale.html", "Eyes don't scale", "840px" %}
 
-### C · The profiler's toolkit — wired in
+### C · The profiler's toolkit · wired in
 
 {% activity "p2c-profilers-toolkit.html", "The profiler's toolkit", "660px" %}
 
@@ -61,7 +61,7 @@ threshold-versus-purpose toy.
 
 {% activity "p3a-three-fixes.html", "Three ways to fix a date", "560px" %}
 
-### B · The label machine — wired in
+### B · The label machine · wired in
 
 {% activity "p3b-label-machine.html", "The label machine", "690px" %}
 
@@ -75,7 +75,7 @@ threshold-versus-purpose toy.
 three times, including the inversion. B is the same missingness story as one
 picture, C wraps it in a decision with stakes.
 
-### A · Missing on purpose — wired in
+### A · Missing on purpose · wired in
 
 {% activity "p4a-missing-on-purpose.html", "Missing on purpose", "520px" %}
 
@@ -93,7 +93,7 @@ picture, C wraps it in a decision with stakes.
 fact-check job. B is the receipts idea as a picture, C is constructive, building
 the summary under constraint.
 
-### A · The red pen — wired in
+### A · The red pen · wired in
 
 {% activity "p5a-red-pen.html", "The red pen", "1080px" %}
 
