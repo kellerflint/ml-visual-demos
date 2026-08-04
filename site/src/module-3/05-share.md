@@ -4,7 +4,6 @@ title: Share
 kicker: Module 3 · Part 5
 standfirst: >
   Four sentences for someone who will only ever read the summary. The AI writes them better than you do, using only your numbers, and you should still hold some of them back.
-status: scaffold
 prev:
   url: /module-3/04-analyze/
   label: Part 4 · Analyze
@@ -13,38 +12,62 @@ next:
   label: Do it from scratch
 ---
 
-<!-- authoring note: template — cold open, concept, do it, compare. -->
+Here is a sentence about the clinic, and every number in it is correct.
 
-{% todo "Cold open" %}
-A sentence where every number is right and the impression it leaves is wrong. Student decides whether to send it.
-{% endtodo %}
+> High utilizers drive 74% of clinic visits, showing that a small group of
+> patients is responsible for most of the workload.
+
+You verified both numbers yourself in Part 4. And the sentence is wrong. The
+"small group" is 110 patients, over half the panel, flagged by a threshold
+somebody defaulted to. The word *showing* smuggles in a conclusion, and the
+word *small* smuggles in a falsehood, and a director who reads this sentence
+plans a program for the wrong clinic. Numbers can all be right while the
+sentence lies. This part is about the sentence.
 
 {% section "Get a feel for it" %}
 
-{% slot "activity", "Concept level. Sentence by sentence: supported, unsupported, or true but misleading. The third one is the whole point." %}
+An AI drafted a summary of your Part 4 findings for the director. It reads
+well. Go through it sentence by sentence and decide, for each claim, whether
+your data supports it. Every number in the draft appears in your own notebook
+output, which is exactly what makes the bad sentences hard to catch.
 
-### Think it through
+{% activity "p5a-red-pen.html", "The red pen", "700px" %}
 
-{% todo "Check yourself · 2–3 questions" %}
-Arguable. These are the discussion if the class is running together.
+{% check "Think it through before you open the answers." %}
 
-What should land: the difference between a measurement and a claim; that adding a verb like *shows* or *driven by* smuggles in a claim beyond what the data says; that a summary can hide the thing the reader most needed.
-{% endtodo %}
+{% q "One flagged sentence had a correct number and a wrong verb. Why is the verb where summaries go wrong?" %}
+A number is a measurement. A verb like *shows*, *drives*, or *causes* is a
+claim about the world, and the data usually supports the measurement while
+falling far short of the claim. Visit counts and follow-up rates can coexist
+with almost any story about why. The honest verbs are quieter. *Is*, *has*,
+*averaged*, *ranged*. When a summary needs a stronger verb, the support has to
+come from somewhere beyond the table, and the reader deserves to know where.
+{% endq %}
+
+{% q "The draft's most dangerous sentence was the one you had no way to check. What made it dangerous, and what is the fix?" %}
+It was plausible, it fit the story, and it referenced nothing you computed, so
+there was no receipt to pull. A claim without a receipt in a summary full of
+receipts borrows credibility from its neighbors, and the borrowing works,
+which is how invented details survive review. The fix is mechanical and a
+little ruthless. Every claim gets traced to a number you produced, and a claim
+with no source gets cut, whatever it adds to the story. Verification is per
+claim, and it transfers to nothing.
+{% endq %}
+
+{% endcheck %}
 
 {% section "Do it for real" %}
 
-{% todo "Name the job" %}
-Write the summary, and say what you think should happen. **Write your own version first, before seeing anything the AI produces.** They will want to skip this and it is load-bearing.
-{% endtodo %}
+The job. Turn your Part 4 findings into four sentences and one limitation for
+the director, with an AI drafting and you fact-checking. Write your own four
+sentences first, before the AI sees anything. It will feel skippable and it is
+the load-bearing step, because your version is what makes the AI's errors
+visible to you.
 
-{% notebook "Notebook 4 · Share" %}
-Starts from a clean copy, so you can work this part whatever happened in an earlier one.
-
-{% todo "To build" %}
-- Space for your own prompt
-- Space to paste and run what comes back
-- Space to write down what you checked
-{% endtodo %}
+{% notebook "Notebook 4 · Share", "https://colab.research.google.com/github/kellerflint/ml-visual-demos/blob/main/notebooks/m3-share.ipynb" %}
+Builds the verified stat block from the clean file, has you write yours, then
+has the AI draft under a numbers-only constraint. The fact-check walks claim
+by claim, and the deliverable is the version you would actually send.
 {% endnotebook %}
 
 {% checklist "How to know it worked" %}
@@ -58,10 +81,6 @@ Starts from a clean copy, so you can work this part whatever happened in an earl
 
 {% slot "video", "Susan. When is AI worth skipping? Her rubric with examples.", "180px" %}
 
-{% todo "The practitioner's version" %}
-A practitioner's summary of the same findings, with the reasoning for what got left out.
-{% endtodo %}
-
 {% compare %}
 | | You | The practitioner |
 |---|---|---|
@@ -70,12 +89,9 @@ A practitioner's summary of the same findings, with the reasoning for what got l
 | Could you explain every step? | | |
 | What happens when the next file arrives? | | |
 | How would you find out if it broke? | | |
-
-{% todo %}
-The part where the AI helped most is also the part where getting it wrong costs most. Say that honestly.
-{% endtodo %}
 {% endcompare %}
 
-{% todo "Facilitation notes" %}
-Timing, what to poll the room on, which question is worth arguing about.
-{% endtodo %}
+Drafting is where the AI helped most in this whole module, and the summary is
+the one artifact the director acts on, so it is also where an unchecked error
+costs most. Both things are true, and holding both at once is the skill this
+part practices.

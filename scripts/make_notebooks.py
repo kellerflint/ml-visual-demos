@@ -686,8 +686,148 @@ sentences to someone who will read nothing else.
     return cells
 
 
+# ---------------------------------------------------------------- notebook 4
+def share():
+    cells = [
+        md("""
+# Module 3 · Notebook 4 · Share
+
+The director will read four sentences and act on them. Nothing else you have
+built in this module will be seen by anyone. This notebook turns your Part 4
+work into those four sentences, with an AI drafting and you deciding what is
+true enough to send.
+
+The order of the jobs is the lesson. You write yours before the AI writes
+its version, because your version is the instrument you catch its errors with.
+"""),
+        GROUND_RULES_NOTE,
+        md("""
+## Setup
+
+Run this cell as it is.
+"""),
+        code(f"""
+import pandas as pd
+
+url = "{CLEAN_URL}"
+df = pd.read_csv(url)
+print(f"Loaded {{df.shape[0]}} rows and {{df.shape[1]}} columns")
+"""),
+    ]
+
+    cells += job(
+        1, "The verified stat block",
+        "Build the block of numbers the summary is allowed to use. Nothing "
+        "gets into a sentence that is missing from this block.",
+        """
+- the DataFrame is named `df`
+- total visits, unique patients, and the date range
+- the top 3 diagnoses with visit counts
+- follow-up rate, average copay, and telehealth share, labeled clearly
+""",
+        """
+You verified most of these in Part 4, so check the block against what you
+already know. 793 visits, 200 patients, January 2022 through December 2023,
+Essential Hypertension on top with 94. If the block disagrees with your Part
+4 numbers, stop and find out why before a wrong number gets promoted into a
+sentence.
+
+One deliberate omission. The high-utilizer share stays out of the block
+unless you also carry the threshold that defines it. You saw why in Part 4.
+""",
+    )
+
+    cells += [
+        md("""
+## Job 2 · Your four sentences
+
+Write your summary now, before the AI sees anything. Four sentences for the
+director, plus one limitation, using only the stat block. Two rules that do
+most of the work. Quiet verbs, *is*, *has*, *averaged*, unless the data earns
+a louder one. And the limitation is a real one. Your Part 4 caveat sentence
+about the missing counties belongs here.
+
+*(edit this cell)*
+
+1. ...
+2. ...
+3. ...
+4. ...
+
+**Limitation:** ...
+"""),
+        md("""
+## Job 3 · The AI's draft
+
+Now the AI writes. Your prompt is text-only, no code, and the spec matters
+more here than anywhere in the module.
+
+**Your prompt has to pin down:**
+
+- the numbers, pasted from your Job 1 output, and an instruction to use only
+  these numbers with no statistics the prompt does not contain
+- the audience, a clinic director with no technical background
+- the shape, 3 to 4 sentences plus one sentence on a data limitation
+- what the summary is for, a decision about care coordination and funder
+  reporting, so the draft aims at something
+
+Paste the AI's draft below.
+
+> *(the AI's draft goes here)*
+"""),
+        md("""
+## Job 4 · The fact-check
+
+Go through the draft one claim at a time. A sentence usually holds more than
+one claim, and each claim gets its own row.
+
+*(edit this cell)*
+
+| Claim in the draft | Where it comes from in Job 1 | Verdict |
+|---|---|---|
+| | | supported / unsupported / true but misleading |
+| | | |
+| | | |
+
+Three things to hunt for, in rising order of danger. A number that appears in
+no cell of yours. A verb that outruns the data, *shows*, *drives*, *proves*.
+And a claim that is true but leaves the director with a wrong impression, the
+kind the cold open on the Part 5 page showed you. When you find one, the fix
+is yours to make, and cutting is usually better than softening.
+"""),
+        md("""
+## The deliverable
+
+The version you would send. Four sentences and the limitation, in one place,
+every claim traceable to Job 1. Then one honest line for your own notes:
+what the AI's draft did better than yours, and what it slipped in that you
+caught.
+
+*(edit this cell)*
+
+**To the director:**
+
+...
+
+**Limitation:** ...
+
+**What the AI did better, and what I caught:** ...
+"""),
+        md("""
+## Where this leaves you
+
+You have done the whole arc now. A vague request became a question, a messy
+file became data you can defend, the data became five answers with checks,
+and the answers became four sentences somebody can act on. Part 6 hands you a
+new file and a new request, and this time nothing walks you through it.
+"""),
+    ]
+    return cells
+
+
 if __name__ == "__main__":
     os.makedirs("notebooks", exist_ok=True)
     write("notebooks/m3-explore.ipynb", explore())
     write("notebooks/m3-prepare.ipynb", prepare())
     write("notebooks/m3-analyze.ipynb", analyze())
+    write("notebooks/m3-share.ipynb", share())
