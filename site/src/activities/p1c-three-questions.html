@@ -48,6 +48,7 @@
   .p1c-stephead .btn{flex:none}
   @media (max-width:560px){ .p1c-stephead{flex-wrap:wrap} .p1c-stephead .btn{margin-left:auto} }
   .p1c-q.spent.off{opacity:.5}
+  .p1c-q.key{border-color:#bfe0c8; background:var(--good-soft); opacity:1}
   .p1c-q{
     border:1px solid var(--line); border-radius:8px; padding:.5rem .7rem; margin:0 0 .45rem;
     background:#fcfdfe; cursor:pointer; font-size:.9rem;
@@ -94,8 +95,8 @@
       <button class="btn primary" id="p1c-go" type="button" disabled>Ask them</button>
     </div>
     <div id="p1c-questions"></div>
-    <p class="p1c-verdict" id="p1c-qfeedback" hidden></p>
     <div class="p1c-briefs" id="p1c-briefs"></div>
+    <p class="p1c-verdict" id="p1c-qfeedback" hidden></p>
     <p class="p1c-verdict" id="p1c-verdict" hidden></p>
   </div>
 </div>
@@ -143,10 +144,12 @@
   function drawQuestions(){
     $("p1c-questions").innerHTML = QUESTIONS.map((x,i)=>{
       const on = picked.has(i);
-      const off = asked && !on;
-      return `<div class="p1c-q ${on?'on':''} ${asked?'spent':''} ${off?'off':''}" data-i="${i}" tabindex="0" role="button">
+      const key = decided && (x.key==="decision" || x.key==="audience");
+      const off = asked && !on && !key;
+      const showAnswer = (asked && on) || key;
+      return `<div class="p1c-q ${on&&!key?'on':''} ${key?'key':''} ${asked?'spent':''} ${off?'off':''}" data-i="${i}" tabindex="0" role="button">
         ${x.q}
-        ${asked && on ? `<p class="p1c-a">${x.a}</p>` : ""}
+        ${showAnswer ? `<p class="p1c-a">${x.a}</p>` : ""}
       </div>`;
     }).join("");
     $("p1c-questions").querySelectorAll(".p1c-q").forEach(el=>{
@@ -206,7 +209,7 @@
     if(send) send.addEventListener("click", ()=>{
       if(sel===null || decided) return;
       decided = true;
-      drawBriefs(); verdict();
+      drawQuestions(); drawBriefs(); questionFeedback(); verdict();
     });
   }
 
@@ -216,13 +219,13 @@
     const f = $("p1c-qfeedback");
     f.hidden = false;
     if(gotDecision && gotAudience){
-      f.innerHTML = "<b>You spent your three questions where they pay.</b> What this work should change, and who it is for, are the two answers a brief is built from. Everything else was affordable to leave unasked.";
+      f.innerHTML = "<b>Your questions: you spent them where they pay.</b> What this work should change, and who it is for, are the two answers a brief is built from, and both are highlighted green above. Everything else was affordable to leave unasked.";
     } else if(gotDecision || gotAudience){
-      f.innerHTML = "<b>You caught one of the two answers a brief is built from.</b> The other, " +
+      f.innerHTML = "<b>Your questions: you caught one of the two that matter.</b> The other, " +
         (gotDecision ? "who will see this," : "what decision it feeds,") +
-        " went unasked, and you will be guessing at it when you choose below.";
+        " went unasked, so you were guessing at it when you chose. Both of the answers a brief is built from are highlighted green above now. Read the one you missed.";
     } else {
-      f.innerHTML = "<b>All three of your questions bought logistics.</b> Useful, cheap, and none of them shape the work. The two answers a brief is built from, what this will change and who will see it, went unasked, so choosing below is going to feel like guessing. It is.";
+      f.innerHTML = "<b>Your questions: all three bought logistics.</b> Useful, cheap, and none of them shape the work. The two answers a brief is built from went unasked, so the brief choice was a guess. Both are highlighted green above now, and reading them shows what your three questions could have bought.";
     }
   }
 
@@ -230,14 +233,14 @@
     const v = $("p1c-verdict");
     v.hidden = false;
     v.innerHTML = BRIEFS[sel].good
-      ? "<b>That is the brief the director needs.</b> Repeat visitors carries the coordinator decision, uninsured patients serves the funder, and it is built for both real audiences. Every clause traces to one of her answers, whether or not your three questions bought you that answer."
-      : "<b>The stronger brief is B, and the reveals above say why.</b> Its clauses trace to the director's answers, the coordinator decision, the funder's uninsured question, the two audiences. The others lose by aiming at nothing she said, or by promising what visit records cannot hold.";
+      ? "<b>Your brief: the one the director needs.</b> Repeat visitors carries the coordinator decision, uninsured patients serves the funder, and it is built for both real audiences. Every clause traces to one of the green answers above."
+      : "<b>Your brief: the stronger one is B, and the reveals say why.</b> Its clauses trace to the green answers above, the coordinator decision, the funder's uninsured question, the two audiences. The others lose by aiming at nothing she said, or by promising what visit records cannot hold.";
   }
 
   $("p1c-go").addEventListener("click", ()=>{
     if(asked || picked.size!==3) return;
     asked = true;
-    drawQuestions(); questionFeedback(); drawBriefs(); sync();
+    drawQuestions(); drawBriefs(); sync();
   });
 
   /* The ask and the brief pick are deliberate reveals, so they may grow the
