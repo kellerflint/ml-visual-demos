@@ -44,16 +44,11 @@ export default function (eleventyConfig) {
      opened on its own, linked to, or embedded by someone else. Fullscreen is an
      inline handler on the button — no page-level script to wire it up.
 
-     Path: a page one level deep (/teaching-model/) uses the site-root
-     /activities/; anything deeper (/module-3/lesson/) uses its own section's
-     /module-3/activities/.                                                    */
+     Every activity lives in the top-level activities/ folder, whatever page
+     embeds it.                                                                */
   eleventyConfig.addShortcode("activity", function (filename, title, height = "620px") {
-    const parts = ((this.page && this.page.url) || "/").split("/").filter(Boolean);
-    const src = withPrefix(
-      parts.length > 1
-        ? `${parts[0]}/activities/${filename}`
-        : `activities/${filename}`
-    );
+    /* All activities live in the one top-level activities/ folder. */
+    const src = withPrefix(`activities/${filename}`);
     const label = title || filename.replace(/\.html$/, "").replace(/-/g, " ");
     return `<div class="activity-embed">
   <div class="activity-header">
