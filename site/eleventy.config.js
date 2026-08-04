@@ -95,6 +95,7 @@ export default function (eleventyConfig) {
       video:    { label: "Video",    icon: "▶" },
       notebook: { label: "Notebook", icon: "⌘" },
       figure:   { label: "Figure",   icon: "◫" },
+      lesson:   { label: "Lesson",   icon: "▤" },
     };
     const k = kinds[kind] || kinds.activity;
     return `<div class="slot" style="min-height:${height}">

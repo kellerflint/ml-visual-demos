@@ -20,36 +20,19 @@ That is what preparing data is. A run of small decisions, each with a cost, made
 
 {% section "Get a feel for it" %}
 
-Cleaning one column, start to finish. Sort the clinic file's 14 spellings of gender into the three categories the analysis needs, and watch what happens to the ones you miss.
+{% slot "activity", "An activity and two check questions, the shape Parts 1 and 2 use. The idea for this part is cleaning one column start to finish, so a fix that quietly drops rows is something the student feels before the notebook asks for one.", "200px" %}
 
-{% activity "p3b-label-machine.html", "The label machine", "640px" %}
+{% section "Lessons" %}
 
-{% check "Think it through before you open the answers." %}
-
-{% q "Your map handles 13 of the 14 spellings and you run it. Nothing errors. What happened to the rows with the 14th spelling?" %}
-They are still there, and their gender is now missing. A pandas `.map()` turns any value it has no rule for into `NaN`, silently. Thirteen right rules and one gap means the run looks perfect, the counts look plausible, and a slice of real patients has quietly left every gender breakdown you will ever make. This is why the check after a mapping is always the same. Count the values before, count them after, and make the totals match. A fix that fails loudly is a gift. The dangerous ones succeed.
-{% endq %}
-
-{% q "The AI merges Commercial into Private and self-pay into Uninsured without being asked. Both merges happen to be right. What is still wrong?" %}
-Nobody decided. Whether Commercial insurance counts as Private is a fact about this clinic's billing, and the AI does not know this clinic. It pattern-matched what those words usually mean, got lucky, and buried the call inside working code. The next merge it invents may be wrong in a way nobody catches, because merges do not error. The fix is in how you ask. Spell out the target categories and every mapping in the prompt, so the AI types them and you own them.
-{% endq %}
-
-{% endcheck %}
+{% slot "lesson", "The teaching content for this part goes here, between getting a feel for the idea and doing it for real. What form it takes is still open. A recorded walkthrough, written explanation on this page, worked examples the student modifies, or nothing beyond the job statement and an empty notebook.", "200px" %}
 
 {% section "Do it for real" %}
 
 The job. Take the raw file and your Part 2 quality report, fix every problem on the list, then build the six columns the analysis ahead needs. Every fix that loses or changes a row gets a line in your decision log saying what you did and why.
 
 {% notebook "Notebook 2 · Prepare", "https://colab.research.google.com/github/kellerflint/ml-visual-demos/blob/main/notebooks/m3-prepare.ipynb" %}
-Starts from the raw file, so this part works whatever happened in your Part 2 notebook. Six jobs take you from duplicates through the new columns, and the date job is designed to fail on the first try. That failure is part of the lesson, and the notebook walks you through reading it.
+Opens in Colab and starts from the raw file, so this part works whatever happened in your Part 2 notebook. Everything after that first cell is open space, waiting on the lesson format above.
 {% endnotebook %}
-
-{% checklist "How to know it worked" %}
-- Count the values in every column you changed. Did a category disappear?
-- Compare the row count before and after. Can you account for every row you lost?
-- Look at the spread of every column you made
-- For any yes/no flag, check what share of rows it covers. Does it still single anyone out?
-{% endchecklist %}
 
 {% section "How a practitioner did it" %}
 

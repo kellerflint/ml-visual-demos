@@ -18,36 +18,19 @@ Here is what the one line skips. Nearly a third of the visits in the file have n
 
 {% section "Get a feel for it" %}
 
-Ask the clinic data anything, and before the answer appears, commit to what you expect. The gap between what you expected and what comes back is where analysis actually happens, and one of these answers has a hole in it big enough to sink a report.
+{% slot "activity", "An activity and two check questions, the shape Parts 1 and 2 use. The idea for this part is committing to what you expect before the answer appears, so the gap between the guess and the result is where the student's attention lands.", "200px" %}
 
-{% activity "p4a-missing-on-purpose.html", "Missing on purpose", "680px" %}
+{% section "Lessons" %}
 
-{% check "Think it through before you open the answers." %}
-
-{% q "County is missing on 16% of Uninsured visits and 36% of Medicaid visits. Most people guess the reverse. Why is the direction worth knowing before you trust any county number?" %}
-Because it tells you the missingness has a cause, and the cause decides what the numbers mean. Gaps that follow a group are gaps with a reason, an intake form, a billing system, a workflow, and data missing for a reason distorts whatever that reason touches. Any county breakdown here quietly underweights Medicaid patients, the clinic's largest group. And the surprise itself is the lesson. If you had assumed the direction instead of checking it, you would have explained a pattern that runs the other way.
-{% endq %}
-
-{% q "A colleague says the fix is simple, drop the rows with no county. The percentages will be computed cleanly then. What did the fix just do?" %}
-It made the distortion permanent and invisible. The dropped rows were 36% of Medicaid visits and 16% of Uninsured ones, so the cleaned dataset now underrepresents Medicaid patients everywhere, in every table, chart, and average built from it, with no missing values left to warn anyone. The gap used to announce itself. Now it is baked in. Dropping missing data is only safe when the missing rows look like the kept ones, and that is exactly what the missingness check just told you is false here.
-{% endq %}
-
-{% endcheck %}
+{% slot "lesson", "The teaching content for this part goes here, between getting a feel for the idea and doing it for real. What form it takes is still open. A recorded walkthrough, written explanation on this page, worked examples the student modifies, or nothing beyond the job statement and an empty notebook.", "200px" %}
 
 {% section "Do it for real" %}
 
 The job. Answer the director's five questions, and attach to each answer the check that says who it is about. Both halves go in your notebook. The questions come from the original analysis plan for this dataset. Top diagnoses, frequent visitors, seasonal patterns, diagnosis by age group, and the gaps between visits.
 
 {% notebook "Notebook 3 · Analyze", "https://colab.research.google.com/github/kellerflint/ml-visual-demos/blob/main/notebooks/m3-analyze.ipynb" %}
-Loads the course's cleaned file, the output of Part 3, so everyone analyzes identical data. Five director questions, each with a write-your-expectation-first habit built in, then the who-is-missing pass on your own answers.
+Opens in Colab and loads the course's cleaned file, the output of Part 3, so everyone analyzes identical data. Everything after that first cell is open space, waiting on the lesson format above.
 {% endnotebook %}
-
-{% checklist "How to know it worked" %}
-- Does your number answer the question that was asked, or an easier one nearby?
-- Check what every percentage is a percentage *of*, and put the group size next to it
-- Read your own chart as a stranger would. What would you conclude?
-- Ask whether a gap comes from how the data was collected or from what it describes
-{% endchecklist %}
 
 {% section "How a practitioner did it" %}
 
@@ -55,8 +38,8 @@ Loads the course's cleaned file, the output of Part 3, so everyone analyzes iden
 
 Then hold your work next to theirs, twice.
 
-**Their suspicion against yours.** They tell a story about missing data that turned out to mean something. Notice the moment they stopped trusting the number, what tipped them off, what they checked next, and who they went to ask. Compare that to your own missingness check. Did anything in your Job 6 output deserve the follow-up they would have given it?
+**Their suspicion against yours.** They tell a story about missing data that turned out to mean something. Notice the moment they stopped trusting the number, what tipped them off, what they checked next, and who they went to ask. Compare that to your own checks. Did anything you turned up deserve the follow-up they would have given it?
 
-**Their caveat against yours.** They had to tell somebody what the data could and could not support, the same sentence you wrote at the end of the notebook. Put yours next to how they handled it. Does your caveat name a number, a consequence, and a next step, or does it hedge in general terms? Rewrite yours now if theirs exposes it, because Part 5 sends it to the director.
+**Their caveat against yours.** They had to tell somebody what the data could and could not support. Put your own version next to how they handled it. Does your caveat name a number, a consequence, and a next step, or does it hedge in general terms? Rewrite yours now if theirs exposes it, because Part 5 sends it to the director.
 
 AI is good at making charts and at listing things to check. Deciding what is worth plotting, and what a gap means at this particular clinic, is the part that still needs a person who can ask.

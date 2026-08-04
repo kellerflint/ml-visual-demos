@@ -51,31 +51,27 @@ You need two things for the rest of this module. A Google account, for Colab. An
 Paste this at the start of any AI session for this module. It covers how the AI should work with you, whatever the task is, and it is a decent example of a careful prompt.
 
 <pre class="prompt">I'm a student learning data analysis. I'll be asking you to help me write
-Python and pandas code for a dataset I'm working with. Some ground rules:
+Python and pandas code for a dataset I'm working with. Here is how I want
+you to work with me.
 
-- Create new DataFrames rather than modifying existing ones in place, so I
-  can re-run cells without corrupting my data.
-- Before any operation that removes or changes rows, tell me how many rows
-  it will affect.
 - If what I ask for is ambiguous, ask me a question instead of guessing.
-- Write the code I ask for. Don't decide what the analysis should be.</pre>
+- Write the code I ask for. Don't decide what the analysis should be.
+- Keep the code simple and standard. Use the plain, common way to do
+  something rather than a clever one.
+- Comment every line with what it does, so I can follow the code without
+  already knowing pandas.</pre>
 
-The first rule earns its place the first time you re-run a cell. Notebook cells run in any order, as many times as you click them, and a cell that overwrites your data does its work again on every click. Two runs of a cell that halves the file leaves a quarter of the file. New DataFrames make every cell safe to run twice.
+{% section "Lessons" %}
+
+{% slot "lesson", "The teaching content for this part goes here, between getting a feel for the idea and doing it for real. What form it takes is still open. A recorded walkthrough, written explanation on this page, worked examples the student modifies, or nothing beyond the job statement and an empty notebook.", "200px" %}
 
 {% section "Do it for real" %}
 
 The job. Find out what is in this file and write down every problem, in a notebook, with an AI writing the code from your prompts. Change nothing yet. The fixing is Part 3.
 
 {% notebook "Notebook 1 · Explore", "https://colab.research.google.com/github/kellerflint/ml-visual-demos/blob/main/notebooks/m3-explore.ipynb" %}
-Loads the clinic file for you and walks the census in six jobs, from first look to date formats. For each job you write the prompt, run what comes back, and check it before you trust it. The notebook tells you what each prompt has to pin down. It never hands you the prompt.
+Opens in Colab and loads the clinic file for you. Everything after that first cell is open space, waiting on the lesson format above.
 {% endnotebook %}
-
-{% checklist "How to know it worked" %}
-- Do you know what one row represents?
-- Have you counted the values in every column that holds categories?
-- Do you know how much is missing, and from where?
-- Have you written down what looks wrong, without fixing any of it yet?
-{% endchecklist %}
 
 {% section "How a practitioner did it" %}
 
