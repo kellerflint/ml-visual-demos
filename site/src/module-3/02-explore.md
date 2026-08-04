@@ -81,8 +81,6 @@ Loads the clinic file for you and walks the census in six jobs, from first look 
 
 {% slot "video", "The practitioner. Their first-look routine on an unfamiliar file, and what they check before anything else.", "180px" %}
 
-Then hold your work next to theirs, twice.
-
 **Their routine against yours.** They check things in an order, and the order has reasons. What do they look at first, and why that first? Which of their checks did you never think to run, and which of yours did they skip? Their routine is the product of every file that has burned them. Yours is one file old. The gap between them is a list of things worth stealing.
 
 **Their quality report against yours.** Same file, two problem lists. What did they flag that you missed, and what did you flag that they passed over without a note? The second kind is as interesting as the first, because it usually means they know something about data like this that makes the oddity ordinary.

@@ -60,11 +60,9 @@ The survey only reaches customers who are still around to answer it. The angries
 
 {% section "Almost right" %}
 
-You have now seen a number go wrong two ways, once from decisions made inside the machinery and once from a dataset that was never complete. In this module you make both kinds of call yourself, with an AI writing the code.
+Many are now doing data work with AI assistance. In survey after survey, the same professionals who use AI daily name the same frustration above all the others. Answers that are *almost* right. Not wrong in ways that jump out. Wrong in ways that read smoothly, sound confident, and cause problems when they slip though.
 
-You will do data work with an AI assistant. Nearly everyone in the field already does. And in survey after survey, the same professionals who use AI daily name the same frustration above all the others. Answers that are *almost* right. Not wrong in ways that jump out. Wrong in ways that read smoothly, sound confident, and cost you an afternoon when they slip through.
-
-Getting answers out of AI is the easy part. The skill that matters is **review**, deciding with evidence whether an answer is true. Below is a tiny orders table, small enough to check by eye. An AI assistant has answered five questions about it. Some answers are solid. Some aren't. You're the reviewer, and shipping a wrong number to your boss counts against you.
+Getting answers out of AI is the easy part. The skill that matters is **review**, deciding with evidence whether an answer is true. Below is a tiny orders table, small enough to check by eye. An AI assistant has answered five questions about it. Some answers are solid. Some aren't. You're the reviewer, and shipping a wrong number counts against you. Read carefully!
 
 {% activity "review-queue.html", "Review queue", "1060px" %}
 

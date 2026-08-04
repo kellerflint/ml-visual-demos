@@ -56,7 +56,7 @@ What the brief needs:
 {% slot "video", "The practitioner. A vague request from real work, and how they pinned it down before touching anything.", "180px" %}
 
 
-**Compare their approach against yours.** How did they take the request apart, and where does that differ from how you did? Look for the move they made that you didn't, and the move you made that they skipped. One of those differences usually matters, and the useful sentence to write is which one, and what picking it up would have changed about your brief.
+**Compare their approach to yours.** How did they take the request apart, and where does that differ from how you did? Look for the move they made that you didn't, and the move you made that they skipped. One of those differences usually matters, and the useful sentence to write is which one, and what picking it up would have changed about your brief.
 
 **Compare their brief against yours.** Same email, two briefs. Do they aim at the same question? Does theirs promise anything yours holds back, or hold back anything yours promises? Where the two disagree, decide which version the director is better served by, because that, and only that, is the test a brief answers to.
 
