@@ -825,9 +825,45 @@ new file and a new request, and this time nothing walks you through it.
     return cells
 
 
+# ---------------------------------------------------------------- notebook 5
+def build():
+    cells = [
+        md("""
+# Module 3 · Notebook 5 · From scratch
+
+The shelter manager's request is on the Part 6 page. This notebook loads the
+file and stops. The structure you have used all module, explore before you
+touch, decide and log, check before you trust, expectation before you run, is
+yours to rebuild here, and rebuilding it is the assessment.
+
+Data: Austin Animal Center intakes, calendar 2024, from the City of Austin
+open data portal. Public domain, published by the city, untouched by us.
+"""),
+        GROUND_RULES_NOTE,
+        md("""
+## Setup
+
+Run this cell as it is. Everything after it is yours.
+"""),
+        code(f"""
+import pandas as pd
+
+url = "{AUSTIN_URL}"
+df = pd.read_csv(url)
+print(f"Loaded {{df.shape[0]}} rows and {{df.shape[1]}} columns")
+"""),
+        md("""
+## Your work starts here
+"""),
+        code("# Your first prompt's output goes here.\n"),
+    ]
+    return cells
+
+
 if __name__ == "__main__":
     os.makedirs("notebooks", exist_ok=True)
     write("notebooks/m3-explore.ipynb", explore())
     write("notebooks/m3-prepare.ipynb", prepare())
     write("notebooks/m3-analyze.ipynb", analyze())
     write("notebooks/m3-share.ipynb", share())
+    write("notebooks/m3-build.ipynb", build())
