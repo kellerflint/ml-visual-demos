@@ -489,7 +489,205 @@ and your decision log is what makes your own version defensible.
     return cells
 
 
+# ---------------------------------------------------------------- notebook 3
+def analyze():
+    cells = [
+        md("""
+# Module 3 · Notebook 3 · Analyze
+
+The file is clean and the director is waiting. Five questions, and every
+answer travels with the check that says who it is about.
+
+One habit runs through this whole notebook. Before you run anything, write
+down what you expect. An expectation costs ten seconds, and it is the only
+way to notice when an answer should surprise you.
+"""),
+        GROUND_RULES_NOTE,
+        md("""
+## Setup
+
+Run this cell as it is. It loads the course's cleaned file, the output of the
+Part 3 pipeline, so everyone analyzes identical data. 793 visits, 19 columns,
+including the six you built.
+"""),
+        code(f"""
+import pandas as pd
+
+url = "{CLEAN_URL}"
+df = pd.read_csv(url)
+print(f"Loaded {{df.shape[0]}} rows and {{df.shape[1]}} columns")
+"""),
+    ]
+
+    cells += job(
+        1, "What brings people in",
+        "The director's first question. What are the clinic's most common "
+        "diagnoses? Write down the top three you expect before you run "
+        "anything. Then decide what to do with the 28 visits that have no "
+        "diagnosis code and the 17 coded UNKNOWN, and say it in the prompt.",
+        """
+- the DataFrame in this notebook is named `df`. Your Part 3 chat may still
+  think in `df_clean`, and a wrong name is the fastest way to get code that
+  crashes or, worse, runs against the wrong data
+- count visits per diagnosis using `icd_description`, top 10, largest first
+- your policy for missing and UNKNOWN codes, stated, with their counts printed
+""",
+        """
+Essential Hypertension leads with 94 visits, about one visit in eight. Check
+the AI's top count against a second path, a plain `value_counts()` on the
+same column. Then read your expectation next to the table. For most people
+the surprise is how much chronic disease outweighs the coughs and colds, and
+that surprise is a real finding about what this clinic is.
+""",
+    )
+
+    cells += job(
+        2, "The frequent visitors",
+        "Second question. How much of the clinic's work comes from patients "
+        "who keep coming back? Part 3 built `is_high_utilizer` for exactly "
+        "this. Expectation first: what share of visits do you think the "
+        "flagged patients account for?",
+        """
+- how many patients are flagged, and how many visits they account for
+- both as counts and as shares of the totals
+""",
+        """
+110 of 200 patients, 584 of 793 visits, 74%. Now say it carefully. The flag
+is over half the panel, because the 4-or-more threshold was somebody's
+default, so "high utilizers drive 74% of visits" is nearly a tautology here.
+Any sentence you hand the director about this number should name the
+threshold it depends on. You saw in Part 3 what moving it does.
+""",
+    )
+
+    cells += job(
+        3, "The seasonal question",
+        "Third question. Does visit volume have a seasonal pattern the clinic "
+        "should staff for? Expectation first, and be honest about it. Most "
+        "people expect a winter surge.",
+        """
+- visits per month with both years pooled
+- then the same thing split by year, side by side, because a pattern that
+  appears in the pool has to show up in both years to be called seasonal
+""",
+        """
+The pooled months have to sum to 793. Then look at the split. The pooled
+range runs from 50 in September to 80 in November, which looks like a story,
+and the two years disagree about most of it. September is the year-two dip
+doing the work, and November is high in both years by a little. Two years is
+two data points per month. The defensible sentence is modest, and writing
+the modest sentence when the chart tempts you toward the exciting one is the
+skill.
+""",
+    )
+
+    cells += job(
+        4, "Diagnosis by age group",
+        "Fourth question. Do different age groups come in for different "
+        "things? The `age_group` column from Part 3 does the work.",
+        """
+- a table of the top diagnoses against age_group, counts in the cells
+- limit it to the top 5 or 6 diagnoses so the table is readable
+""",
+        """
+Before you describe any pattern, open the 0-18 column and look at who is in
+it. Ten visits, every one a patient aged exactly 18, because the file's
+youngest patient is 18 and the bin label promises children the data does not
+contain. Any sentence about pediatric patterns from this table would be
+about ten visits by legal adults. The other groups are large enough to
+compare, and the caution transfers to any small cell in any crosstab you
+ever make.
+""",
+    )
+
+    cells += job(
+        5, "The gaps between visits",
+        "Last of the five. When patients come back, how long do they take? "
+        "`days_since_last_visit` was built for this. Expectation first.",
+        """
+- the average and the median gap, and why you want both on screen
+- how many rows have no gap value, and what those rows are
+""",
+        """
+Mean 129 days, median 99, and the difference is the finding. A long tail of
+patients who vanish for a year pulls the mean a month past the typical
+return. 200 rows have no gap because a first visit has nothing to be since,
+so the number of empty gaps has to equal the number of patients. If it does
+not, something upstream reordered the file. Which average goes in a report
+depends on the question, planning staffing follows the median, and modeling
+no-shows cares about the tail.
+""",
+    )
+
+    cells += job(
+        6, "Who is the answer about",
+        "Every answer above silently assumes the data represents the clinic. "
+        "Now check it. County is the test case, because a third of it is "
+        "missing. Write your guess first: which insurance group do you think "
+        "has the most missing counties?",
+        """
+- the share of visits with county missing, within each insurance_type
+- sorted so the worst group is on top
+""",
+        """
+Medicaid 36%, Private 35%, Medicare 27%, Uninsured 16%. Most people guess
+Uninsured for the top, and it is last. The gap follows a workflow somewhere,
+an intake form, a billing path, and the data cannot tell you which. Note
+what this does to Job 1 through 5. Any county-level view underweights
+Medicaid, the clinic's largest group, and dropping the missing rows would
+lock that distortion in while hiding the warning.
+
+The deliverable for this job is one sentence, the caveat you would attach to
+any report built on this file. Write it in the cell below, and keep it. Part
+5 uses it.
+""",
+    )
+
+    cells += [
+        md("""
+**My caveat sentence** *(edit this cell)*:
+
+> ...
+"""),
+        md("""
+## Stretch · the artifact hiding in a clean column
+
+Skip this unless the main work left you time. It uses the raw file, and it
+shows something subtle. Standardizing can manufacture a pattern.
+
+In the cleaned data, county is missing on 44% of visits from patients with
+gender Other, against 25% for Male. That reads like an equity finding. Now
+compute the same missing rate on the raw file, grouped by the raw gender
+spelling before any cleaning. Two specific spellings carry almost all of the
+gap, and the spellings that mean the same thing sit near the file average.
+
+The pattern follows how the value was typed, which means it follows who or
+what entered the record, some intake pathway that both wrote gender its own
+way and skipped county. Standardizing merged that pathway's rows with
+everyone else's and the fingerprint vanished. The equity finding is real in
+the cleaned file and misleading about the clinic. Nothing in either file can
+tell you which pathway it was. A person at the clinic can, and this is the
+single best example in the module of why the analyst who asks questions
+beats the one who only computes.
+"""),
+        code(f"""
+# Stretch starter: the raw file, for the pre-cleaning view.
+raw = pd.read_csv("{RAW_URL}")
+# Group county-missing rate by the raw gender values and compare.
+"""),
+        md("""
+## Where this leaves you
+
+Five answers, each with its check, and a caveat that tells the director how
+far to trust them. Part 5 is the hard part. Saying all of this in four
+sentences to someone who will read nothing else.
+"""),
+    ]
+    return cells
+
+
 if __name__ == "__main__":
     os.makedirs("notebooks", exist_ok=True)
     write("notebooks/m3-explore.ipynb", explore())
     write("notebooks/m3-prepare.ipynb", prepare())
+    write("notebooks/m3-analyze.ipynb", analyze())

@@ -4,7 +4,6 @@ title: Analyze
 kicker: Module 3 · Part 4
 standfirst: >
   Answer the question you settled on in Part 1, then work out who is missing from the answer before anyone acts on it.
-status: scaffold
 prev:
   url: /module-3/03-prepare/
   label: Part 3 · Prepare
@@ -13,40 +12,62 @@ next:
   label: Part 5 · Share
 ---
 
-<!-- authoring note: template — cold open, concept, do it, compare. -->
+The director wants to know which county sends the clinic the most patients.
+One line of pandas answers it. Los Angeles, 85 visits, top of the list.
 
-{% todo "Cold open" %}
-Two charts of the same data telling different stories. Student picks which one to send.
-{% endtodo %}
+Here is what the one line skips. Nearly a third of the visits in the file have
+no county at all. The ranking you just produced describes the 70% of visits
+where somebody wrote the county down, and it is only the answer if the missing
+third looks like the recorded two thirds. Whether it does is checkable, and
+almost nobody checks. This part is the two jobs together, every time. Get the
+answer, then find out who your answer is about.
 
 {% section "Get a feel for it" %}
 
-{% slot "activity", "Concept level. Candidates: an axis starting somewhere other than zero, an average hiding two separate groups, a trend read off too few points." %}
+Ask the clinic data anything, and before the answer appears, commit to what you
+expect. The gap between what you expected and what comes back is where analysis
+actually happens, and one of these answers has a hole in it big enough to sink
+a report.
 
-{% slot "activity", "Concept level, away from the clinic entirely. The survivorship shape: a population you can only see part of, where the part you cannot see is the answer." %}
+{% activity "p4a-missing-on-purpose.html", "Missing on purpose", "680px" %}
 
-### Think it through
+{% check "Think it through before you open the answers." %}
 
-{% todo "Check yourself · 3–4 questions" %}
-Arguable. These are the discussion if the class is running together.
+{% q "County is missing on 16% of Uninsured visits and 36% of Medicaid visits. Most people guess the reverse. Why is the direction worth knowing before you trust any county number?" %}
+Because it tells you the missingness has a cause, and the cause decides what
+the numbers mean. Gaps that follow a group are gaps with a reason, an intake
+form, a billing system, a workflow, and data missing for a reason distorts
+whatever that reason touches. Any county breakdown here quietly underweights
+Medicaid patients, the clinic's largest group. And the surprise itself is the
+lesson. If you had assumed the direction instead of checking it, you would
+have explained a pattern that runs the other way.
+{% endq %}
 
-What should land: an average can describe nobody in the data; a pattern and a wobble look identical until you check how many points you have; missing data usually has a reason behind it; who is absent changes what your numbers are about.
-{% endtodo %}
+{% q "A colleague says the fix is simple, drop the rows with no county. The percentages will be computed cleanly then. What did the fix just do?" %}
+It made the distortion permanent and invisible. The dropped rows were 36% of
+Medicaid visits and 16% of Uninsured ones, so the cleaned dataset now
+underrepresents Medicaid patients everywhere, in every table, chart, and
+average built from it, with no missing values left to warn anyone. The gap
+used to announce itself. Now it is baked in. Dropping missing data is only
+safe when the missing rows look like the kept ones, and that is exactly what
+the missingness check just told you is false here.
+{% endq %}
+
+{% endcheck %}
 
 {% section "Do it for real" %}
 
-{% todo "Name the job" %}
-Answer it. Then check who is actually represented in the answer.
-{% endtodo %}
+The job. Answer the director's five questions, and attach to each answer the
+check that says who it is about. Both halves go in your notebook. The questions
+come from Habiba's original analysis plan for this dataset. Top diagnoses,
+frequent visitors, seasonal patterns, diagnosis by age group, and the gaps
+between visits.
 
-{% notebook "Notebook 3 · Analyze" %}
-Starts from a clean copy, so you can work this part whatever happened in an earlier one.
-
-{% todo "To build" %}
-- Space for your own prompt
-- Space to paste and run what comes back
-- Space to write down what you checked
-{% endtodo %}
+{% notebook "Notebook 3 · Analyze", "https://colab.research.google.com/github/kellerflint/ml-visual-demos/blob/main/notebooks/m3-analyze.ipynb" %}
+Loads the course's cleaned file, the output of Part 3, so everyone analyzes
+identical data. Five director questions, each with a
+write-your-expectation-first habit built in, then the who-is-missing pass on
+your own answers.
 {% endnotebook %}
 
 {% checklist "How to know it worked" %}
@@ -60,10 +81,6 @@ Starts from a clean copy, so you can work this part whatever happened in an earl
 
 {% slot "video", "Habiba. The most valuable recording in the module. A time missing data turned out to mean something: how she worked out which kind of missing it was, and who she asked.", "180px" %}
 
-{% todo "The practitioner's version" %}
-Their analysis and charts, with the reasoning for the chart choices made explicit.
-{% endtodo %}
-
 {% compare %}
 | | You | The practitioner |
 |---|---|---|
@@ -72,12 +89,8 @@ Their analysis and charts, with the reasoning for the chart choices made explici
 | Could you explain every step? | | |
 | What happens when the next file arrives? | | |
 | How would you find out if it broke? | | |
-
-{% todo %}
-AI is good at making charts and at listing things to check. Deciding what is worth plotting, and what a gap means, is the part it cannot do.
-{% endtodo %}
 {% endcompare %}
 
-{% todo "Facilitation notes" %}
-Timing, what to poll the room on, which question is worth arguing about.
-{% endtodo %}
+AI is good at making charts and at listing things to check. Deciding what is
+worth plotting, and what a gap means at this particular clinic, is the part
+that still needs a person who can ask.
