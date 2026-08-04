@@ -94,6 +94,7 @@
       <button class="btn primary" id="p1c-go" type="button" disabled>Ask them</button>
     </div>
     <div id="p1c-questions"></div>
+    <p class="p1c-verdict" id="p1c-qfeedback" hidden></p>
     <div class="p1c-briefs" id="p1c-briefs"></div>
     <p class="p1c-verdict" id="p1c-verdict" hidden></p>
   </div>
@@ -209,30 +210,34 @@
     });
   }
 
+  function questionFeedback(){
+    const gotDecision = [...picked].some(i=>QUESTIONS[i].key==="decision");
+    const gotAudience = [...picked].some(i=>QUESTIONS[i].key==="audience");
+    const f = $("p1c-qfeedback");
+    f.hidden = false;
+    if(gotDecision && gotAudience){
+      f.innerHTML = "<b>You spent your three questions where they pay.</b> What this work should change, and who it is for, are the two answers a brief is built from. Everything else was affordable to leave unasked.";
+    } else if(gotDecision || gotAudience){
+      f.innerHTML = "<b>You caught one of the two answers a brief is built from.</b> The other, " +
+        (gotDecision ? "who will see this," : "what decision it feeds,") +
+        " went unasked, and you will be guessing at it when you choose below.";
+    } else {
+      f.innerHTML = "<b>All three of your questions bought logistics.</b> Useful, cheap, and none of them shape the work. The two answers a brief is built from, what this will change and who will see it, went unasked, so choosing below is going to feel like guessing. It is.";
+    }
+  }
+
   function verdict(){
     const v = $("p1c-verdict");
     v.hidden = false;
-    const gotDecision = [...picked].some(i=>QUESTIONS[i].key==="decision");
-    const gotAudience = [...picked].some(i=>QUESTIONS[i].key==="audience");
-    let extra;
-    if(gotDecision && gotAudience){
-      extra = "You spent your three questions where they pay. The decision and the audience are the two answers a brief is built from, and everything else was affordable to leave unasked.";
-    } else if(gotDecision || gotAudience){
-      extra = "You caught one of the two answers a brief is built from. The other, " +
-        (gotDecision ? "who will see this," : "what decision it feeds,") +
-        " had to be guessed, and guesses in a brief are debts the analysis repays later.";
-    } else {
-      extra = "All three of your questions bought logistics. Useful, cheap, and none of them shape the work. The two answers a brief is built from, the decision and the audience, went unasked, which is why choosing between these briefs felt like guessing. It was.";
-    }
-    v.innerHTML = (BRIEFS[sel].good
-      ? "<b>That is the brief the answers support.</b> "
-      : "<b>The stronger brief is B, and the reveal above says why.</b> ") + extra;
+    v.innerHTML = BRIEFS[sel].good
+      ? "<b>That is the brief the director needs.</b> Repeat visitors carries the coordinator decision, uninsured patients serves the funder, and it is built for both real audiences. Every clause traces to one of her answers, whether or not your three questions bought you that answer."
+      : "<b>The stronger brief is B, and the reveals above say why.</b> Its clauses trace to the director's answers, the coordinator decision, the funder's uninsured question, the two audiences. The others lose by aiming at nothing she said, or by promising what visit records cannot hold.";
   }
 
   $("p1c-go").addEventListener("click", ()=>{
     if(asked || picked.size!==3) return;
     asked = true;
-    drawQuestions(); drawBriefs(); sync();
+    drawQuestions(); questionFeedback(); drawBriefs(); sync();
   });
 
   /* The ask and the brief pick are deliberate reveals, so they may grow the
@@ -240,13 +245,13 @@
      what is already on screen. */
   function lockHeight(){
     if(!document.body.clientWidth){ requestAnimationFrame(lockHeight); return; }
-    const v = $("p1c-verdict");
-    const keepV = v.innerHTML, keepVH = v.hidden;
-    v.hidden = false; v.style.minHeight = "0";
-    v.innerHTML = "<b>x</b> " + "word ".repeat(60);
-    const tv = v.scrollHeight;
-    v.innerHTML = keepV; v.hidden = keepVH;
-    v.style.minHeight = tv + "px";
+    [$("p1c-verdict"), $("p1c-qfeedback")].forEach(el=>{
+      const keep = el.innerHTML, keepH = el.hidden;
+      el.hidden = false; el.style.minHeight = "0";
+      el.innerHTML = "<b>x</b> " + "word ".repeat(55);
+      el.style.minHeight = el.scrollHeight + "px";
+      el.innerHTML = keep; el.hidden = keepH;
+    });
   }
 
   drawQuestions(); sync(); lockHeight();
