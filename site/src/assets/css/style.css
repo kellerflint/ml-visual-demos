@@ -387,3 +387,18 @@ body.prov-off #prov-legend{display:none}
    margin so the two stop stacking up. Last in the file so it wins against
    the element rules above. */
 .activity-embed + *{margin-top:0}
+
+/* ---------- Tally feedback embed ---------- */
+/* The form renders light whatever the page does, so in dark mode it sits on
+   its own white card rather than floating on the dark background. Mirrors the
+   two-signal theme handling used at the top of this file. */
+.tally-embed-wrapper{margin:2.5rem 0 0}
+.tally-embed-wrapper iframe{display:block}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]) .tally-embed-wrapper{
+    background:#fff; border-radius:8px; padding:8px 16px;
+  }
+}
+:root[data-theme="dark"] .tally-embed-wrapper{
+  background:#fff; border-radius:8px; padding:8px 16px;
+}

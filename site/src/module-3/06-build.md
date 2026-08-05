@@ -25,7 +25,9 @@ Finding what is wrong with it is the work. So is deciding what the manager is ac
 
 {% section "The job" %}
 
-The whole loop, alone. Understand the request, explore the file, prepare it, answer the questions your brief settled on, and write the four sentences. Your AI chat is open the whole time, the ground rules from Part 2 still apply, and every prompt is yours to write.
+{% todo "To write" %}
+The job statement. The student runs the whole loop alone on this file.
+{% endtodo %}
 
 {% notebook "Notebook 5 · From scratch", "https://colab.research.google.com/github/kellerflint/ml-visual-demos/blob/main/notebooks/m3-build.ipynb" %}
 Opens in Colab, loads the shelter file, and stops. The blankness is the point. Everything that goes in it after the first cell is yours.
@@ -33,12 +35,12 @@ Opens in Colab, loads the shelter file, and stops. The blankness is the point. E
 
 {% section "What to hand in" %}
 
-Four things, and every one has a Part behind it.
-
-The brief, one page, built the way Part 1 built it. The quality report and decision log for this file, the way Parts 2 and 3 kept them. Your answers with their checks attached, the way Part 4 paired them. And four sentences with one limitation for the manager, Part 5's shape, ready for a council packet.
+{% todo "To write" %}
+What the student hands in, one deliverable per Part.
+{% endtodo %}
 
 {% section "Afterwards" %}
 
 {% slot "notebook", "A worked version, released after hand-in. One defensible way through, with the reasoning visible.", "150px" %}
 
-Two analysts who both did honest work on this file will still differ, because they made different defensible calls. What they will have in common is that you can trace every number in both, and that each would survive the other's review. That is the standard, and after this page you have everything you need to hold work to it.
+{% feedback "3", "6" %}

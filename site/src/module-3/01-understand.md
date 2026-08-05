@@ -61,3 +61,5 @@ What the brief needs:
 **Compare their brief against yours.** Same email, two briefs. Do they aim at the same question? Does theirs promise anything yours holds back, or hold back anything yours promises? Where the two disagree, decide which version the director is better served by, because that, and only that, is the test a brief answers to.
 
 The framing decides the work. An AI will do whatever you ask with equal confidence, which is exactly why the framing is the part that stays yours.
+
+{% feedback "3", "1" %}

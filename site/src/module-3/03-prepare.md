@@ -28,7 +28,9 @@ That is what preparing data is. A run of small decisions, each with a cost, made
 
 {% section "Do it for real" %}
 
-The job. Take the raw file and your Part 2 quality report, fix every problem on the list, then build the six columns the analysis ahead needs. Every fix that loses or changes a row gets a line in your decision log saying what you did and why.
+{% todo "To write" %}
+The job statement for this part, the way Parts 1 and 2 state theirs.
+{% endtodo %}
 
 {% slot "notebook", "The notebook for this part, opening in Colab the way Part 2's does. It starts from the raw file, so this part works whatever happened in your Part 2 notebook.", "180px" %}
 
@@ -36,10 +38,8 @@ The job. Take the raw file and your Part 2 quality report, fix every problem on 
 
 {% slot "video", "The practitioner. A messy column and a derived column from real work. What they did, and who they had to ask.", "180px" %}
 
-Then hold your work next to theirs, twice.
+{% todo "To write" %}
+The two comparisons the student makes against the recording, chosen for this part.
+{% endtodo %}
 
-**How they decide against how you decided.** Watch what they do when a fix needs a judgment call. Some calls they make from the data, and some they take to a person, and knowing which is which is the skill on display. Compare that to your decision log. Which of your calls did you make alone that they would have taken to somebody?
-
-**Their decision log against yours.** Find one call the two of you made differently, dropped against kept, merged against separate, and trace what your version does downstream that theirs would have done differently. If their reasoning is better, your log is one line longer now, and that is the log working.
-
-An AI will happily pick your thresholds and your mappings for you. Picking them is the actual job, and the prompt is where you do it.
+{% feedback "3", "3" %}

@@ -26,7 +26,9 @@ Here is what the one line skips. Nearly a third of the visits in the file have n
 
 {% section "Do it for real" %}
 
-The job. Answer the director's five questions, and attach to each answer the check that says who it is about. Both halves go in your notebook. The questions come from the original analysis plan for this dataset. Top diagnoses, frequent visitors, seasonal patterns, diagnosis by age group, and the gaps between visits.
+{% todo "To write" %}
+The job statement for this part, the way Parts 1 and 2 state theirs.
+{% endtodo %}
 
 {% slot "notebook", "The notebook for this part, opening in Colab the way Part 2's does. It loads the course's cleaned file, the output of Part 3, so everyone analyzes identical data.", "180px" %}
 
@@ -34,10 +36,8 @@ The job. Answer the director's five questions, and attach to each answer the che
 
 {% slot "video", "The practitioner. The most valuable recording in the module. A time missing data turned out to mean something: how they worked out which kind of missing it was, and who they asked.", "180px" %}
 
-Then hold your work next to theirs, twice.
+{% todo "To write" %}
+The two comparisons the student makes against the recording, chosen for this part.
+{% endtodo %}
 
-**Their suspicion against yours.** They tell a story about missing data that turned out to mean something. Notice the moment they stopped trusting the number, what tipped them off, what they checked next, and who they went to ask. Compare that to your own checks. Did anything you turned up deserve the follow-up they would have given it?
-
-**Their caveat against yours.** They had to tell somebody what the data could and could not support. Put your own version next to how they handled it. Does your caveat name a number, a consequence, and a next step, or does it hedge in general terms? Rewrite yours now if theirs exposes it, because Part 5 sends it to the director.
-
-AI is good at making charts and at listing things to check. Deciding what is worth plotting, and what a gap means at this particular clinic, is the part that still needs a person who can ask.
+{% feedback "3", "4" %}

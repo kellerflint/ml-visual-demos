@@ -176,6 +176,24 @@ export default function (eleventyConfig) {
 <div class="tablescroll">\n${block(content)}\n</div></div>`;
   });
 
+  /* Tally feedback form. `module` and `part` are hidden fields on the form,
+     passed through as query parameters so each response says where it came
+     from. The embed loader lives once in base.njk. */
+  const TALLY_FORM = "NpxLEO";
+  eleventyConfig.addShortcode("feedback", function (module, part) {
+    const q = [
+      "alignLeft=1",
+      "hideTitle=1",
+      "transparentBackground=1",
+      "dynamicHeight=1",
+      `module=${encodeURIComponent(module)}`,
+      `part=${encodeURIComponent(part)}`,
+    ].join("&");
+    return `<div class="tally-embed-wrapper">
+<iframe data-tally-src="https://tally.so/embed/${TALLY_FORM}?${q}" loading="lazy" width="100%" height="340" frameborder="0" marginheight="0" marginwidth="0" title="Data Modules Feedback"></iframe>
+</div>`;
+  });
+
   return {
     pathPrefix: PATH_PREFIX,
     dir: {

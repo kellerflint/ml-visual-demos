@@ -80,3 +80,5 @@ Opens in Colab and loads the clinic file for you. Everything after that first ce
 **Compare their routine against yours.** What do they look at, and why? Which of their checks did you never think to run, and which of yours did they skip?
 
 **Compare their quality report against yours.** What did they flag that you missed, and what did you flag that they passed over without a note?
+
+{% feedback "3", "2" %}

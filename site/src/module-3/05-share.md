@@ -28,7 +28,9 @@ You verified both numbers yourself in Part 4. And the sentence is wrong. The "sm
 
 {% section "Do it for real" %}
 
-The job. Turn your Part 4 findings into four sentences and one limitation for the director, with an AI drafting and you fact-checking. Write your own four sentences first, before the AI sees anything. It will feel skippable and it is the load-bearing step, because your version is what makes the AI's errors visible to you.
+{% todo "To write" %}
+The job statement for this part, the way Parts 1 and 2 state theirs.
+{% endtodo %}
 
 {% slot "notebook", "The notebook for this part, opening in Colab the way Part 2's does. It loads the cleaned clinic file, so your numbers come from the same place your findings did.", "180px" %}
 
@@ -36,10 +38,8 @@ The job. Turn your Part 4 findings into four sentences and one limitation for th
 
 {% slot "video", "The practitioner. When is AI worth skipping? Their rubric with examples.", "180px" %}
 
-Then hold your work next to theirs, twice.
+{% todo "To write" %}
+The two comparisons the student makes against the recording, chosen for this part.
+{% endtodo %}
 
-**What they use AI for against what you did.** Their rubric is a working professional's answer to where AI belongs in their own writing process, drawn before you had to make the same calls yourself. Where does their line sit compared to where you drew yours? If they skip AI somewhere you leaned on it, their reason is the interesting part.
-
-**What got left out.** A four-sentence summary is mostly the things it declines to say. Compare what you cut against what a practitioner cuts, the tempting number with no receipt, the finding that needs a threshold to mean anything. If your final version kept something their rubric would have flagged, that is the sentence to reread before anything goes to a director.
-
-Drafting is where the AI helped most in this whole module, and the summary is the one artifact the director acts on, so it is also where an unchecked error costs most. Both things are true, and holding both at once is the skill this part practices.
+{% feedback "3", "5" %}
