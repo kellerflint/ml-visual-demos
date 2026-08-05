@@ -12,9 +12,9 @@ next:
   label: Part 5 · Share
 ---
 
-The director wants to know which county sends the clinic the most patients. One line of pandas answers it. Los Angeles, 85 visits, top of the list.
-
-Here is what the one line skips. Nearly a third of the visits in the file have no county at all. The ranking you just produced describes the 70% of visits where somebody wrote the county down, and it is only the answer if the missing third looks like the recorded two thirds. Whether it does is checkable, and almost nobody checks. This part is the two jobs together, every time. Get the answer, then find out who your answer is about.
+{% todo "To write" %}
+The opening. An answer that arrives in one line and is only true for the rows where somebody filled the field in.
+{% endtodo %}
 
 {% section "Get a feel for it" %}
 

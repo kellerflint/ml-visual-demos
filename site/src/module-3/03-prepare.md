@@ -12,11 +12,9 @@ next:
   label: Part 4 · Analyze
 ---
 
-One of the dates in your quality report reads `2023-00-00`. The row it sits on is a real visit. It has a diagnosis, a provider, a copay of $0, a patient who was there. The date is the only broken thing on the row.
-
-You have three honest options. Drop the row and lose a real visit. Keep the row and let one unparseable value crash every date operation downstream. Or set the date to missing and keep the rest, which saves the visit and quietly changes what "visits per month" means. There is no fourth option where the problem goes away, and an AI asked to "fix the dates" will pick one of the three without telling you which.
-
-That is what preparing data is. A run of small decisions, each with a cost, made one column at a time and written down. This part you make them yourself.
+{% todo "To write" %}
+The opening. One broken value with three honest fixes and no free one, so preparing data reads as a run of decisions rather than a chore.
+{% endtodo %}
 
 {% section "Get a feel for it" %}
 

@@ -12,11 +12,9 @@ next:
   label: Do it from scratch
 ---
 
-Here is a sentence about the clinic, and every number in it is correct.
-
-> High utilizers drive 74% of clinic visits, showing that a small group of patients is responsible for most of the workload.
-
-You verified both numbers yourself in Part 4. And the sentence is wrong. The "small group" is 110 patients, over half the panel, flagged by a threshold somebody defaulted to. The word *showing* smuggles in a conclusion, and the word *small* smuggles in a falsehood, and a director who reads this sentence plans a program for the wrong clinic. Numbers can all be right while the sentence lies. This part is about the sentence.
+{% todo "To write" %}
+The opening. A sentence whose numbers are all correct and which is still wrong, so the part lands on the sentence rather than the arithmetic.
+{% endtodo %}
 
 {% section "Get a feel for it" %}
 

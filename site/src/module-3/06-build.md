@@ -13,15 +13,9 @@ next:
   label: Module 3 overview
 ---
 
-A different inbox this time.
-
-> **From:** Shelter Manager, Austin Animal Center<br>**Subject:** council budget review
->
-> The city council reviews our budget in October. Can you put together something on last year's intakes? I keep telling them we're stretched past capacity and it never lands. Whatever the data shows.
-
-The data is real. Every animal that came through Austin's city shelter in 2024, from the city's public data portal, 11,817 rows exactly as the city published them. Real data means the problems in it were made by real intake software and real people on real days, and we are handing you the file the way the manager would, with a request and no list of what is wrong with it.
-
-Finding what is wrong with it is the work. So is deciding what the manager is actually asking for, and what this file can honestly say about capacity, and what it cannot. The file records animals coming in. Think about what that means for a claim about being stretched.
+{% todo "To write" %}
+The opening. A second vague request, this time from a shelter manager, over a real file handed across with no list of what is wrong with it.
+{% endtodo %}
 
 {% section "The job" %}
 
