@@ -39,9 +39,9 @@ Three variants were built for each part, in different directions. One safe and d
 
 {% activity "p2b-eyes-dont-scale.html", "Eyes don't scale", "840px" %}
 
-### C · The profiler's toolkit · wired in
+### C · The analyst's toolkit · wired in
 
-{% activity "p2c-profilers-toolkit.html", "The profiler's toolkit", "660px" %}
+{% activity "p2c-analysts-toolkit.html", "The analyst's toolkit", "660px" %}
 
 {% section "Part 3 · Prepare" %}
 

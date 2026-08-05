@@ -14,24 +14,24 @@ next:
 
 The director asks what sounds like the easiest question in the building. How many visits did we get last year?
 
-The file has 812 rows, so the ten-second answer is 812. It is wrong three ways at once. Fifteen of those rows are the same visit entered twice. Four of the dates never happened, February 30th among them. And "last year" means filtering on a date column that is still text, written three different ways. The easiest question in the building already depends on knowing exactly what is in the file.
+The file has 812 rows, so the ten-second answer is 812. It is wrong in several ways. Fifteen of those rows are the same visit entered twice. Four of the dates never happened, February 30th among them. And "last year" means filtering on a date column that is still text, written several different ways. Answering any question depends on knowing exactly what is in the file.
 
-Finding that out is this part's whole job. You change nothing. You count what is in every column and write down every problem you find. The fixing happens in Part 3, and it goes fast once you know what needs fixing.
+Finding that out is part of your job. You count what is in every column and write down every problem you find. Fixing those issues happens in the next module, and it goes faster once you know what needs fixing.
 
 {% section "Get a feel for it" %}
 
-This is the real clinic file, all 812 rows of it, hooked up to the five checks every profiler runs on a new dataset. Six defects are hiding in the data. Find all six, and pay attention to which check catches each one, because in the notebook below you will be asking an AI to run these exact checks.
+This is the real clinic file, all 812 rows of it, hooked up to the five checks every data analyst runs on a new dataset. There are some defects hiding in the data. Find them all, and pay attention to which check catches each one. In the notebook below you will be asking an AI to write similar checks.
 
-{% activity "p2c-profilers-toolkit.html", "The profiler's toolkit", "660px" %}
+{% activity "p2c-analysts-toolkit.html", "The analyst's toolkit", "660px" %}
 
 {% check "Think it through before you open the answers." %}
 
 {% q "The gender column contains f, F, female, Female, and FEMALE. Every one of those rows records a real patient correctly. So what is the problem?" %}
-No single value is wrong. The column disagrees with itself, and software takes the disagreement literally. A count of patients by gender returns five rows of "female." A filter on `'Female'` quietly keeps one spelling and drops the other four. The patient was recorded correctly and the analysis still comes out wrong, which is why inconsistency is its own category of problem, separate from error. It also explains the fix ahead of time. An error you correct. An inconsistency you standardize.
+No single value is wrong. The column disagrees with itself, and code takes things literally. A filter on `'Female'` keeps one spelling and drops the other four without telling you. The patient was recorded but the analysis still comes out wrong, which is why inconsistency is a problem.
 {% endq %}
 
-{% q "You scroll the first hundred rows and everything looks fine. What have you learned about the file?" %}
-Almost nothing, and the math says so. Four bad dates in 812 rows means a random hundred rows will usually contain zero of them. Thirty-three missing ages are easy to scroll past. Fifteen duplicated rows look like ordinary rows unless their twin happens to sit on screen at the same time. Problems this sparse live in the file's totals, and totals only show up when you count. That is why a practitioner's first move is a census of every column, and why "it looked fine when I opened it" convinces nobody.
+{% q "You scroll the first hundred rows of a new data set and everything looks fine at a glance. Why is this not enough?" %}
+Four bad dates in 812 rows means a random hundred rows will usually contain zero of them. Thirty-three missing ages are easy to scroll past. Fifteen duplicated rows look like ordinary rows unless their twin happens to sit on screen at the same time. Problems this sparse live in the file's totals, and totals only show up when you count. That is why a practitioner's first move is a census of every column, and why "it looked fine when I opened it" is not enough.
 {% endq %}
 
 {% endcheck %}
@@ -63,7 +63,7 @@ you to work with me.
 
 {% section "Lessons" %}
 
-{% slot "lesson", "The teaching content for this part goes here, between getting a feel for the idea and doing it for real. What form it takes is still open. A recorded walkthrough, written explanation on this page, worked examples the student modifies, or nothing beyond the job statement and an empty notebook.", "200px" %}
+{% slot "lesson", "The teaching content for this part goes here, between getting a feel for the idea and doing it for real. What form it takes is still open. A recorded walkthrough, written explanation on this page, worked examples the student modifies, or nothing beyond the job statement with the rest handled in the notebook.", "200px" %}
 
 {% section "Do it for real" %}
 
@@ -77,8 +77,6 @@ Opens in Colab and loads the clinic file for you. Everything after that first ce
 
 {% slot "video", "The practitioner. Their first-look routine on an unfamiliar file, and what they check before anything else.", "180px" %}
 
-**Their routine against yours.** They check things in an order, and the order has reasons. What do they look at first, and why that first? Which of their checks did you never think to run, and which of yours did they skip? Their routine is the product of every file that has burned them. Yours is one file old. The gap between them is a list of things worth stealing.
+**Compare their routine against yours.** What do they look at, and why? Which of their checks did you never think to run, and which of yours did they skip?
 
-**Their quality report against yours.** Same file, two problem lists. What did they flag that you missed, and what did you flag that they passed over without a note? The second kind is as interesting as the first, because it usually means they know something about data like this that makes the oddity ordinary.
-
-An AI profiles a file quickly and well. Deciding which of its findings matter, and which are ordinary for data like this, is the part that still belongs to whoever knows the clinic.
+**Compare their quality report against yours.** What did they flag that you missed, and what did you flag that they passed over without a note?
