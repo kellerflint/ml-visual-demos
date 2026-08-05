@@ -13,7 +13,7 @@ next:
 ---
 
 {% todo "To write" %}
-The opening. One broken value with three honest fixes and no free one, so preparing data reads as a run of decisions rather than a chore.
+TODO: The opening.
 {% endtodo %}
 
 {% section "Get a feel for it" %}

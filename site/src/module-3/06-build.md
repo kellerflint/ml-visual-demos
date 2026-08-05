@@ -14,7 +14,7 @@ next:
 ---
 
 {% todo "To write" %}
-The opening. A second vague request, this time from a shelter manager, over a real file handed across with no list of what is wrong with it.
+TODO: The opening.
 {% endtodo %}
 
 {% section "The job" %}
@@ -24,7 +24,7 @@ The job statement. The student runs the whole loop alone on this file.
 {% endtodo %}
 
 {% notebook "Notebook 5 · From scratch", "https://colab.research.google.com/github/kellerflint/ml-visual-demos/blob/main/notebooks/m3-build.ipynb" %}
-Opens in Colab, loads the shelter file, and stops. The blankness is the point. Everything that goes in it after the first cell is yours.
+Opens in Colab and loads the shelter file.
 {% endnotebook %}
 
 {% section "What to hand in" %}

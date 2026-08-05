@@ -13,7 +13,7 @@ next:
 ---
 
 {% todo "To write" %}
-The opening. An answer that arrives in one line and is only true for the rows where somebody filled the field in.
+TODO: The opening.
 {% endtodo %}
 
 {% section "Get a feel for it" %}

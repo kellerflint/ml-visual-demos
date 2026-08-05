@@ -13,7 +13,7 @@ next:
 ---
 
 {% todo "To write" %}
-The opening. A sentence whose numbers are all correct and which is still wrong, so the part lands on the sentence rather than the arithmetic.
+TODO: The opening.
 {% endtodo %}
 
 {% section "Get a feel for it" %}
