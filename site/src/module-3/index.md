@@ -18,7 +18,7 @@ Each part in this module starts with a short activity, moves into the real work,
 
 Before jumping into the real work, we'll cover the overall data lifecycle, concerns and bias in data, and verifying AI answers, so you have them in mind when working through the rest of the module.
 
-{% section "One tap, one number" %}
+{% section "Follow the Record" %}
 
 Somewhere in Berlin, a customer taps *Buy*. Weeks later, a manager looks at a revenue chart and makes a decision. Between those two moments, that one tap traveled through half a dozen systems. Along the way it got reshaped by choices someone coded months ago. Follow it, one stop at a time.
 
