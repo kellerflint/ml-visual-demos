@@ -28,7 +28,14 @@
   .a-instr{flex:1; min-width:0}
   .activity-body{padding:1rem .9rem 1.2rem}
 
-  .p2c-finds{display:flex; flex-wrap:wrap; gap:.35rem; margin:0 0 .85rem; align-items:center}
+  .p2c-h{
+    font-family:var(--mono); font-size:.68rem; letter-spacing:.13em; text-transform:uppercase;
+    font-weight:600; color:var(--slate); margin:1.1rem 0 .4rem;
+  }
+  .p2c-h:first-child{margin-top:0}
+  .p2c-h b{color:var(--ink); font-weight:700; letter-spacing:.06em}
+
+  .p2c-finds{display:flex; flex-wrap:wrap; gap:.35rem; margin:0}
   .p2c-find{
     font-family:var(--mono); font-size:.66rem; letter-spacing:.03em;
     border:1px solid var(--line); border-radius:99px; padding:.2rem .6rem; color:var(--slate);
@@ -36,7 +43,7 @@
   .p2c-find.got{border-color:var(--good); color:var(--good); background:var(--good-soft); font-weight:700}
   .p2c-find.got::before{content:"✓ "}
 
-  .p2c-toolrow{display:flex; flex-wrap:wrap; gap:.35rem; margin:0 0 .5rem; align-items:center}
+  .p2c-toolrow{display:flex; flex-wrap:wrap; gap:.35rem; margin:0 0 .5rem}
   .p2c-tool{
     font-family:var(--sans); font-size:.8rem; font-weight:600;
     border:1px solid var(--accent); color:var(--accent); background:var(--card);
@@ -45,9 +52,8 @@
   .p2c-tool:hover{background:var(--accent-soft)}
   .p2c-tool.active{background:var(--accent); color:#fff}
   .p2c-tool:focus-visible{outline:2px solid var(--accent); outline-offset:2px}
-  .p2c-colrow{display:flex; flex-wrap:wrap; gap:.3rem; margin:0 0 .8rem; align-items:center}
-  .p2c-rowlabel{font-family:var(--mono); font-size:.66rem; color:var(--slate); margin-right:.2rem}
-  .p2c-rowlabel b{color:var(--ink); font-weight:700}
+  .p2c-colrow{display:flex; flex-wrap:wrap; gap:.3rem; margin:0; align-items:center}
+  .p2c-collabel{font-family:var(--mono); font-size:.66rem; color:var(--slate); margin-right:.2rem}
   .p2c-col{
     font-family:var(--mono); font-size:.68rem; border:1px solid var(--line); border-radius:99px;
     padding:.18rem .6rem; color:var(--slate); background:var(--card); cursor:pointer;
@@ -77,10 +83,13 @@
     find all six.</span>
   </div>
   <div class="activity-body">
-    <div class="p2c-finds" id="p2c-finds"></div>
+    <p class="p2c-h">Tool</p>
     <div class="p2c-toolrow" id="p2c-tools"></div>
     <div class="p2c-colrow" id="p2c-cols"></div>
+    <p class="p2c-h">Output</p>
     <div class="p2c-out" id="p2c-out">Pick a tool to start. Show rows is where most people begin.</div>
+    <p class="p2c-h" id="p2c-findshead">Defects <b>0 of 6</b></p>
+    <div class="p2c-finds" id="p2c-finds"></div>
   </div>
 </div>
 
@@ -119,9 +128,8 @@
     return note;
   }
   function drawFinds(){
-    $("p2c-finds").innerHTML =
-      `<span class="p2c-rowlabel">find these <b>${got.size} of ${FINDS.length}</b></span>` +
-      FINDS.map(f=>
+    $("p2c-findshead").innerHTML = `Defects <b>${got.size} of ${FINDS.length}</b>`;
+    $("p2c-finds").innerHTML = FINDS.map(f=>
       `<span class="p2c-find ${got.has(f.id)?'got':''}">${f.label}</span>`).join("");
   }
 
@@ -208,7 +216,7 @@
   function esc0(s){ return s.replace(/&(?!amp;|lt;)/g,"&amp;"); }
 
   function drawTools(){
-    $("p2c-tools").innerHTML = `<span class="p2c-rowlabel">tool</span>` + TOOLS.map(t=>
+    $("p2c-tools").innerHTML = TOOLS.map(t=>
       `<button type="button" class="p2c-tool ${tool===t.id?'active':''}" data-t="${t.id}">${t.label}</button>`).join("");
     $("p2c-tools").querySelectorAll("button").forEach(b=>{
       b.addEventListener("click", ()=>{ tool = b.dataset.t; drawTools(); drawCols(); run(); });
@@ -217,7 +225,9 @@
   function drawCols(){
     const t = TOOLS.find(x=>x.id===tool);
     const on = t && t.needsCol;
-    $("p2c-cols").innerHTML = `<span class="p2c-rowlabel">column</span>` + COLS.map(c=>
+    /* Hidden rather than removed, so switching tools never reflows the card. */
+    $("p2c-cols").style.visibility = on ? "visible" : "hidden";
+    $("p2c-cols").innerHTML = `<span class="p2c-collabel">column</span>` + COLS.map(c=>
       `<button type="button" class="p2c-col ${col===c?'active':''}" data-c="${c}" ${on?"":"disabled"}>${c}</button>`).join("");
     $("p2c-cols").querySelectorAll("button").forEach(b=>{
       b.addEventListener("click", ()=>{ col = b.dataset.c; drawCols(); run(); });

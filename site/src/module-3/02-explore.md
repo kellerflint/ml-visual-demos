@@ -26,7 +26,7 @@ This is the real clinic file, all 812 rows of it, hooked up to the five checks e
 
 {% check "Think it through before you open the answers." %}
 
-{% q "The gender column contains f, F, female, Female, and FEMALE. Every one of those rows records a real patient correctly. So what is the problem?" %}
+{% q "The gender column contains f, F, female, Female, and FEMALE. Every one of those rows records a real patient accurately. So what is the problem?" %}
 No single value is wrong. The column disagrees with itself, and code takes things literally. A filter on `'Female'` keeps one spelling and drops the other four without telling you. The patient was recorded but the analysis still comes out wrong, which is why inconsistency is a problem.
 {% endq %}
 
