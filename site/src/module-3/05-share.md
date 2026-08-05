@@ -30,9 +30,7 @@ You verified both numbers yourself in Part 4. And the sentence is wrong. The "sm
 
 The job. Turn your Part 4 findings into four sentences and one limitation for the director, with an AI drafting and you fact-checking. Write your own four sentences first, before the AI sees anything. It will feel skippable and it is the load-bearing step, because your version is what makes the AI's errors visible to you.
 
-{% notebook "Notebook 4 · Share", "https://colab.research.google.com/github/kellerflint/ml-visual-demos/blob/main/notebooks/m3-share.ipynb" %}
-Opens in Colab and loads the cleaned clinic file, so your numbers come from the same place your findings did. Everything after that first cell is open space, waiting on the lesson format above.
-{% endnotebook %}
+{% slot "notebook", "The notebook for this part, opening in Colab the way Part 2's does. It loads the cleaned clinic file, so your numbers come from the same place your findings did.", "180px" %}
 
 {% section "How a practitioner did it" %}
 

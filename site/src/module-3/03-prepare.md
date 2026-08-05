@@ -30,9 +30,7 @@ That is what preparing data is. A run of small decisions, each with a cost, made
 
 The job. Take the raw file and your Part 2 quality report, fix every problem on the list, then build the six columns the analysis ahead needs. Every fix that loses or changes a row gets a line in your decision log saying what you did and why.
 
-{% notebook "Notebook 2 · Prepare", "https://colab.research.google.com/github/kellerflint/ml-visual-demos/blob/main/notebooks/m3-prepare.ipynb" %}
-Opens in Colab and starts from the raw file, so this part works whatever happened in your Part 2 notebook. Everything after that first cell is open space, waiting on the lesson format above.
-{% endnotebook %}
+{% slot "notebook", "The notebook for this part, opening in Colab the way Part 2's does. It starts from the raw file, so this part works whatever happened in your Part 2 notebook.", "180px" %}
 
 {% section "How a practitioner did it" %}
 

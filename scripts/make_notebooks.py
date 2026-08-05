@@ -5,10 +5,15 @@ generated here and committed. Regenerate after edits:
 
     python3 scripts/make_notebooks.py
 
-STATUS: these are deliberately placeholders. The full six-job versions of
-notebooks 1 through 4 are preserved on the `full-build-archive` branch. They
-were cut because how technique gets taught in this module is an open question
-that belongs to the practitioner who will write these, not to the scaffolding.
+STATUS: only two notebooks are generated. Part 2's demonstrates that a page can
+hand a student a live Colab notebook, and Part 6's is the from-scratch starter.
+Parts 3 to 5 carry a notebook slot on the page instead, since a second, third
+and fourth empty notebook demonstrate nothing the first one has not.
+
+The full six-job versions of notebooks 1 through 4 are preserved on the
+`full-build-archive` branch. They were cut because how technique gets taught in
+this module is an open question that belongs to the practitioner who will write
+these, not to the scaffolding.
 
 What each notebook keeps: a working setup cell that loads the real hosted CSV,
 so the "open in Colab" link works end to end and the format is demonstrable.
@@ -21,10 +26,6 @@ import os
 RAW_URL = (
     "https://raw.githubusercontent.com/kellerflint/ml-visual-demos/"
     "main/site/src/data/outpatient_visits.csv"
-)
-CLEAN_URL = (
-    "https://raw.githubusercontent.com/kellerflint/ml-visual-demos/"
-    "main/site/src/data/outpatient_visits_clean.csv"
 )
 AUSTIN_URL = (
     "https://raw.githubusercontent.com/kellerflint/ml-visual-demos/"
@@ -148,46 +149,6 @@ def explore():
     )
 
 
-def prepare():
-    return notebook(
-        "Module 3 · Notebook 2 · Prepare",
-        "Same clinic file, and now you have a list of what is wrong with it. "
-        "This notebook fixes what the list holds and builds the columns the "
-        "analysis ahead needs.",
-        "A clean file, and a log of every decision you made to get it.",
-        RAW_URL,
-        "Run this cell as it is. It starts from the raw file, so this notebook "
-        "works whatever happened in your Part 2 notebook.",
-    )
-
-
-def analyze():
-    return notebook(
-        "Module 3 · Notebook 3 · Analyze",
-        "The clinic file is clean and the director is waiting on answers. This "
-        "notebook is the two jobs together, every time. Get the answer, then "
-        "find out who the answer is about.",
-        "Answers to the director's questions, each one carrying the check that "
-        "says who it covers and who it misses.",
-        CLEAN_URL,
-        "Run this cell as it is. It loads the course's cleaned file, the output "
-        "of Part 3, so everyone analyzes identical data.",
-    )
-
-
-def share():
-    return notebook(
-        "Module 3 · Notebook 4 · Share",
-        "The director reads one thing, and it is short. This notebook turns "
-        "your findings into the version that gets read.",
-        "Four sentences and one limitation, every claim traceable to a number "
-        "you produced.",
-        CLEAN_URL,
-        "Run this cell as it is. It loads the cleaned clinic file so your "
-        "numbers come from the same place your findings did.",
-    )
-
-
 def build():
     return notebook(
         "Module 3 · Notebook 5 · From scratch",
@@ -206,7 +167,4 @@ def build():
 if __name__ == "__main__":
     os.makedirs("notebooks", exist_ok=True)
     write("notebooks/m3-explore.ipynb", explore())
-    write("notebooks/m3-prepare.ipynb", prepare())
-    write("notebooks/m3-analyze.ipynb", analyze())
-    write("notebooks/m3-share.ipynb", share())
     write("notebooks/m3-build.ipynb", build())

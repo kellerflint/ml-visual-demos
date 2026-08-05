@@ -28,9 +28,7 @@ Here is what the one line skips. Nearly a third of the visits in the file have n
 
 The job. Answer the director's five questions, and attach to each answer the check that says who it is about. Both halves go in your notebook. The questions come from the original analysis plan for this dataset. Top diagnoses, frequent visitors, seasonal patterns, diagnosis by age group, and the gaps between visits.
 
-{% notebook "Notebook 3 · Analyze", "https://colab.research.google.com/github/kellerflint/ml-visual-demos/blob/main/notebooks/m3-analyze.ipynb" %}
-Opens in Colab and loads the course's cleaned file, the output of Part 3, so everyone analyzes identical data. Everything after that first cell is open space, waiting on the lesson format above.
-{% endnotebook %}
+{% slot "notebook", "The notebook for this part, opening in Colab the way Part 2's does. It loads the course's cleaned file, the output of Part 3, so everyone analyzes identical data.", "180px" %}
 
 {% section "How a practitioner did it" %}
 
